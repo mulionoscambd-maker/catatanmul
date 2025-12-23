@@ -3,57 +3,734 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Maintenance</title>
+    <title>Sedang Diperbaiki - Maintenance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background: #f0f0f0;
-            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffccd5 0%, #b5e6ff 100%);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #333;
+            padding: 20px;
+            overflow-x: hidden;
         }
+        
         .maintenance-container {
+            max-width: 1000px;
+            width: 100%;
+            background-color: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
             text-align: center;
-            background: #fff;
-            padding: 40px 60px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            position: relative;
+            border: 8px solid #ff8fab;
+            overflow: hidden;
         }
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #ff4c4c;
+        
+        .container-top {
+            background-color: #ffafcc;
+            padding: 15px;
+            border-radius: 20px 20px 0 0;
+            margin: -40px -40px 30px -40px;
+            position: relative;
+            z-index: 1;
         }
-        p {
-            font-size: 18px;
-            margin-bottom: 20px;
+        
+        .site-title {
+            font-size: 2.8rem;
+            color: #ffffff;
+            text-shadow: 3px 3px 0 #ff477e;
+            letter-spacing: 1px;
+            margin: 0;
         }
-        .loader {
-            border: 6px solid #f3f3f3;
-            border-top: 6px solid #ff4c4c;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
+        
+        .maintenance-message {
+            font-size: 3.5rem;
+            color: #ff477e;
+            margin: 20px 0;
+            text-shadow: 2px 2px 0 #ffccd5;
+        }
+        
+        .cartoon-scene {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-end;
+            min-height: 400px;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .character {
+            position: relative;
+            margin: 0 30px;
+            z-index: 2;
+        }
+        
+        /* Robot Character */
+        .robot {
+            width: 200px;
+            height: 300px;
+        }
+        
+        .robot-head {
+            width: 120px;
+            height: 120px;
+            background-color: #4cc9f0;
+            border-radius: 40% 40% 45% 45%;
             margin: 0 auto;
-            animation: spin 1s linear infinite;
+            position: relative;
+            border: 5px solid #4361ee;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        
+        .robot-eye {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            border: 4px solid #4361ee;
+        }
+        
+        .robot-eye.left {
+            left: 25px;
+        }
+        
+        .robot-eye.right {
+            right: 25px;
+        }
+        
+        .robot-eye::after {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background-color: #7209b7;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .robot-antenna {
+            width: 8px;
+            height: 40px;
+            background-color: #4361ee;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+        }
+        
+        .robot-antenna::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: #ff006e;
+            border-radius: 50%;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: blink 1s infinite alternate;
+        }
+        
+        .robot-body {
+            width: 150px;
+            height: 150px;
+            background-color: #4cc9f0;
+            border-radius: 30px;
+            margin: 10px auto 0;
+            position: relative;
+            border: 5px solid #4361ee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .robot-screen {
+            width: 100px;
+            height: 70px;
+            background-color: #2b2d42;
+            border-radius: 15px;
+            color: #00ff88;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            overflow: hidden;
+        }
+        
+        .robot-arm {
+            width: 80px;
+            height: 20px;
+            background-color: #4cc9f0;
+            position: absolute;
+            border: 5px solid #4361ee;
+            border-radius: 10px;
+        }
+        
+        .robot-arm.left {
+            top: 60px;
+            left: -70px;
+            transform: rotate(30deg);
+            animation: armLeft 2s infinite alternate;
+        }
+        
+        .robot-arm.right {
+            top: 60px;
+            right: -70px;
+            transform: rotate(-30deg);
+            animation: armRight 2s infinite alternate-reverse;
+        }
+        
+        /* Cat Character */
+        .cat {
+            width: 180px;
+            height: 280px;
+        }
+        
+        .cat-head {
+            width: 140px;
+            height: 130px;
+            background-color: #ffb4a2;
+            border-radius: 45% 45% 50% 50%;
+            margin: 0 auto;
+            position: relative;
+            border: 5px solid #e5989b;
+        }
+        
+        .cat-ear {
+            width: 40px;
+            height: 50px;
+            background-color: #ffb4a2;
+            position: absolute;
+            top: -20px;
+            border: 5px solid #e5989b;
+            clip-path: polygon(50% 0, 0 100%, 100% 100%);
+        }
+        
+        .cat-ear.left {
+            left: 20px;
+            transform: rotate(-10deg);
+        }
+        
+        .cat-ear.right {
+            right: 20px;
+            transform: rotate(10deg);
+        }
+        
+        .cat-eye {
+            width: 35px;
+            height: 45px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+            border: 4px solid #6d6875;
+        }
+        
+        .cat-eye.left {
+            left: 25px;
+        }
+        
+        .cat-eye.right {
+            right: 25px;
+        }
+        
+        .cat-pupil {
+            width: 20px;
+            height: 30px;
+            background-color: #6d6875;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .cat-nose {
+            width: 30px;
+            height: 20px;
+            background-color: #ffcdb2;
+            border-radius: 50%;
+            position: absolute;
+            top: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            clip-path: polygon(50% 0, 0 100%, 100% 100%);
+        }
+        
+        .cat-body {
+            width: 160px;
+            height: 130px;
+            background-color: #ffb4a2;
+            border-radius: 50% 50% 40% 40%;
+            margin: 0 auto;
+            position: relative;
+            border: 5px solid #e5989b;
+        }
+        
+        .cat-tail {
+            width: 100px;
+            height: 30px;
+            background-color: #ffb4a2;
+            position: absolute;
+            bottom: 40px;
+            right: -70px;
+            border-radius: 15px;
+            border: 5px solid #e5989b;
+            transform: rotate(30deg);
+            animation: tailWag 1.5s infinite alternate;
+        }
+        
+        /* Tools and Elements */
+        .tools {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            z-index: 1;
+        }
+        
+        .tool {
+            width: 80px;
+            height: 80px;
+            background-color: #ffd166;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            color: #ef476f;
+            border: 5px solid #ef476f;
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+            animation: bounce 3s infinite;
+        }
+        
+        .tool:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .tool:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        .cable {
+            position: absolute;
+            bottom: 100px;
+            width: 100%;
+            height: 10px;
+            background-color: #6a4c93;
+            z-index: 0;
+            border-radius: 5px;
+        }
+        
+        .server-box {
+            width: 200px;
+            height: 150px;
+            background-color: #8ac926;
+            border-radius: 20px;
+            margin: 0 auto;
+            border: 8px solid #1982c4;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 0 #1982c4;
+            z-index: 1;
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .server-light {
+            width: 20px;
+            height: 20px;
+            background-color: #ff595e;
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            animation: serverLight 1s infinite alternate;
+        }
+        
+        .info-box {
+            background-color: #cdb4db;
+            padding: 25px;
+            border-radius: 25px;
+            margin-top: 40px;
+            border: 5px dashed #ffafcc;
+            text-align: left;
+        }
+        
+        .info-title {
+            font-size: 1.8rem;
+            color: #6a4c93;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-title i {
+            margin-right: 10px;
+        }
+        
+        .info-text {
+            font-size: 1.3rem;
+            color: #5a189a;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .progress-container {
+            margin: 30px 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4rem;
+            color: #6a4c93;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            height: 30px;
+            background-color: #ffccd5;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid #ff8fab;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 68%;
+            background: linear-gradient(90deg, #4cc9f0, #4361ee);
+            border-radius: 15px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            animation: progressAnimation 2s infinite alternate;
+        }
+        
+        .progress-fill::after {
+            content: '68%';
+            position: absolute;
+            right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 3px dotted #ffafcc;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            color: #6a4c93;
+            margin: 10px;
+        }
+        
+        .contact-item i {
+            font-size: 1.8rem;
+            color: #ff477e;
+            margin-right: 10px;
+        }
+        
+        /* Animations */
+        @keyframes blink {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes armLeft {
+            0% { transform: rotate(30deg); }
+            100% { transform: rotate(45deg); }
+        }
+        
+        @keyframes armRight {
+            0% { transform: rotate(-30deg); }
+            100% { transform: rotate(-45deg); }
+        }
+        
+        @keyframes tailWag {
+            0% { transform: rotate(30deg); }
+            100% { transform: rotate(50deg); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes serverLight {
+            0% { background-color: #ff595e; }
+            100% { background-color: #8ac926; }
+        }
+        
+        @keyframes progressAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        /* Cloud Background */
+        .cloud {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .cloud-1 {
+            width: 150px;
+            height: 60px;
+            top: 50px;
+            left: 5%;
+            opacity: 0.7;
+            animation: cloudFloat 20s infinite linear;
+        }
+        
+        .cloud-2 {
+            width: 120px;
+            height: 50px;
+            top: 100px;
+            right: 10%;
+            opacity: 0.5;
+            animation: cloudFloat 25s infinite linear reverse;
+        }
+        
+        @keyframes cloudFloat {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .cartoon-scene {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .character {
+                margin: 20px 0;
+            }
+            
+            .robot-arm.left, .robot-arm.right {
+                display: none;
+            }
+            
+            .site-title {
+                font-size: 2.2rem;
+            }
+            
+            .maintenance-message {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .maintenance-container {
+                padding: 30px 20px;
+            }
+            
+            .container-top {
+                margin: -30px -20px 20px -20px;
+                padding: 10px;
+            }
+            
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .maintenance-message {
+                font-size: 2.2rem;
+            }
+            
+            .robot, .cat {
+                transform: scale(0.8);
+            }
+            
+            .info-text {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="maintenance-container">
+        <!-- Background Clouds -->
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        
+        <!-- Header -->
+        <div class="container-top">
+            <h1 class="site-title">MOHON DITUNGGU</h1>
+        </div>
+        
+        <h2 class="maintenance-message">SEDANG DALAM PERBAIKAN!</h2>
+        
+        <!-- Cartoon Scene -->
+        <div class="cartoon-scene">
+            <!-- Robot Character -->
+            <div class="character robot">
+                <div class="robot-antenna"></div>
+                <div class="robot-head">
+                    <div class="robot-eye left"></div>
+                    <div class="robot-eye right"></div>
+                </div>
+                <div class="robot-body">
+                    <div class="robot-screen">FIXING...</div>
+                    <div class="robot-arm left"></div>
+                    <div class="robot-arm right"></div>
+                </div>
+            </div>
+            
+            <!-- Server Box -->
+            <div class="server-box">
+                WEBSITE
+                <div class="server-light"></div>
+            </div>
+            
+            <!-- Cat Character -->
+            <div class="character cat">
+                <div class="cat-head">
+                    <div class="cat-ear left"></div>
+                    <div class="cat-ear right"></div>
+                    <div class="cat-eye left">
+                        <div class="cat-pupil"></div>
+                    </div>
+                    <div class="cat-eye right">
+                        <div class="cat-pupil"></div>
+                    </div>
+                    <div class="cat-nose"></div>
+                </div>
+                <div class="cat-body">
+                    <div class="cat-tail"></div>
+                </div>
+            </div>
+            
+            <!-- Tools -->
+            <div class="tools">
+                <div class="tool"><i class="fas fa-wrench"></i></div>
+                <div class="tool"><i class="fas fa-screwdriver"></i></div>
+                <div class="tool"><i class="fas fa-hammer"></i></div>
+            </div>
+            
+            <!-- Cable -->
+            <div class="cable"></div>
+        </div>
+        
+        <!-- Information Box -->
+        <div class="info-box">
+            <h3 class="info-title"><i class="fas fa-clipboard-list"></i> APA YANG SEDANG KAMI LAKUKAN?</h3>
+            <p class="info-text">Tim kami sedang bekerja keras untuk memperbaiki dan meningkatkan situs Catatan Mull. Kami menambahkan fitur-fitur baru yang lebih seru dan memperbaiki bug yang mengganggu.</p>
+            
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>Status Perbaikan:</span>
+                    <span>68%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+            
+            <p class="info-text">Kami memperkirakan akan selesai dalam <strong>2 hari lagi</strong>. Terima kasih atas kesabaran dan dukungan Anda!</p>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>hello@catatanmull.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+62 812 3456 7890</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <span>Estimasi Selesai: 2 Hari</span>
+            </div>
+        </div>
+    </div>
 
-<div class="maintenance-container">
-    <h1>Maintenance</h1>
-    <p>Website sedang diperbaiki. Mohon ditunggu sebentar!</p>
-    <div class="loader"></div>
-</div>
-
+    <script>
+        // Animated robot screen text
+        const robotScreen = document.querySelector('.robot-screen');
+        const texts = ["FIXING...", "CODING...", "DEBUG...", "UPDATE..."];
+        let textIndex = 0;
+        
+        function changeRobotText() {
+            robotScreen.textContent = texts[textIndex];
+            textIndex = (textIndex + 1) % texts.length;
+        }
+        
+        setInterval(changeRobotText, 1500);
+        
+        // Create clouds dynamically
+        function createClouds() {
+            const container = document.querySelector('.maintenance-container');
+            const cloudCount = 5;
+            
+            for (let i = 0; i < cloudCount; i++) {
+                const cloud = document.createElement('div');
+                cloud.classList.add('cloud');
+                
+                // Random size and position
+                const width = Math.random() * 100 + 80;
+                const height = width * 0.4;
+                const top = Math.random() * 200 + 50;
+                const left = Math.random() * 100;
+                const opacity = Math.random() * 0.3 + 0.4;
+                const duration = Math.random() * 20 + 20;
+                const delay = Math.random() * 10;
+                
+                cloud.style.width = `${width}px`;
+                cloud.style.height = `${height}px`;
+                cloud.style.top = `${top}px`;
+                cloud.style.left = `${left}%`;
+                cloud.style.opacity = opacity;
+                cloud.style.animation = `cloudFloat ${duration}s infinite linear`;
+                cloud.style.animationDelay = `${delay}s`;
+                
+                // Create cloud shape with multiple circles
+                cloud.innerHTML = `
+                    <div style="position:absolute; width:${width*0.4}px; height:${height}px; background:white; border-radius:50%; top:0; left:0;"></div>
+                    <div style="position:absolute; width:${width*0.5}px; height:${height}px; background:white; border-radius:50%; top:0; left:${width*0.3}px;"></div>
+                    <div style="position:absolute; width:${width*0.4}px; height:${height}px; background:white; border-radius:50%; top:0; left:${width*0.6}px;"></div>
+                `;
+                
+                container.appendChild(cloud);
+            }
+        }
+        
+        // Initialize when page loads
+        window.addEventListener('load', createClouds);
+    </script>
 </body>
 </html>
