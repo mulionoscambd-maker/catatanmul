@@ -1,10 +1,10 @@
 // Konfigurasi Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyD_your_api_key_here",
-  authDomain: "your-project-id.firebaseapp.com",
-  databaseURL: "https://your-project-id.firebaseio.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project-id.appspot.com",
+  apiKey: "AIzaSyCILTIK4Yr4bh8aOJqIQlXvrT20WE48j_Y",
+  authDomain: "catatan-mull.firebaseapp.com",
+  databaseURL: "https://catatan-mull.firebaseio.com",
+  projectId: "catatan-mull",
+  storageBucket: "catatan-mull.appspot.com",
   messagingSenderId: "your-messaging-sender-id",
   appId: "your-app-id",
   measurementId: "your-measurement-id",
@@ -46,3 +46,4 @@ window.FirebaseManager = {
   getAuth: () => auth,
   getApp: () => app,
 };
+
