@@ -3514,37 +3514,9 @@ registerBtn.addEventListener("click", async () => {
   }
 });
 
-/* ===== LOGIN ===== */
-loginBtn.addEventListener("click", async () => {
-  const email = loginEmail.value;
-  const password = loginPassword.value;
-
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-  } catch(e){
-    alert(e.message);
-  }
-});
-
-/* ===== CEK LOGIN OTOMATIS ===== */
-onAuthStateChanged(auth, async user => {
-  if(user){
-    loginPage.style.display = "none";
-    registerPage.style.display = "none";
-    alert("Login berhasil! Email: " + user.email);
-    // Di sini bisa redirect ke dashboard / halaman lain
-  } else {
-    loginPage.style.display = "block";
-  }
-});
-
-/* ===== LOGOUT ===== */
-function logout(){
-  signOut(auth);
-  alert("Logout berhasil");
-}
 </script>
 </body>
 
 </html>
+
 
