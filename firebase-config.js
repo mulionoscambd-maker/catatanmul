@@ -1,0 +1,48 @@
+// Konfigurasi Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyD_your_api_key_here",
+  authDomain: "your-project-id.firebaseapp.com",
+  databaseURL: "https://your-project-id.firebaseio.com",
+  projectId: "your-project-id",
+  storageBucket: "your-project-id.appspot.com",
+  messagingSenderId: "your-messaging-sender-id",
+  appId: "your-app-id",
+  measurementId: "your-measurement-id",
+};
+
+// Inisialisasi Firebase
+let app, database, auth;
+
+// Fungsi untuk inisialisasi Firebase
+function initializeFirebase() {
+  try {
+    // Cek apakah Firebase sudah diinisialisasi
+    if (typeof firebase !== "undefined" && firebase.apps.length === 0) {
+      app = firebase.initializeApp(firebaseConfig);
+      database = firebase.database();
+      auth = firebase.auth();
+      console.log("Firebase berhasil diinisialisasi");
+      return true;
+    } else if (typeof firebase !== "undefined" && firebase.apps.length > 0) {
+      app = firebase.app();
+      database = firebase.database();
+      auth = firebase.auth();
+      console.log("Firebase sudah diinisialisasi");
+      return true;
+    } else {
+      console.error("Firebase SDK tidak ditemukan");
+      return false;
+    }
+  } catch (error) {
+    console.error("Error inisialisasi Firebase:", error);
+    return false;
+  }
+}
+
+// Export untuk penggunaan global
+window.FirebaseManager = {
+  initializeFirebase,
+  getDatabase: () => database,
+  getAuth: () => auth,
+  getApp: () => app,
+};
