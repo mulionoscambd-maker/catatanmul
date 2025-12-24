@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mull Skibidi - Top Up Game & Layanan Digital</title>
+    <title>GameTop - Top Up Game & Layanan Digital</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset & Base Styles */
@@ -1001,7 +1001,7 @@
     <header>
         <a href="#" class="logo">
             <i class="fas fa-gamepad"></i>
-            <span>Mull Skibidi</span>
+            <span>GameTop</span>
         </a>
         
         <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1009,7 +1009,12 @@
         </button>
         
         <nav class="desktop-nav">
-           
+            <ul>
+                <li><a href="#home" onclick="handleNavClick(event)">Beranda</a></li>
+                <li><a href="#games" onclick="handleNavClick(event)">Semua Game</a></li>
+                <li><a href="#services" onclick="handleNavClick(event)">Layanan</a></li>
+                <li><a href="#articles" onclick="handleNavClick(event)">Artikel</a></li>
+                <li><a href="#help" onclick="handleNavClick(event)">Bantuan</a></li>
             </ul>
         </nav>
         
@@ -1020,6 +1025,14 @@
             </div>
         </div>
         
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#home" onclick="handleNavClick(event)">Beranda</a>
+            <a href="#games" onclick="handleNavClick(event)">Semua Game</a>
+            <a href="#services" onclick="handleNavClick(event)">Layanan</a>
+            <a href="#articles" onclick="handleNavClick(event)">Artikel</a>
+            <a href="#help" onclick="handleNavClick(event)">Bantuan</a>
+        </div>
     </header>
 
     <!-- Banner Slider -->
@@ -1104,7 +1117,7 @@
                 <h3>TOP UP E-WALLET</h3>
                 <p>Isi saldo e-wallet favorit kamu dengan mudah dan aman. Proses cepat & terpercaya.</p>
                 <div style="margin-top: auto;">
-                    <button class="btn">PILIH SEKARANG</button>
+                    <button class="btn" onclick="openServiceModal('e-wallet')">PILIH SEKARANG</button>
                 </div>
             </div>
             
@@ -1242,7 +1255,7 @@
                     <i class="fas fa-shopping-cart"></i>
                 </div>
                 <h3>Cara Pemesanan</h3>
-                <p>Panduan lengkap cara memesan layanan di Mull Skibidi dari awal sampai selesai.</p>
+                <p>Panduan lengkap cara memesan layanan di GameTop dari awal sampai selesai.</p>
                 <div style="margin-top: auto;">
                     <button class="btn">LIHAT PANDUAN</button>
                 </div>
@@ -1253,7 +1266,7 @@
                     <i class="fas fa-credit-card"></i>
                 </div>
                 <h3>Metode Pembayaran</h3>
-                <p>Daftar metode pembayaran yang tersedia untuk bertransaksi di Mull Skibidi.</p>
+                <p>Daftar metode pembayaran yang tersedia untuk bertransaksi di GameTop.</p>
                 <div style="margin-top: auto;">
                     <button class="btn">LIHAT METODE</button>
                 </div>
@@ -1327,7 +1340,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h3>Mull Skibidi</h3>
+                <h3>GameTop</h3>
                 <p>Satu tempat untuk semua kebutuhan digital kamu. Top up cepat, aman, dan tanpa ribet.</p>
                 <p><i class="fas fa-clock"></i> Layanan 24 Jam</p>
                 <p><i class="fas fa-shield-alt"></i> 100% Terpercaya</p>
@@ -1358,7 +1371,7 @@
             <div class="footer-column">
                 <h3>Hubungi Kami</h3>
                 <p><i class="fas fa-phone"></i> 0812-3456-7890</p>
-                <p><i class="fas fa-envelope"></i> cs@Mull Skibidi.com</p>
+                <p><i class="fas fa-envelope"></i> cs@gametop.com</p>
                 <p><i class="fab fa-whatsapp"></i> WhatsApp: 0812-3456-7890</p>
                 <div style="margin-top: 1rem;">
                     <a href="#" style="color: var(--accent); margin-right: 1rem; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
@@ -1369,12 +1382,12 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2023 Mull Skibidi. All rights reserved. | One Stop Digital Services</p>
+            <p>&copy; 2023 GameTop. All rights reserved. | One Stop Digital Services</p>
         </div>
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/6281234567890?text=Halo%20Mull Skibidi%2C%20saya%20ingin%20bertanya%20tentang%20layanan%20top%20up" 
+    <a href="https://wa.me/6281234567890?text=Halo%20GameTop%2C%20saya%20ingin%20bertanya%20tentang%20layanan%20top%20up" 
        target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -1695,7 +1708,7 @@
                     <p>Top up game adalah kegiatan yang populer di kalangan gamers. Namun, penting untuk melakukannya dengan aman untuk menghindari penipuan. Berikut adalah panduan lengkapnya:</p>
                     
                     <h4 style="margin-top: 1.5rem; color: var(--text-light);">1. Pilih Platform Terpercaya</h4>
-                    <p>Pastikan Anda menggunakan platform resmi atau seller terpercaya seperti Mull Skibidi. Cek reputasi dan ulasan dari pengguna lain.</p>
+                    <p>Pastikan Anda menggunakan platform resmi atau seller terpercaya seperti GameTop. Cek reputasi dan ulasan dari pengguna lain.</p>
                     
                     <h4 style="margin-top: 1.5rem; color: var(--text-light);">2. Verifikasi Identitas Seller</h4>
                     <p>Periksa apakah seller memiliki kontak yang valid, testimoni asli, dan sistem rekber (rekening bersama) untuk keamanan transaksi.</p>
@@ -1827,12 +1840,12 @@
             'cara-pesan': {
                 title: 'Cara Pemesanan',
                 content: `
-                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Cara Pemesanan di Mull Skibidi</h3>
-                    <p>Berikut adalah langkah-langkah lengkap untuk memesan layanan di Mull Skibidi:</p>
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Cara Pemesanan di GameTop</h3>
+                    <p>Berikut adalah langkah-langkah lengkap untuk memesan layanan di GameTop:</p>
                     
                     <div style="margin-top: 1.5rem;">
                         <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">📋 Langkah 1: Pilih Layanan</h4>
-                        <p>Buka website Mull Skibidi dan pilih layanan yang Anda butuhkan (game, pulsa, paket data, e-wallet, atau tagihan).</p>
+                        <p>Buka website GameTop dan pilih layanan yang Anda butuhkan (game, pulsa, paket data, e-wallet, atau tagihan).</p>
                     </div>
                     
                     <div style="margin-top: 1.5rem;">
@@ -1881,16 +1894,16 @@
                 title: 'Metode Pembayaran',
                 content: `
                     <h3 style="color: var(--accent); margin-bottom: 1rem;">Metode Pembayaran yang Tersedia</h3>
-                    <p>Mull Skibidi menyediakan berbagai metode pembayaran untuk kemudahan transaksi Anda:</p>
+                    <p>GameTop menyediakan berbagai metode pembayaran untuk kemudahan transaksi Anda:</p>
                     
                     <div style="margin-top: 1.5rem;">
                         <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">🏦 Transfer Bank</h4>
                         <p>Transfer ke rekening bank berikut:</p>
                         <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
-                            <li style="margin-bottom: 0.5rem;">BCA: 1234567890 (Mull Skibidi Official)</li>
-                            <li style="margin-bottom: 0.5rem;">Mandiri: 0987654321 (Mull Skibidi Official)</li>
-                            <li style="margin-bottom: 0.5rem;">BNI: 1122334455 (Mull Skibidi Official)</li>
-                            <li style="margin-bottom: 0.5rem;">BRI: 5566778899 (Mull Skibidi Official)</li>
+                            <li style="margin-bottom: 0.5rem;">BCA: 1234567890 (GameTop Official)</li>
+                            <li style="margin-bottom: 0.5rem;">Mandiri: 0987654321 (GameTop Official)</li>
+                            <li style="margin-bottom: 0.5rem;">BNI: 1122334455 (GameTop Official)</li>
+                            <li style="margin-bottom: 0.5rem;">BRI: 5566778899 (GameTop Official)</li>
                         </ul>
                     </div>
                     
@@ -1947,7 +1960,7 @@
                     
                     <div style="margin-top: 1.5rem;">
                         <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">❓ Apakah ada jaminan aman?</h4>
-                        <p>Ya, Mull Skibidi menggunakan sistem rekber untuk transaksi besar dan memiliki reputasi terpercaya dengan ribuan transaksi sukses.</p>
+                        <p>Ya, GameTop menggunakan sistem rekber untuk transaksi besar dan memiliki reputasi terpercaya dengan ribuan transaksi sukses.</p>
                     </div>
                     
                     <div style="margin-top: 1.5rem;">
@@ -1957,7 +1970,7 @@
                     
                     <div style="margin-top: 1.5rem;">
                         <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">❓ Apakah ada bonus atau promo?</h4>
-                        <p>Ya, Mull Skibidi rutin memberikan promo seperti bonus diamond, cashback, dan diskon spesial untuk member setia. Cek banner utama dan follow media sosial kami untuk update promo.</p>
+                        <p>Ya, GameTop rutin memberikan promo seperti bonus diamond, cashback, dan diskon spesial untuk member setia. Cek banner utama dan follow media sosial kami untuk update promo.</p>
                     </div>
                     
                     <div style="margin-top: 1.5rem;">
@@ -1967,7 +1980,7 @@
                     
                     <div style="margin-top: 1.5rem;">
                         <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">❓ Apakah buka 24 jam?</h4>
-                        <p>Ya, layanan Mull Skibidi tersedia 24 jam non-stop termasuk hari libur nasional.</p>
+                        <p>Ya, layanan GameTop tersedia 24 jam non-stop termasuk hari libur nasional.</p>
                     </div>
                     
                     <div style="margin-top: 2rem; text-align: center;">
@@ -2122,54 +2135,62 @@
             }
         }
 
-        // Open service modal
+        // Open service modal - SIMPLIFIED VERSION
         function openServiceModal(serviceType) {
-            const modalId = serviceType === 'paket-data' ? 'paketDataModal' : `${serviceType}Modal`;
+            console.log('Trying to open modal for:', serviceType);
+            
+            let modalId;
+            if (serviceType === 'paket-data') {
+                modalId = 'paketDataModal';
+            } else if (serviceType === 'e-wallet') {
+                modalId = 'eWalletModal';
+            } else {
+                modalId = serviceType + 'Modal';
+            }
+            
+            console.log('Modal ID:', modalId);
+            
             const modal = document.getElementById(modalId);
+            
+            if (!modal) {
+                console.error('Modal not found! Modal ID:', modalId);
+                alert('Modal tidak ditemukan: ' + modalId);
+                return;
+            }
             
             // Reset selections when opening modal
             if (serviceType === 'pulsa') {
                 userSelections.pulsa = { operator: null, nominal: null };
-                resetModalSelections('pulsa');
             } else if (serviceType === 'paket-data') {
                 userSelections['paket-data'] = { operator: null, type: null, kuota: null };
-                resetModalSelections('paket-data');
             } else if (serviceType === 'e-wallet') {
                 userSelections['e-wallet'] = { type: null, nominal: null };
-                resetModalSelections('e-wallet');
             } else if (serviceType === 'tagihan') {
                 userSelections.tagihan = { type: null, id: null, nominal: null };
-                resetModalSelections('tagihan');
             }
             
             // Show modal
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            console.log('Modal should be visible now');
         }
 
-        // Close service modal
+        // Close service modal - SIMPLIFIED
         function closeServiceModal(serviceType) {
-            const modalId = serviceType === 'paket-data' ? 'paketDataModal' : `${serviceType}Modal`;
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Reset modal selections
-        function resetModalSelections(serviceType) {
-            if (serviceType === 'pulsa') {
-                document.getElementById('pulsa-custom').value = '';
-                document.getElementById('summary-pulsa-operator').textContent = '-';
-                document.getElementById('summary-pulsa-nominal').textContent = '-';
-                document.getElementById('pulsa-summary').classList.remove('show');
-                document.getElementById('pulsa-whatsapp-btn').disabled = true;
-                
-                // Clear selected buttons
-                document.querySelectorAll('#pulsaModal .option-btn').forEach(btn => {
-                    btn.classList.remove('selected');
-                });
+            let modalId;
+            if (serviceType === 'paket-data') {
+                modalId = 'paketDataModal';
+            } else if (serviceType === 'e-wallet') {
+                modalId = 'eWalletModal';
+            } else {
+                modalId = serviceType + 'Modal';
             }
-            // Add similar resets for other services
+            
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
 
         // Open article modal
@@ -2206,9 +2227,13 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Select option in modal
+        // Select option in modal - FIXED VERSION
         function selectOption(button, field) {
-            const serviceType = button.closest('.modal').id.replace('Modal', '');
+            // Get the modal ID from the closest modal
+            const modalElement = button.closest('.modal');
+            if (!modalElement) return;
+            
+            const modalId = modalElement.id;
             
             // Remove selected class from siblings in same group
             const parent = button.parentElement;
@@ -2222,7 +2247,8 @@
             // Store selection
             const value = button.getAttribute('data-value');
             
-            if (serviceType === 'pulsa') {
+            // Determine which service we're in
+            if (modalId === 'pulsaModal') {
                 if (field === 'pulsa-operator') {
                     userSelections.pulsa.operator = value;
                     document.getElementById('summary-pulsa-operator').textContent = value;
@@ -2232,7 +2258,7 @@
                     document.getElementById('pulsa-custom').value = '';
                 }
                 checkPulsaComplete();
-            } else if (serviceType === 'paketData') {
+            } else if (modalId === 'paketDataModal') {
                 if (field === 'paket-operator') {
                     userSelections['paket-data'].operator = value;
                     document.getElementById('summary-paket-operator').textContent = value;
@@ -2244,7 +2270,7 @@
                     document.getElementById('summary-paket-kuota').textContent = formatKuota(value);
                 }
                 checkPaketDataComplete();
-            } else if (serviceType === 'eWallet') {
+            } else if (modalId === 'eWalletModal') {
                 if (field === 'ewallet-type') {
                     userSelections['e-wallet'].type = value;
                     document.getElementById('summary-ewallet-type').textContent = value;
@@ -2254,7 +2280,7 @@
                     document.getElementById('ewallet-custom').value = '';
                 }
                 checkEWalletComplete();
-            } else if (serviceType === 'tagihan') {
+            } else if (modalId === 'tagihanModal') {
                 if (field === 'tagihan-type') {
                     userSelections.tagihan.type = value;
                     document.getElementById('summary-tagihan-type').textContent = value;
@@ -2374,22 +2400,22 @@
             return kuotas[kuota] || kuota;
         }
 
-        // Send to WhatsApp
+        // Send to WhatsApp - FIXED
         function sendToWhatsApp(serviceType) {
             let message = '';
             
             switch(serviceType) {
                 case 'pulsa':
-                    message = `Halo Mull Skibidi, saya ingin membeli:\n\n*Layanan:* Pulsa\n*Operator:* ${userSelections.pulsa.operator}\n*Nominal:* ${formatCurrency(userSelections.pulsa.nominal)}\n\nSilakan beritahu langkah selanjutnya.`;
+                    message = `Halo GameTop, saya ingin membeli:\n\n*Layanan:* Pulsa\n*Operator:* ${userSelections.pulsa.operator}\n*Nominal:* ${formatCurrency(userSelections.pulsa.nominal)}\n\nSilakan beritahu langkah selanjutnya.`;
                     break;
                 case 'paket-data':
-                    message = `Halo Mull Skibidi, saya ingin membeli:\n\n*Layanan:* Paket Data Internet\n*Operator:* ${userSelections['paket-data'].operator}\n*Jenis Paket:* ${formatPackageType(userSelections['paket-data'].type)}\n*Kuota:* ${formatKuota(userSelections['paket-data'].kuota)}\n\nSilakan beritahu langkah selanjutnya.`;
+                    message = `Halo GameTop, saya ingin membeli:\n\n*Layanan:* Paket Data Internet\n*Operator:* ${userSelections['paket-data'].operator}\n*Jenis Paket:* ${formatPackageType(userSelections['paket-data'].type)}\n*Kuota:* ${formatKuota(userSelections['paket-data'].kuota)}\n\nSilakan beritahu langkah selanjutnya.`;
                     break;
                 case 'e-wallet':
-                    message = `Halo Mull Skibidi, saya ingin membeli:\n\n*Layanan:* Top Up E-Wallet\n*E-Wallet:* ${userSelections['e-wallet'].type}\n*Nominal:* ${formatCurrency(userSelections['e-wallet'].nominal)}\n\nSilakan beritahu langkah selanjutnya.`;
+                    message = `Halo GameTop, saya ingin membeli:\n\n*Layanan:* Top Up E-Wallet\n*E-Wallet:* ${userSelections['e-wallet'].type}\n*Nominal:* ${formatCurrency(userSelections['e-wallet'].nominal)}\n\nSilakan beritahu langkah selanjutnya.`;
                     break;
                 case 'tagihan':
-                    message = `Halo Mull Skibidi, saya ingin membayar:\n\n*Layanan:* Pembayaran Tagihan\n*Jenis Tagihan:* ${userSelections.tagihan.type}\n*ID/Nomor Pelanggan:* ${userSelections.tagihan.id}${userSelections.tagihan.nominal ? `\n*Nominal:* ${formatCurrency(userSelections.tagihan.nominal)}` : ''}\n\nSilakan beritahu langkah selanjutnya.`;
+                    message = `Halo GameTop, saya ingin membayar:\n\n*Layanan:* Pembayaran Tagihan\n*Jenis Tagihan:* ${userSelections.tagihan.type}\n*ID/Nomor Pelanggan:* ${userSelections.tagihan.id}${userSelections.tagihan.nominal ? `\n*Nominal:* ${formatCurrency(userSelections.tagihan.nominal)}` : ''}\n\nSilakan beritahu langkah selanjutnya.`;
                     break;
             }
             
@@ -2402,7 +2428,7 @@
 
         // Open WhatsApp directly
         function openWhatsApp(serviceType, serviceName) {
-            const message = `Halo Mull Skibidi, saya ingin pesan:\n\n*Layanan:* ${serviceName}\n\nSilakan beritahu langkah selanjutnya.`;
+            const message = `Halo GameTop, saya ingin pesan:\n\n*Layanan:* ${serviceName}\n\nSilakan beritahu langkah selanjutnya.`;
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/6281234567890?text=${encodedMessage}`, '_blank');
         }
@@ -2445,7 +2471,7 @@
 
         // Buy diamond function
         function buyDiamond(gameName, amount, price) {
-            const message = `Halo Mull Skibidi, saya ingin membeli:\n\n*Layanan:* Top Up Game\n*Game:* ${gameName}\n*Item/Nominal:* ${amount}\n*Harga:* ${price}\n\nSilakan beritahu langkah selanjutnya.`;
+            const message = `Halo GameTop, saya ingin membeli:\n\n*Layanan:* Top Up Game\n*Game:* ${gameName}\n*Item/Nominal:* ${amount}\n*Harga:* ${price}\n\nSilakan beritahu langkah selanjutnya.`;
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/6281234567890?text=${encodedMessage}`, '_blank');
             
@@ -2512,11 +2538,30 @@
             initGamesGrid();
             initArticles();
             
-            // Add input listeners for custom values
-            document.getElementById('pulsa-custom').addEventListener('input', checkPulsaComplete);
-            document.getElementById('ewallet-custom').addEventListener('input', checkEWalletComplete);
-            document.getElementById('tagihan-id').addEventListener('input', checkTagihanComplete);
-            document.getElementById('tagihan-nominal').addEventListener('input', checkTagihanComplete);
+            // Add event listeners for input changes
+            const pulsaCustomInput = document.getElementById('pulsa-custom');
+            const ewalletCustomInput = document.getElementById('ewallet-custom');
+            const tagihanIdInput = document.getElementById('tagihan-id');
+            const tagihanNominalInput = document.getElementById('tagihan-nominal');
+            
+            if (pulsaCustomInput) {
+                pulsaCustomInput.addEventListener('input', checkPulsaComplete);
+            }
+            
+            if (ewalletCustomInput) {
+                ewalletCustomInput.addEventListener('input', checkEWalletComplete);
+            }
+            
+            if (tagihanIdInput) {
+                tagihanIdInput.addEventListener('input', checkTagihanComplete);
+            }
+            
+            if (tagihanNominalInput) {
+                tagihanNominalInput.addEventListener('input', checkTagihanComplete);
+            }
+            
+            // Test the e-wallet function directly
+            console.log('Page loaded. E-wallet function test:', typeof openServiceModal);
             
             // Add smooth scrolling for all internal links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2540,10 +2585,12 @@
                 });
             });
         });
+
+        // TEST FUNCTION - Direct test
+        function testEWallet() {
+            console.log('Testing E-Wallet modal...');
+            openServiceModal('e-wallet');
+        }
     </script>
 </body>
-
 </html>
-
-
-
