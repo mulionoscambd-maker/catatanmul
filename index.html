@@ -15,21 +15,23 @@
         }
 
         :root {
-            --primary-dark: #0f0f1a;
-            --secondary-dark: #1a1a2e;
-            --accent: #ffcc00;
-            --accent-hover: #ffdb4d;
+            --primary-dark: #0d2b1a;
+            --secondary-dark: #1a472a;
+            --accent: #27ae60;
+            --accent-hover: #2ecc71;
             --text-light: #ffffff;
-            --text-gray: #b0b0b0;
-            --card-bg: #222235;
-            --success: #00cc66;
-            --danger: #ff3333;
-            --border-radius: 12px;
+            --text-gray: #d1d1d1;
+            --card-bg: #1e3c2e;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --border-radius: 10px;
             --transition: all 0.3s ease;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            --light-bg: #0c1f15;
         }
 
         body {
-            background-color: var(--primary-dark);
+            background-color: var(--light-bg);
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
@@ -37,7 +39,7 @@
 
         /* Header Styles */
         header {
-            background-color: rgba(15, 15, 26, 0.95);
+            background-color: rgba(13, 43, 26, 0.95);
             padding: 1rem 2rem;
             position: fixed;
             width: 100%;
@@ -47,7 +49,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid var(--accent);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
@@ -67,14 +69,14 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         nav a {
             color: var(--text-light);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             padding: 0.5rem 1rem;
             border-radius: var(--border-radius);
             transition: var(--transition);
@@ -82,7 +84,7 @@
 
         nav a:hover {
             background-color: var(--accent);
-            color: var(--primary-dark);
+            color: white;
         }
 
         .nav-icons {
@@ -96,8 +98,8 @@
         }
 
         .search-container input {
-            background-color: var(--secondary-dark);
-            border: 1px solid #333;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--text-light);
             padding: 0.7rem 1rem 0.7rem 2.5rem;
             border-radius: 20px;
@@ -109,6 +111,7 @@
             width: 250px;
             outline: none;
             border-color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
         .search-container i {
@@ -134,6 +137,7 @@
             position: relative;
             height: 500px;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
         }
 
         .slide {
@@ -148,8 +152,6 @@
             padding: 0 5%;
             opacity: 0;
             transition: opacity 1s ease;
-            background: linear-gradient(to right, #0f0f1a 30%, rgba(15, 15, 26, 0.7)), 
-                        url('https://images.unsplash.com/photo-1633265486064-086b219458ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center right/cover;
         }
 
         .slide.active {
@@ -165,7 +167,7 @@
             font-size: 3.5rem;
             margin-bottom: 1rem;
             color: var(--accent);
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .slide p {
@@ -182,13 +184,13 @@
         .slide-image img {
             width: 100%;
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            box-shadow: var(--shadow);
         }
 
         .btn {
             display: inline-block;
             background-color: var(--accent);
-            color: var(--primary-dark);
+            color: white;
             padding: 1rem 2rem;
             border-radius: var(--border-radius);
             text-decoration: none;
@@ -198,12 +200,13 @@
             border: none;
             cursor: pointer;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
         }
 
         .btn:hover {
             background-color: var(--accent-hover);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 204, 0, 0.3);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
         }
 
         .btn-large {
@@ -218,10 +221,12 @@
 
         .btn-success {
             background-color: var(--success);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
         }
 
         .btn-success:hover {
-            background-color: #00e673;
+            background-color: #229954;
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
         }
 
         .slide-indicators {
@@ -237,7 +242,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
             cursor: pointer;
             transition: var(--transition);
         }
@@ -297,11 +302,12 @@
             padding: 2rem;
             text-align: center;
             transition: var(--transition);
-            border: 1px solid rgba(255, 204, 0, 0.1);
+            border: 1px solid rgba(39, 174, 96, 0.1);
             display: flex;
             flex-direction: column;
             cursor: pointer;
             height: 100%;
+            box-shadow: var(--shadow);
         }
 
         .service-card:hover {
@@ -319,6 +325,7 @@
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--text-light);
         }
 
         .service-card p {
@@ -349,6 +356,7 @@
             overflow: hidden;
             animation: modalFade 0.5s;
             border: 2px solid var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
         @keyframes modalFade {
@@ -358,15 +366,14 @@
 
         .modal-header {
             padding: 1.5rem 2rem;
-            background-color: var(--secondary-dark);
+            background: linear-gradient(to right, var(--accent), var(--accent-hover));
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--accent);
         }
 
         .modal-header h2 {
-            color: var(--accent);
+            color: white;
             font-size: 1.8rem;
             display: flex;
             align-items: center;
@@ -376,7 +383,7 @@
         .close-modal {
             background: none;
             border: none;
-            color: var(--text-light);
+            color: white;
             font-size: 1.8rem;
             cursor: pointer;
             transition: var(--transition);
@@ -389,8 +396,7 @@
         }
 
         .close-modal:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .modal-body {
@@ -420,8 +426,8 @@
         }
 
         .option-btn {
-            background-color: var(--secondary-dark);
-            border: 1px solid #333;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--text-light);
             padding: 0.8rem;
             border-radius: var(--border-radius);
@@ -432,13 +438,13 @@
         }
 
         .option-btn:hover {
-            background-color: rgba(255, 204, 0, 0.1);
+            background-color: rgba(39, 174, 96, 0.2);
             border-color: var(--accent);
         }
 
         .option-btn.selected {
             background-color: var(--accent);
-            color: var(--primary-dark);
+            color: white;
             border-color: var(--accent);
             font-weight: bold;
         }
@@ -459,8 +465,8 @@
             width: 100%;
             padding: 0.8rem 1rem;
             border-radius: var(--border-radius);
-            background-color: var(--secondary-dark);
-            border: 1px solid #333;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--text-light);
             font-size: 1rem;
         }
@@ -469,14 +475,16 @@
         .input-group select:focus {
             outline: none;
             border-color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
         .service-summary {
-            background-color: rgba(255, 204, 0, 0.1);
+            background-color: rgba(39, 174, 96, 0.1);
             border-radius: var(--border-radius);
             padding: 1.5rem;
             margin: 1.5rem 0;
             display: none;
+            border-left: 4px solid var(--accent);
         }
 
         .service-summary.show {
@@ -523,7 +531,7 @@
             overflow-x: auto;
             padding: 1rem 0 2rem;
             scrollbar-width: thin;
-            scrollbar-color: var(--accent) var(--secondary-dark);
+            scrollbar-color: var(--accent) rgba(255, 255, 255, 0.1);
         }
 
         .games-slider::-webkit-scrollbar {
@@ -531,7 +539,7 @@
         }
 
         .games-slider::-webkit-scrollbar-track {
-            background: var(--secondary-dark);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
         }
 
@@ -547,30 +555,34 @@
             padding: 1.5rem;
             text-align: center;
             transition: var(--transition);
-            border: 1px solid transparent;
+            border: 1px solid rgba(39, 174, 96, 0.1);
             cursor: pointer;
+            box-shadow: var(--shadow);
         }
 
         .game-card:hover {
             transform: scale(1.05);
             border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
         }
 
         .game-icon {
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background-color: var(--secondary-dark);
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem;
             font-size: 2rem;
-            color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
         }
 
         .game-card h4 {
             font-size: 1.2rem;
+            color: var(--text-light);
         }
 
         /* All Games Grid */
@@ -585,8 +597,9 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             transition: var(--transition);
-            border: 1px solid transparent;
+            border: 1px solid rgba(39, 174, 96, 0.1);
             cursor: pointer;
+            box-shadow: var(--shadow);
         }
 
         .game-item:hover {
@@ -597,12 +610,12 @@
 
         .game-cover {
             height: 180px;
-            background-color: var(--secondary-dark);
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: var(--accent);
+            color: white;
         }
 
         .game-info {
@@ -611,6 +624,7 @@
 
         .game-info h3 {
             margin-bottom: 0.5rem;
+            color: var(--text-light);
         }
 
         .game-info p {
@@ -621,7 +635,7 @@
 
         .game-category {
             display: inline-block;
-            background-color: rgba(255, 204, 0, 0.1);
+            background-color: rgba(39, 174, 96, 0.1);
             color: var(--accent);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -642,30 +656,34 @@
         }
 
         .diamond-item {
-            background-color: var(--secondary-dark);
+            background-color: rgba(255, 255, 255, 0.05);
             border-radius: var(--border-radius);
             padding: 1.5rem;
             text-align: center;
             transition: var(--transition);
-            border: 1px solid transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .diamond-item:hover {
             border-color: var(--accent);
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
         .diamond-amount {
             font-size: 1.8rem;
             color: var(--accent);
             margin-bottom: 0.5rem;
+            font-weight: bold;
         }
 
         .diamond-price {
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            color: var(--text-light);
         }
 
         /* Articles Grid */
@@ -680,6 +698,8 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(39, 174, 96, 0.1);
         }
 
         .article-card:hover {
@@ -689,7 +709,10 @@
 
         .article-image {
             height: 200px;
-            background-color: var(--secondary-dark);
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .article-content {
@@ -699,11 +722,21 @@
         .article-content h3 {
             margin-bottom: 1rem;
             color: var(--accent);
+            font-size: 1.3rem;
         }
 
         .article-content p {
             color: var(--text-gray);
             margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .article-meta {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
         }
 
         /* Process Section */
@@ -723,8 +756,8 @@
         .step-number {
             width: 60px;
             height: 60px;
-            background-color: var(--accent);
-            color: var(--primary-dark);
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -732,11 +765,13 @@
             font-size: 1.8rem;
             font-weight: 800;
             margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
         }
 
         .step h4 {
             margin-bottom: 1rem;
             font-size: 1.3rem;
+            color: var(--text-light);
         }
 
         .step p {
@@ -745,8 +780,9 @@
 
         /* Footer */
         footer {
-            background-color: var(--secondary-dark);
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
             padding: 4rem 2rem 2rem;
+            color: white;
         }
 
         .footer-content {
@@ -771,7 +807,7 @@
         }
 
         .footer-links a {
-            color: var(--text-gray);
+            color: #ddd;
             text-decoration: none;
             transition: var(--transition);
         }
@@ -785,7 +821,7 @@
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-gray);
+            color: #aaa;
         }
 
         .whatsapp-float {
@@ -852,6 +888,7 @@
                 transform: translateY(-100%);
                 transition: transform 0.3s ease;
                 z-index: 999;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             }
             
             .mobile-nav.active {
@@ -901,6 +938,10 @@
             .modal-content {
                 margin: 1rem;
             }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -944,6 +985,14 @@
             .options-container {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .process-steps {
+                gap: 2rem;
+            }
+            
+            .step {
+                max-width: 150px;
+            }
         }
     </style>
 </head>
@@ -961,12 +1010,11 @@
         
         <nav class="desktop-nav">
             <ul>
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#games">Semua Game</a></li>
-                <li><a href="#services">Layanan</a></li>
-                <li><a href="#promo">Promo</a></li>
-                <li><a href="#articles">Artikel</a></li>
-                <li><a href="#help">Bantuan</a></li>
+                <li><a href="#home" onclick="handleNavClick(event)">Beranda</a></li>
+                <li><a href="#games" onclick="handleNavClick(event)">Semua Game</a></li>
+                <li><a href="#services" onclick="handleNavClick(event)">Layanan</a></li>
+                <li><a href="#articles" onclick="handleNavClick(event)">Artikel</a></li>
+                <li><a href="#help" onclick="handleNavClick(event)">Bantuan</a></li>
             </ul>
         </nav>
         
@@ -979,12 +1027,11 @@
         
         <!-- Mobile Navigation -->
         <div class="mobile-nav" id="mobileNav">
-            <a href="#home">Beranda</a>
-            <a href="#games">Semua Game</a>
-            <a href="#services">Layanan</a>
-            <a href="#promo">Promo</a>
-            <a href="#articles">Artikel</a>
-            <a href="#help">Bantuan</a>
+            <a href="#home" onclick="handleNavClick(event)">Beranda</a>
+            <a href="#games" onclick="handleNavClick(event)">Semua Game</a>
+            <a href="#services" onclick="handleNavClick(event)">Layanan</a>
+            <a href="#articles" onclick="handleNavClick(event)">Artikel</a>
+            <a href="#help" onclick="handleNavClick(event)">Bantuan</a>
         </div>
     </header>
 
@@ -1003,23 +1050,23 @@
         
         <div class="slide">
             <div class="slide-content">
-                <h1>DECEMBER STARLIGHT – FREDDRIN ROYAL MARSHAL</h1>
-                <p>Dapatkan skin eksklusif Freddrin Royal Marshal dengan top up Mobile Legends sekarang juga. Promo terbatas hanya bulan ini!</p>
-                <button class="btn btn-large" onclick="openGameModal('Mobile Legends')">TOP UP SEKARANG</button>
+                <h1>TOP UP GAME TERMURAH</h1>
+                <p>Dapatkan diamond, UC, dan point game favoritmu dengan harga termurah dan proses instan hanya 1 menit!</p>
+                <button class="btn btn-large" onclick="scrollToSection('games')">TOP UP SEKARANG</button>
             </div>
             <div class="slide-image">
-                <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile Legends">
+                <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Game Top Up">
             </div>
         </div>
         
         <div class="slide">
             <div class="slide-content">
-                <h1>TOP UP E-WALLET INSTAN</h1>
-                <p>Isi saldo DANA, OVO, GoPay, ShopeePay dengan cepat dan aman. Proses instant hanya 1 menit!</p>
-                <button class="btn btn-large" onclick="scrollToServices()">TOP UP SEKARANG</button>
+                <h1>LAYANAN DIGITAL LENGKAP</h1>
+                <p>Pulsa, paket data, e-wallet, dan pembayaran tagihan semua bisa di sini. Satu aplikasi untuk semua kebutuhan digital!</p>
+                <button class="btn btn-large" onclick="scrollToSection('services')">LIHAT LAYANAN</button>
             </div>
             <div class="slide-image">
-                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Wallet">
+                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Digital Services">
             </div>
         </div>
         
@@ -1183,44 +1230,67 @@
         </div>
     </section>
 
-    <!-- Articles -->
+    <!-- Articles Section -->
     <section id="articles">
         <div class="section-title">
             <h2>Artikel & Edukasi</h2>
             <p>Tips, info, dan panduan untuk pengalaman top up yang lebih baik</p>
         </div>
         
-        <div class="articles-grid">
-            <div class="article-card">
-                <div class="article-image" style="background: linear-gradient(to right, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-shield-alt" style="font-size: 4rem; color: var(--accent);"></i>
+        <div class="articles-grid" id="articlesContainer">
+            <!-- Articles will be generated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section id="help">
+        <div class="section-title">
+            <h2>Bantuan & FAQ</h2>
+            <p>Temukan jawaban untuk pertanyaan yang sering diajukan</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card" onclick="openHelpModal('cara-pesan')">
+                <div class="service-icon">
+                    <i class="fas fa-shopping-cart"></i>
                 </div>
-                <div class="article-content">
-                    <h3>Cara Top Up Game dengan Aman</h3>
-                    <p>Panduan lengkap untuk melakukan top up game secara aman dan terhindar dari penipuan. Pelajari tips memilih seller terpercaya.</p>
-                    <button class="btn">Baca Selengkapnya</button>
+                <h3>Cara Pemesanan</h3>
+                <p>Panduan lengkap cara memesan layanan di GameTop dari awal sampai selesai.</p>
+                <div style="margin-top: auto;">
+                    <button class="btn">LIHAT PANDUAN</button>
                 </div>
             </div>
             
-            <div class="article-card">
-                <div class="article-image" style="background: linear-gradient(to right, #1a1a2e, #0f3460); display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-credit-card" style="font-size: 4rem; color: var(--accent);"></i>
+            <div class="service-card" onclick="openHelpModal('pembayaran')">
+                <div class="service-icon">
+                    <i class="fas fa-credit-card"></i>
                 </div>
-                <div class="article-content">
-                    <h3>Cara Membuat Limit Pembayaran</h3>
-                    <p>Tips meningkatkan limit pembayaran di e-wallet dan kartu kredit untuk transaksi top up yang lebih besar.</p>
-                    <button class="btn">Baca Selengkapnya</button>
+                <h3>Metode Pembayaran</h3>
+                <p>Daftar metode pembayaran yang tersedia untuk bertransaksi di GameTop.</p>
+                <div style="margin-top: auto;">
+                    <button class="btn">LIHAT METODE</button>
                 </div>
             </div>
             
-            <div class="article-card">
-                <div class="article-image" style="background: linear-gradient(to right, #1a1a2e, #1b1b2f); display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-sync-alt" style="font-size: 4rem; color: var(--accent);"></i>
+            <div class="service-card" onclick="openHelpModal('faq')">
+                <div class="service-icon">
+                    <i class="fas fa-question-circle"></i>
                 </div>
-                <div class="article-content">
-                    <h3>Update Versi Game Terbaru</h3>
-                    <p>Informasi terkini tentang update game populer dan item baru yang bisa Anda dapatkan melalui top up.</p>
-                    <button class="btn">Baca Selengkapnya</button>
+                <h3>FAQ</h3>
+                <p>Pertanyaan yang sering diajukan beserta jawabannya untuk membantu Anda.</p>
+                <div style="margin-top: auto;">
+                    <button class="btn">LIHAT FAQ</button>
+                </div>
+            </div>
+            
+            <div class="service-card" onclick="openWhatsApp('Bantuan', 'Konsultasi')">
+                <div class="service-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Live Chat</h3>
+                <p>Butuh bantuan cepat? Chat langsung dengan customer service kami via WhatsApp.</p>
+                <div style="margin-top: auto;">
+                    <button class="btn btn-success">CHAT SEKARANG</button>
                 </div>
             </div>
         </div>
@@ -1279,10 +1349,10 @@
             <div class="footer-column">
                 <h3>Layanan Kami</h3>
                 <ul class="footer-links">
-                    <li><a href="#games">Top Up Game</a></li>
-                    <li><a href="#services">Pulsa & Data</a></li>
-                    <li><a href="#services">E-Wallet</a></li>
-                    <li><a href="#services">Pembayaran Tagihan</a></li>
+                    <li><a href="#games" onclick="handleNavClick(event)">Top Up Game</a></li>
+                    <li><a href="#services" onclick="handleNavClick(event)">Pulsa & Data</a></li>
+                    <li><a href="#services" onclick="handleNavClick(event)">E-Wallet</a></li>
+                    <li><a href="#services" onclick="handleNavClick(event)">Pembayaran Tagihan</a></li>
                     <li><a href="https://facebook.com" target="_blank">Rekber Aman</a></li>
                 </ul>
             </div>
@@ -1290,11 +1360,11 @@
             <div class="footer-column">
                 <h3>Bantuan</h3>
                 <ul class="footer-links">
-                    <li><a href="#help">Cara Pemesanan</a></li>
-                    <li><a href="#help">Metode Pembayaran</a></li>
-                    <li><a href="#help">FAQ</a></li>
-                    <li><a href="#help">Syarat & Ketentuan</a></li>
-                    <li><a href="#help">Kebijakan Privasi</a></li>
+                    <li><a href="#help" onclick="handleNavClick(event)">Cara Pemesanan</a></li>
+                    <li><a href="#help" onclick="handleNavClick(event)">Metode Pembayaran</a></li>
+                    <li><a href="#help" onclick="handleNavClick(event)">FAQ</a></li>
+                    <li><a href="#articles" onclick="handleNavClick(event)">Artikel Edukasi</a></li>
+                    <li><a href="https://wa.me/6281234567890" target="_blank">Kontak CS</a></li>
                 </ul>
             </div>
             
@@ -1584,6 +1654,32 @@
         </div>
     </div>
 
+    <!-- Article Detail Modal -->
+    <div class="modal" id="articleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalArticleTitle">Artikel Detail</h2>
+                <button class="close-modal" onclick="closeArticleModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="articleModalBody">
+                <!-- Article content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal" id="helpModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalHelpTitle">Bantuan</h2>
+                <button class="close-modal" onclick="closeHelpModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="helpModalBody">
+                <!-- Help content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // Data games
         const games = [
@@ -1600,6 +1696,302 @@
             { id: 11, name: "Roblox", category: "Sandbox", icon: "fas fa-cube" },
             { id: 12, name: "Minecraft", category: "Sandbox", icon: "fas fa-mountain" }
         ];
+
+        // Data articles
+        const articles = [
+            {
+                id: 1,
+                title: "Cara Top Up Game dengan Aman",
+                excerpt: "Panduan lengkap untuk melakukan top up game secara aman dan terhindar dari penipuan. Pelajari tips memilih seller terpercaya.",
+                content: `
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Cara Top Up Game dengan Aman</h3>
+                    <p>Top up game adalah kegiatan yang populer di kalangan gamers. Namun, penting untuk melakukannya dengan aman untuk menghindari penipuan. Berikut adalah panduan lengkapnya:</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">1. Pilih Platform Terpercaya</h4>
+                    <p>Pastikan Anda menggunakan platform resmi atau seller terpercaya seperti GameTop. Cek reputasi dan ulasan dari pengguna lain.</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">2. Verifikasi Identitas Seller</h4>
+                    <p>Periksa apakah seller memiliki kontak yang valid, testimoni asli, dan sistem rekber (rekening bersama) untuk keamanan transaksi.</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">3. Gunakan Metode Pembayaran Aman</h4>
+                    <p>Hindari transfer langsung ke rekening pribadi. Gunakan sistem rekber atau platform pembayaran resmi yang memberikan perlindungan pembeli.</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">4. Simpan Bukti Transaksi</h4>
+                    <p>Selalu simpan screenshot bukti pembayaran dan chat transaksi sebagai arsip jika terjadi masalah.</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">5. Cek Harga Normal</h4>
+                    <p>Hati-hati dengan harga yang terlalu murah dari harga pasaran. Bisa jadi itu adalah penipuan.</p>
+                    
+                    <div class="service-summary" style="margin-top: 2rem;">
+                        <div class="summary-title">Tips Keamanan:</div>
+                        <div class="summary-item">
+                            <span class="summary-label">✅</span>
+                            <span class="summary-value">Gunakan rekber untuk transaksi besar</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">✅</span>
+                            <span class="summary-value">Verifikasi seller melalui testimoni</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">✅</span>
+                            <span class="summary-value">Simpan semua bukti transaksi</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">✅</span>
+                            <span class="summary-value">Laporkan jika menemukan penipuan</span>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 2rem;">Dengan mengikuti panduan ini, Anda dapat menikmati pengalaman top up game yang aman dan nyaman.</p>
+                `,
+                date: "15 Desember 2023",
+                readTime: "5 min read",
+                icon: "fas fa-shield-alt"
+            },
+            {
+                id: 2,
+                title: "Cara Meningkatkan Limit Pembayaran",
+                excerpt: "Tips meningkatkan limit pembayaran di e-wallet dan kartu kredit untuk transaksi top up yang lebih besar.",
+                content: `
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Cara Meningkatkan Limit Pembayaran</h3>
+                    <p>Limit pembayaran yang terbatas seringkali menghambat transaksi top up game. Berikut cara meningkatkannya:</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">1. E-Wallet (DANA, OVO, GoPay)</h4>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;">Verifikasi akun secara lengkap (KTP, selfie dengan KTP)</li>
+                        <li style="margin-bottom: 0.5rem;">Tambahkan kartu kredit/debit sebagai sumber dana</li>
+                        <li style="margin-bottom: 0.5rem;">Tingkatkan frekuensi transaksi dengan nominal kecil terlebih dahulu</li>
+                        <li style="margin-bottom: 0.5rem;">Hubungi customer service untuk permohonan khusus</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">2. Kartu Kredit</h4>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;">Bayar tagihan tepat waktu selama 6-12 bulan berturut-turut</li>
+                        <li style="margin-bottom: 0.5rem;">Ajukan kenaikan limit melalui aplikasi atau customer service</li>
+                        <li style="margin-bottom: 0.5rem;">Tingkatkan penghasilan yang dilaporkan ke bank</li>
+                        <li style="margin-bottom: 0.5rem;">Gunakan kartu secara aktif untuk berbagai transaksi</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">3. Virtual Account & Transfer Bank</h4>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;">Aktifkan fitur m-banking dengan limit tinggi</li>
+                        <li style="margin-bottom: 0.5rem;">Hubungi bank untuk permohonan kenaikan limit transaksi harian</li>
+                        <li style="margin-bottom: 0.5rem;">Gunakan token fisik untuk transaksi besar</li>
+                    </ul>
+                    
+                    <div class="service-summary" style="margin-top: 2rem;">
+                        <div class="summary-title">Catatan Penting:</div>
+                        <p style="color: var(--text-gray); margin-top: 0.5rem;">Proses kenaikan limit biasanya memerlukan waktu verifikasi 1-7 hari kerja. Pastikan dokumen pendukung lengkap dan data konsisten.</p>
+                    </div>
+                `,
+                date: "10 Desember 2023",
+                readTime: "4 min read",
+                icon: "fas fa-credit-card"
+            },
+            {
+                id: 3,
+                title: "Update Game Terbaru 2023",
+                excerpt: "Informasi terkini tentang update game populer dan item baru yang bisa Anda dapatkan melalui top up.",
+                content: `
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Update Game Terbaru 2023</h3>
+                    <p>Berikut update terbaru dari game-game populer yang bisa Anda nikmati dengan top up:</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">🎮 Mobile Legends</h4>
+                    <p><strong>Update 1.8.34:</strong> Hero baru Fredrinn, skin Royal Marshal, dan event Starling Month Desember. Dapatkan double diamond bonus selama event!</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">🔥 Free Fire</h4>
+                    <p><strong>OB40 Update:</strong> New character Kenta, weapon skins bundle, dan elite pass season 48. Top up sekarang untuk mendapatkan 2x diamond!</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">🎯 Valorant</h4>
+                    <p><strong>Episode 6 Act 3:</strong> New agent Iso, battle pass exclusive, dan skin bundle Chronovoid. Points sekarang dengan harga spesial!</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">🌪️ Genshin Impact</h4>
+                    <p><strong>Version 4.3:</strong> New character Navia, event Roses and Muskets, dan top up bonus reset. Waktu tepat untuk recharge Genesis Crystals!</p>
+                    
+                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">⚡ PUBG Mobile</h4>
+                    <p><strong>3.0 Update:</strong> New Nusa map, Metro Royale new season, dan UC bonus 20% untuk top up pertama kali di bulan ini.</p>
+                    
+                    <div class="service-summary" style="margin-top: 2rem;">
+                        <div class="summary-title">Promo Top Up Desember:</div>
+                        <div class="summary-item">
+                            <span class="summary-label">🎁</span>
+                            <span class="summary-value">Mobile Legends: Bonus 10% diamond</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">🎁</span>
+                            <span class="summary-value">Free Fire: Extra 15% diamond</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">🎁</span>
+                            <span class="summary-value">Semua game: Cashback 5% untuk transaksi >100k</span>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 2rem;"><strong>Catatan:</strong> Promo berlaku hingga 31 Desember 2023. Segera top up sebelum promo berakhir!</p>
+                `,
+                date: "5 Desember 2023",
+                readTime: "6 min read",
+                icon: "fas fa-sync-alt"
+            }
+        ];
+
+        // Help content
+        const helpContent = {
+            'cara-pesan': {
+                title: 'Cara Pemesanan',
+                content: `
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Cara Pemesanan di GameTop</h3>
+                    <p>Berikut adalah langkah-langkah lengkap untuk memesan layanan di GameTop:</p>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">📋 Langkah 1: Pilih Layanan</h4>
+                        <p>Buka website GameTop dan pilih layanan yang Anda butuhkan (game, pulsa, paket data, e-wallet, atau tagihan).</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">🎯 Langkah 2: Tentukan Pilihan</h4>
+                        <p>Klik kartu layanan untuk membuka popup modal. Pilih opsi yang tersedia (operator, nominal, jenis paket, dll).</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">🛒 Langkah 3: Klik Beli Sekarang</h4>
+                        <p>Setelah semua pilihan lengkap, tombol WhatsApp akan aktif. Klik tombol untuk melanjutkan ke WhatsApp.</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">💬 Langkah 4: Konfirmasi ke Admin</h4>
+                        <p>Format pesan otomatis akan muncul di WhatsApp. Konfirmasi pemesanan dan ikuti instruksi admin.</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">💳 Langkah 5: Pembayaran</h4>
+                        <p>Lakukan pembayaran sesuai instruksi admin ke rekening yang ditentukan.</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">✅ Langkah 6: Konfirmasi & Proses</h4>
+                        <p>Kirim bukti pembayaran ke admin. Produk akan diproses dalam 1-10 menit setelah pembayaran dikonfirmasi.</p>
+                    </div>
+                    
+                    <div class="service-summary" style="margin-top: 2rem;">
+                        <div class="summary-title">Catatan Penting:</div>
+                        <div class="summary-item">
+                            <span class="summary-label">⏰</span>
+                            <span class="summary-value">Proses cepat 1-10 menit setelah pembayaran</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">🛡️</span>
+                            <span class="summary-value">Gunakan rekber untuk transaksi besar (>500k)</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">📞</span>
+                            <span class="summary-value">Hubungi CS jika ada kendala dalam 24 jam</span>
+                        </div>
+                    </div>
+                `
+            },
+            'pembayaran': {
+                title: 'Metode Pembayaran',
+                content: `
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Metode Pembayaran yang Tersedia</h3>
+                    <p>GameTop menyediakan berbagai metode pembayaran untuk kemudahan transaksi Anda:</p>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">🏦 Transfer Bank</h4>
+                        <p>Transfer ke rekening bank berikut:</p>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li style="margin-bottom: 0.5rem;">BCA: 1234567890 (GameTop Official)</li>
+                            <li style="margin-bottom: 0.5rem;">Mandiri: 0987654321 (GameTop Official)</li>
+                            <li style="margin-bottom: 0.5rem;">BNI: 1122334455 (GameTop Official)</li>
+                            <li style="margin-bottom: 0.5rem;">BRI: 5566778899 (GameTop Official)</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">📱 E-Wallet</h4>
+                        <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                            <li style="margin-bottom: 0.5rem;">DANA: 0812-3456-7890</li>
+                            <li style="margin-bottom: 0.5rem;">OVO: 0812-3456-7890</li>
+                            <li style="margin-bottom: 0.5rem;">GoPay: 0812-3456-7890</li>
+                            <li style="margin-bottom: 0.5rem;">ShopeePay: 0812-3456-7890</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">💳 QRIS</h4>
+                        <p>Scan QR Code yang diberikan admin untuk pembayaran instan melalui aplikasi bank atau e-wallet.</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">🛡️ Rekening Bersama (Rekber)</h4>
+                        <p>Untuk transaksi besar (>Rp 500.000), gunakan sistem rekber dengan admin sebagai perantara. Hubungi admin via WhatsApp untuk informasi rekber.</p>
+                    </div>
+                    
+                    <div class="service-summary" style="margin-top: 2rem;">
+                        <div class="summary-title">Syarat & Ketentuan:</div>
+                        <div class="summary-item">
+                            <span class="summary-label">1.</span>
+                            <span class="summary-value">Transfer sesuai nominal yang diminta admin</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">2.</span>
+                            <span class="summary-value">Kirim bukti transfer ke admin setelah pembayaran</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">3.</span>
+                            <span class="summary-value">Pembayaran dianggap batal jika tidak dikonfirmasi dalam 1 jam</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">4.</span>
+                            <span class="summary-value">Tidak ada refund setelah produk dikirim</span>
+                        </div>
+                    </div>
+                `
+            },
+            'faq': {
+                title: 'FAQ - Pertanyaan Umum',
+                content: `
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">FAQ - Pertanyaan yang Sering Diajukan</h3>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">❓ Berapa lama proses top up?</h4>
+                        <p>Proses top up biasanya memakan waktu 1-10 menit setelah pembayaran dikonfirmasi. Untuk transaksi besar atau saat ramai, maksimal 30 menit.</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">❓ Apakah ada jaminan aman?</h4>
+                        <p>Ya, GameTop menggunakan sistem rekber untuk transaksi besar dan memiliki reputasi terpercaya dengan ribuan transaksi sukses.</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">❓ Bagaimana jika top up gagal?</h4>
+                        <p>Hubungi customer service via WhatsApp dengan melampirkan bukti pembayaran. Tim kami akan memproses refund atau pengiriman ulang dalam 24 jam.</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">❓ Apakah ada bonus atau promo?</h4>
+                        <p>Ya, GameTop rutin memberikan promo seperti bonus diamond, cashback, dan diskon spesial untuk member setia. Cek banner utama dan follow media sosial kami untuk update promo.</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">❓ Bagaimana cara jadi reseller?</h4>
+                        <p>Kirim pesan ke admin WhatsApp dengan subject "Daftar Reseller". Anda akan mendapatkan harga khusus dan sistem keagenan.</p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--text-light); margin-bottom: 0.5rem;">❓ Apakah buka 24 jam?</h4>
+                        <p>Ya, layanan GameTop tersedia 24 jam non-stop termasuk hari libur nasional.</p>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <p style="color: var(--text-gray);">Masih ada pertanyaan? Hubungi customer service kami via WhatsApp:</p>
+                        <button class="btn btn-success" onclick="openWhatsApp('FAQ', 'Konsultasi FAQ')" style="margin-top: 1rem;">
+                            <i class="fab fa-whatsapp"></i> Chat Customer Service
+                        </button>
+                    </div>
+                `
+            }
+        };
 
         // Data diamonds for each game
         const diamondPrices = {
@@ -1658,6 +2050,7 @@
 
         // DOM Elements
         const gamesGrid = document.querySelector('.games-grid');
+        const articlesContainer = document.getElementById('articlesContainer');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileNav = document.getElementById('mobileNav');
         const slides = document.querySelectorAll('.slide');
@@ -1665,6 +2058,12 @@
         const gameModal = document.getElementById('gameModal');
         const modalGameTitle = document.getElementById('modalGameTitle');
         const diamondsContainer = document.getElementById('diamondsContainer');
+        const articleModal = document.getElementById('articleModal');
+        const modalArticleTitle = document.getElementById('modalArticleTitle');
+        const articleModalBody = document.getElementById('articleModalBody');
+        const helpModal = document.getElementById('helpModal');
+        const modalHelpTitle = document.getElementById('modalHelpTitle');
+        const helpModalBody = document.getElementById('helpModalBody');
 
         // Initialize games grid
         function initGamesGrid() {
@@ -1687,6 +2086,53 @@
                 
                 gamesGrid.appendChild(gameItem);
             });
+        }
+
+        // Initialize articles
+        function initArticles() {
+            articlesContainer.innerHTML = '';
+            articles.forEach(article => {
+                const articleCard = document.createElement('div');
+                articleCard.className = 'article-card';
+                articleCard.onclick = () => openArticleModal(article.id);
+                
+                articleCard.innerHTML = `
+                    <div class="article-image">
+                        <i class="${article.icon}" style="font-size: 4rem; color: white;"></i>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> ${article.date}</span>
+                            <span><i class="far fa-clock"></i> ${article.readTime}</span>
+                        </div>
+                        <h3>${article.title}</h3>
+                        <p>${article.excerpt}</p>
+                        <button class="btn">Baca Selengkapnya</button>
+                    </div>
+                `;
+                
+                articlesContainer.appendChild(articleCard);
+            });
+        }
+
+        // Handle navigation click
+        function handleNavClick(event) {
+            event.preventDefault();
+            const targetId = event.target.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Close mobile menu if open
+                if (mobileNav.classList.contains('active')) {
+                    mobileNav.classList.remove('active');
+                }
+                
+                // Scroll to section
+                targetElement.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         }
 
         // Open service modal
@@ -1737,6 +2183,40 @@
                 });
             }
             // Add similar resets for other services
+        }
+
+        // Open article modal
+        function openArticleModal(articleId) {
+            const article = articles.find(a => a.id === articleId);
+            if (!article) return;
+            
+            modalArticleTitle.textContent = article.title;
+            articleModalBody.innerHTML = article.content;
+            articleModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close article modal
+        function closeArticleModal() {
+            articleModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Open help modal
+        function openHelpModal(helpType) {
+            const content = helpContent[helpType];
+            if (!content) return;
+            
+            modalHelpTitle.textContent = content.title;
+            helpModalBody.innerHTML = content.content;
+            helpModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close help modal
+        function closeHelpModal() {
+            helpModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
 
         // Select option in modal
@@ -1933,6 +2413,13 @@
             closeServiceModal(serviceType);
         }
 
+        // Open WhatsApp directly
+        function openWhatsApp(serviceType, serviceName) {
+            const message = `Halo GameTop, saya ingin pesan:\n\n*Layanan:* ${serviceName}\n\nSilakan beritahu langkah selanjutnya.`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/6281234567890?text=${encodedMessage}`, '_blank');
+        }
+
         // Open game modal
         function openGameModal(gameName) {
             modalGameTitle.textContent = gameName;
@@ -1979,11 +2466,15 @@
             closeGameModal();
         }
 
-        // Open WhatsApp with service type
-        function openWhatsApp(serviceType, serviceName) {
-            const message = `Halo GameTop, saya ingin pesan:\n\n*Layanan:* ${serviceName}\n\nSilakan beritahu langkah selanjutnya.`;
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/6281234567890?text=${encodedMessage}`, '_blank');
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         }
 
         // Banner slider functionality
@@ -2009,18 +2500,6 @@
         // Auto slide every 5 seconds
         setInterval(nextSlide, 5000);
 
-        // Scroll to section
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-        
-        function scrollToServices() {
-            scrollToSection('services');
-        }
-
         // Mobile menu toggle
         mobileMenuBtn.addEventListener('click', () => {
             mobileNav.classList.toggle('active');
@@ -2041,9 +2520,10 @@
             }
         });
 
-        // Initialize custom input listeners
+        // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', () => {
             initGamesGrid();
+            initArticles();
             
             // Add input listeners for custom values
             document.getElementById('pulsa-custom').addEventListener('input', checkPulsaComplete);
@@ -2051,19 +2531,24 @@
             document.getElementById('tagihan-id').addEventListener('input', checkTagihanComplete);
             document.getElementById('tagihan-nominal').addEventListener('input', checkTagihanComplete);
             
-            // Add smooth scrolling for anchor links
+            // Add smooth scrolling for all internal links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
                     
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
+                    const targetElement = document.querySelector(href);
                     if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
                         });
+                        
+                        // Close mobile menu if open
+                        if (mobileNav.classList.contains('active')) {
+                            mobileNav.classList.remove('active');
+                        }
                     }
                 });
             });
