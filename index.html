@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mystery Box Premium</title>
+    <title>Mystery Box Kopi & Makanan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -22,6 +22,8 @@
             --danger: #e74c3c;
             --warning: #fdcb6e;
             --info: #0984e3;
+            --coffee: #8B4513;
+            --food: #FF6B6B;
             --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
@@ -110,7 +112,7 @@
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 10px;
-            background: linear-gradient(to right, var(--warning), var(--secondary));
+            background: linear-gradient(to right, var(--warning), var(--food));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -167,12 +169,12 @@
         }
 
         .box-front {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--coffee), #D2691E);
             border: 3px solid rgba(255, 255, 255, 0.2);
         }
 
         .box-back {
-            background: linear-gradient(135deg, var(--warning), #e17055);
+            background: linear-gradient(135deg, var(--food), #FF8E53);
             transform: rotateY(180deg);
             color: var(--dark);
             font-weight: bold;
@@ -253,7 +255,7 @@
         .btn-submit {
             width: 100%;
             padding: 15px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: linear-gradient(to right, var(--coffee), var(--food));
             border: none;
             border-radius: 10px;
             color: white;
@@ -546,6 +548,45 @@
             color: var(--success);
         }
 
+        .reward-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        .tag-coffee {
+            background: rgba(139, 69, 19, 0.3);
+            color: #FFD700;
+            border: 1px solid rgba(139, 69, 19, 0.5);
+        }
+
+        .tag-food {
+            background: rgba(255, 107, 107, 0.3);
+            color: #FFD700;
+            border: 1px solid rgba(255, 107, 107, 0.5);
+        }
+
+        .tag-voucher {
+            background: rgba(9, 132, 227, 0.3);
+            color: #FFD700;
+            border: 1px solid rgba(9, 132, 227, 0.5);
+        }
+
+        .tag-zonk {
+            background: rgba(108, 92, 231, 0.3);
+            color: #FFD700;
+            border: 1px solid rgba(108, 92, 231, 0.5);
+        }
+
+        .tag-special {
+            background: rgba(253, 203, 110, 0.3);
+            color: #1a1a2e;
+            border: 1px solid rgba(253, 203, 110, 0.5);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -598,7 +639,7 @@
         <header>
             <div class="logo">
                 <i class="fas fa-box-open"></i>
-                <span>MysteryBox Premium</span>
+                <span>Mystery Box Kopi & Makanan</span>
             </div>
             <div class="admin-access">
                 <div class="admin-dot"></div>
@@ -612,8 +653,8 @@
         <!-- Main Content (User Interface) -->
         <main id="mainContent">
             <section class="hero">
-                <h1>Klaim Hadiah Mystery Box!</h1>
-                <p>Gunakan kode mystery box Anda untuk membuka kejutan spesial. Masukkan nama dan kode yang diberikan untuk klaim hadiah!</p>
+                <h1>Buka Kejutan Mystery Box!</h1>
+                <p>Gunakan kode mystery box Anda untuk membuka hadiah spesial yang menanti. Masukkan nama dan kode yang diberikan untuk klaim kejutan!</p>
                 
                 <div class="boxes-container">
                     <!-- Mystery Box 1 -->
@@ -622,17 +663,17 @@
                             <div class="box-front">
                                 <div class="box-number">1</div>
                                 <div class="box-icon">
-                                    <i class="fas fa-gift"></i>
+                                    <i class="fas fa-question"></i>
                                 </div>
-                                <h3>Bronze Box</h3>
-                                <p>Hadiah Menarik</p>
+                                <h3>Kotak Misteri</h3>
+                                <p>Buka kejutanmu</p>
                             </div>
                             <div class="box-back">
                                 <div class="box-icon">
-                                    <i class="fas fa-award"></i>
+                                    <i class="fas fa-gift"></i>
                                 </div>
-                                <h3>Hadiah Bronze</h3>
-                                <p>Kode khusus</p>
+                                <h3>???</h3>
+                                <p>Hadiah Misterius</p>
                             </div>
                         </div>
                     </div>
@@ -643,17 +684,17 @@
                             <div class="box-front">
                                 <div class="box-number">2</div>
                                 <div class="box-icon">
-                                    <i class="fas fa-gem"></i>
+                                    <i class="fas fa-question"></i>
                                 </div>
-                                <h3>Silver Box</h3>
-                                <p>Hadiah Spesial</p>
+                                <h3>Kotak Kejutan</h3>
+                                <p>Buka kejutanmu</p>
                             </div>
                             <div class="box-back">
                                 <div class="box-icon">
                                     <i class="fas fa-star"></i>
                                 </div>
-                                <h3>Hadiah Silver</h3>
-                                <p>Kode premium</p>
+                                <h3>???</h3>
+                                <p>Kejutan Spesial</p>
                             </div>
                         </div>
                     </div>
@@ -664,17 +705,17 @@
                             <div class="box-front">
                                 <div class="box-number">3</div>
                                 <div class="box-icon">
-                                    <i class="fas fa-crown"></i>
+                                    <i class="fas fa-question"></i>
                                 </div>
-                                <h3>Gold Box</h3>
-                                <p>Hadiah Eksklusif</p>
+                                <h3>Kotak Eksklusif</h3>
+                                <p>Buka kejutanmu</p>
                             </div>
                             <div class="box-back">
                                 <div class="box-icon">
-                                    <i class="fas fa-trophy"></i>
+                                    <i class="fas fa-crown"></i>
                                 </div>
-                                <h3>Hadiah Gold</h3>
-                                <p>Kode eksklusif</p>
+                                <h3>???</h3>
+                                <p>Hadiah Eksklusif</p>
                             </div>
                         </div>
                     </div>
@@ -695,12 +736,12 @@
                         <small style="color: rgba(255,255,255,0.6); margin-top: 5px; display: block;">Format: MBX-XXXX-XXX (contoh: MBX-A9F3-KQ2)</small>
                     </div>
                     <button type="submit" class="btn-submit">
-                        <i class="fas fa-unlock-alt"></i> Klaim Hadiah
+                        <i class="fas fa-unlock-alt"></i> Buka Mystery Box
                     </button>
                 </form>
                 <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px;">
                     <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
-                        <i class="fas fa-info-circle"></i> Setiap kode hanya dapat diklaim sekali oleh satu member. Pastikan nama yang dimasukkan sesuai dengan data member.
+                        <i class="fas fa-info-circle"></i> Setiap kode hanya dapat digunakan sekali. Setelah klaim berhasil, hadiah akan langsung ditampilkan.
                     </p>
                 </div>
             </section>
@@ -709,7 +750,7 @@
         <!-- Admin Panel (Hidden by default) -->
         <section class="admin-panel" id="adminPanel">
             <div class="admin-header">
-                <h2 class="admin-title">Admin Panel - Mystery Box Premium</h2>
+                <h2 class="admin-title">Admin Panel - Mystery Box</h2>
                 <div>
                     <button class="btn-admin" id="syncDataBtn">
                         <i class="fas fa-sync-alt"></i>
@@ -790,54 +831,71 @@
             
             <!-- Kelola Hadiah Tab -->
             <div class="tab-content" id="rewardsTab">
-                <h3>Atur Hadiah untuk Kode</h3>
+                <h3>Kelola Daftar Hadiah</h3>
                 <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                    <p><i class="fas fa-info-circle"></i> Pilih kode dan atur hadiah untuk setiap kode secara individual. Anda dapat memberikan hadiah yang berbeda untuk setiap kode.</p>
+                    <p><i class="fas fa-info-circle"></i> Tambah, edit, atau hapus hadiah dari daftar. Hadiah yang sudah ditambahkan bisa dipilih untuk kode tertentu.</p>
                 </div>
                 
                 <div class="form-group">
-                    <label for="selectCodeForReward">Pilih Kode:</label>
-                    <select id="selectCodeForReward" class="form-control">
-                        <option value="">-- Pilih kode untuk atur hadiah --</option>
-                        <!-- Opsi kode akan diisi dari JavaScript -->
-                    </select>
-                </div>
-                
-                <div id="rewardAssignmentSection" style="display: none;">
-                    <div class="form-group">
-                        <label>Kode Terpilih: <strong id="selectedCodeDisplay"></strong></label>
-                        <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 10px; margin-top: 10px;">
-                            <p><strong>Status:</strong> <span id="selectedCodeStatus"></span></p>
-                            <p><strong>Member:</strong> <span id="selectedCodeMember">-</span></p>
-                            <p><strong>Hadiah Saat Ini:</strong> <span id="selectedCodeCurrentReward">-</span></p>
-                        </div>
+                    <label for="rewardList">Daftar Hadiah (satu per baris):</label>
+                    <textarea id="rewardList" class="form-control" rows="8" placeholder="Masukkan daftar hadiah, satu per baris"></textarea>
+                    <div style="margin-top: 10px; display: flex; gap: 10px;">
+                        <button class="btn-submit" id="saveRewardsListBtn" style="flex: 1;">
+                            <i class="fas fa-save"></i> Simpan Daftar Hadiah
+                        </button>
+                        <button class="btn-submit" id="loadDefaultRewardsBtn" style="flex: 1; background: var(--coffee);">
+                            <i class="fas fa-undo"></i> Muat Hadiah Default
+                        </button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="assignReward">Pilih Hadiah:</label>
-                        <select id="assignReward" class="form-control">
-                            <!-- Opsi hadiah akan diisi dari JavaScript -->
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="customRewardInput">Atau Masukkan Hadiah Kustom:</label>
-                        <input type="text" id="customRewardInput" class="form-control" placeholder="Masukkan hadiah kustom...">
-                    </div>
-                    
-                    <button class="btn-submit" id="saveRewardBtn">
-                        <i class="fas fa-save"></i> Simpan Hadiah untuk Kode Ini
-                    </button>
                 </div>
                 
                 <div style="margin-top: 30px;">
-                    <h3>Daftar Hadiah yang Tersedia</h3>
+                    <h3>Atur Hadiah untuk Kode Tertentu</h3>
                     <div class="form-group">
-                        <label for="rewardList">Tambah/Edit Daftar Hadiah (pisahkan dengan baris baru):</label>
-                        <textarea id="rewardList" class="form-control" rows="6" placeholder="Masukkan daftar hadiah yang tersedia"></textarea>
+                        <label for="selectCodeForReward">Pilih Kode:</label>
+                        <select id="selectCodeForReward" class="form-control">
+                            <option value="">-- Pilih kode untuk atur hadiah --</option>
+                            <!-- Opsi kode akan diisi dari JavaScript -->
+                        </select>
                     </div>
-                    <button class="btn-submit" id="saveRewardsListBtn">
-                        <i class="fas fa-save"></i> Simpan Daftar Hadiah
+                    
+                    <div id="rewardAssignmentSection" style="display: none;">
+                        <div class="form-group">
+                            <label>Kode Terpilih: <strong id="selectedCodeDisplay"></strong></label>
+                            <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 10px; margin-top: 10px;">
+                                <p><strong>Status:</strong> <span id="selectedCodeStatus"></span></p>
+                                <p><strong>Member:</strong> <span id="selectedCodeMember">-</span></p>
+                                <p><strong>Hadiah Saat Ini:</strong> <span id="selectedCodeCurrentReward">-</span></p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="assignReward">Pilih Hadiah dari Daftar:</label>
+                            <select id="assignReward" class="form-control">
+                                <!-- Opsi hadiah akan diisi dari JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customRewardInput">Atau Masukkan Hadiah Kustom:</label>
+                            <input type="text" id="customRewardInput" class="form-control" placeholder="Masukkan hadiah kustom...">
+                        </div>
+                        
+                        <button class="btn-submit" id="saveRewardBtn">
+                            <i class="fas fa-save"></i> Simpan Hadiah untuk Kode Ini
+                        </button>
+                        
+                        <button class="btn-submit" id="randomRewardBtn" style="margin-top: 10px; background: var(--food);">
+                            <i class="fas fa-random"></i> Acak Hadiah untuk Kode Ini
+                        </button>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h3>Acak Hadiah untuk Semua Kode</h3>
+                    <p>Tombol ini akan mengacak hadiah untuk semua kode yang belum diklaim dari daftar hadiah yang tersedia.</p>
+                    <button class="btn-submit" id="randomAllRewardsBtn" style="background: linear-gradient(to right, var(--coffee), var(--food));">
+                        <i class="fas fa-random"></i> Acak Hadiah untuk Semua Kode Tersedia
                     </button>
                 </div>
             </div>
@@ -895,7 +953,7 @@
                 <div class="form-group">
                     <label>Reset Data</label>
                     <button class="btn-submit" id="resetBtn" style="background: var(--danger);">
-                        <i class="fas fa-trash"></i> Reset Semua Data
+                        <i class="fas fa-trash"></i> Reset Semua Klaim
                     </button>
                     <p style="margin-top: 10px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">
                         <i class="fas fa-exclamation-triangle"></i> Peringatan: Reset akan menghapus semua data klaim, tetapi kode tetap ada dengan status tersedia.
@@ -906,7 +964,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2023 MysteryBox Premium - Semua hak dilindungi undang-undang</p>
+            <p>&copy; 2023 Mystery Box - Semua hak dilindungi undang-undang</p>
             <p>Sistem klaim kode mystery box untuk member eksklusif</p>
         </footer>
     </div>
@@ -930,6 +988,11 @@
                 <button type="submit" class="btn-submit">
                     <i class="fas fa-sign-in-alt"></i> Login
                 </button>
+                <div style="margin-top: 15px; padding: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
+                    <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.7); text-align: center;">
+                        <i class="fas fa-info-circle"></i> Default login: <strong>admingg</strong> / <strong>admingg123</strong>
+                    </p>
+                </div>
             </form>
         </div>
     </div>
@@ -938,7 +1001,7 @@
     <div class="modal" id="resultModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="resultTitle">Klaim Berhasil!</h3>
+                <h3 class="modal-title" id="resultTitle">Hasil Mystery Box</h3>
                 <button class="close-modal" id="closeResultModal">&times;</button>
             </div>
             <div id="resultContent">
@@ -951,7 +1014,7 @@
     <div class="notification" id="notification"></div>
 
     <script>
-        // Admin credentials
+        // Admin credentials - FIXED
         const ADMIN_USERNAME = "admingg";
         const ADMIN_PASSWORD = "admingg123";
 
@@ -973,9 +1036,8 @@
             "MBX-K9Q7-XZA", "MBX-QM2Z-9PA", "MBX-ZX7Q-KA8", "MBX-PQ9A-ZM2", "MBX-Q2A7-ZXP"
         ];
 
-        // Default rewards
+        // Default rewards (hidden from user view)
         const DEFAULT_REWARDS = [
-            "ZONK",
             "ICE KOPI",
             "HOT KOPI + POP MIE",
             "1 KUPON FAMILY",
@@ -994,14 +1056,17 @@
             "ZONK",
             "ZONK",
             "PAKET KUSUK 1 MINGGU",
-            "KOPI BC 1 MINGGU"
+            "KOPI BC 1 MINGGU",
+            "VOUCHER KOPI GRATIS",
+            "SNACK BOX",
+            "MINUMAN SPESIAL"
         ];
 
         // Storage keys
         const STORAGE_KEYS = {
-            MYSTERY_CODES: 'mystery_box_premium_codes',
-            AVAILABLE_REWARDS: 'mystery_box_premium_rewards',
-            CLAIM_HISTORY: 'mystery_box_premium_history'
+            MYSTERY_CODES: 'mystery_box_coffee_codes_v2',
+            AVAILABLE_REWARDS: 'mystery_box_coffee_rewards_v2',
+            CLAIM_HISTORY: 'mystery_box_coffee_history_v2'
         };
 
         // Load data from localStorage or initialize
@@ -1010,12 +1075,12 @@
             if (stored) {
                 return JSON.parse(stored);
             } else {
-                // Initialize with predefined codes
+                // Initialize with predefined codes and random rewards
                 const initialCodes = PREDEFINED_CODES.map((code, index) => ({
                     id: index + 1,
                     code: code,
                     name: "",
-                    reward: DEFAULT_REWARDS[Math.floor(Math.random() * DEFAULT_REWARDS.length)],
+                    reward: getRandomReward(),
                     used: false,
                     claimedAt: null,
                     createdAt: new Date().toISOString()
@@ -1023,6 +1088,12 @@
                 saveMysteryCodes(initialCodes);
                 return initialCodes;
             }
+        }
+
+        // Helper function to get random reward
+        function getRandomReward() {
+            const rewards = loadAvailableRewards();
+            return rewards[Math.floor(Math.random() * rewards.length)];
         }
 
         function loadAvailableRewards() {
@@ -1095,6 +1166,9 @@
         const saveRewardBtn = document.getElementById('saveRewardBtn');
         const rewardList = document.getElementById('rewardList');
         const saveRewardsListBtn = document.getElementById('saveRewardsListBtn');
+        const loadDefaultRewardsBtn = document.getElementById('loadDefaultRewardsBtn');
+        const randomRewardBtn = document.getElementById('randomRewardBtn');
+        const randomAllRewardsBtn = document.getElementById('randomAllRewardsBtn');
         const historyTableBody = document.getElementById('historyTableBody');
         const totalHistoryElement = document.getElementById('totalHistory');
         const exportBtn = document.getElementById('exportBtn');
@@ -1135,7 +1209,7 @@
                     const code = mysteryCodes.find(c => c.code === codeValue);
                     if (code) {
                         selectedCodeDisplay.textContent = code.code;
-                        selectedCodeStatus.textContent = code.used ? 
+                        selectedCodeStatus.innerHTML = code.used ? 
                             `<span class="status-used">Sudah Diklaim</span>` : 
                             `<span class="status-available">Tersedia</span>`;
                         selectedCodeMember.textContent = code.name || "-";
@@ -1180,18 +1254,34 @@
                 const searchLower = filter.toLowerCase();
                 filteredCodes = mysteryCodes.filter(code => 
                     code.code.toLowerCase().includes(searchLower) ||
-                    code.name.toLowerCase().includes(searchLower) ||
+                    (code.name && code.name.toLowerCase().includes(searchLower)) ||
                     code.reward.toLowerCase().includes(searchLower)
                 );
             }
             
             filteredCodes.forEach((code, index) => {
                 const row = document.createElement('tr');
+                
+                // Determine reward tag class
+                let tagClass = 'tag-special';
+                const rewardLower = code.reward.toLowerCase();
+                if (rewardLower.includes('kopi') || rewardLower.includes('tekok')) {
+                    tagClass = 'tag-coffee';
+                } else if (rewardLower.includes('kupon') || rewardLower.includes('voucher')) {
+                    tagClass = 'tag-voucher';
+                } else if (rewardLower.includes('zonk')) {
+                    tagClass = 'tag-zonk';
+                } else if (rewardLower.includes('mie') || rewardLower.includes('makanan') || rewardLower.includes('paket')) {
+                    tagClass = 'tag-food';
+                }
+                
                 row.innerHTML = `
                     <td>${index + 1}</td>
                     <td><strong>${code.code}</strong></td>
                     <td>${code.name || "-"}</td>
-                    <td>${code.reward}</td>
+                    <td>
+                        <span class="reward-tag ${tagClass}">${code.reward}</span>
+                    </td>
                     <td class="${code.used ? 'status-used' : 'status-available'}">
                         ${code.used ? 'Sudah Diklaim' : 'Tersedia'}
                     </td>
@@ -1252,12 +1342,26 @@
             
             sortedHistory.forEach((item, index) => {
                 const row = document.createElement('tr');
+                
+                // Determine reward tag class
+                let tagClass = 'tag-special';
+                const rewardLower = item.reward.toLowerCase();
+                if (rewardLower.includes('kopi') || rewardLower.includes('tekok')) {
+                    tagClass = 'tag-coffee';
+                } else if (rewardLower.includes('kupon') || rewardLower.includes('voucher')) {
+                    tagClass = 'tag-voucher';
+                } else if (rewardLower.includes('zonk')) {
+                    tagClass = 'tag-zonk';
+                } else if (rewardLower.includes('mie') || rewardLower.includes('makanan') || rewardLower.includes('paket')) {
+                    tagClass = 'tag-food';
+                }
+                
                 row.innerHTML = `
                     <td>${index + 1}</td>
                     <td>${new Date(item.claimedAt).toLocaleString('id-ID')}</td>
                     <td>${item.name}</td>
                     <td><strong>${item.code}</strong></td>
-                    <td>${item.reward}</td>
+                    <td><span class="reward-tag ${tagClass}">${item.reward}</span></td>
                 `;
                 historyTableBody.appendChild(row);
             });
@@ -1275,12 +1379,14 @@
             loginModal.classList.remove('active');
         });
 
-        // Handle login form submission
+        // Handle login form submission - FIXED LOGIN SYSTEM
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            
+            console.log("Login attempt:", username, password); // Debug log
             
             if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
                 // Login successful
@@ -1301,6 +1407,8 @@
             } else {
                 // Login failed
                 showNotification('Username atau password salah!', 'error');
+                // Clear password field
+                document.getElementById('password').value = '';
             }
         });
 
@@ -1440,6 +1548,68 @@
             showNotification('Daftar hadiah berhasil disimpan!', 'success');
         });
 
+        // Load default rewards
+        loadDefaultRewardsBtn.addEventListener('click', function() {
+            if (confirm('Muat hadiah default? Ini akan menggantikan daftar hadiah saat ini.')) {
+                availableRewards = [...DEFAULT_REWARDS];
+                saveAvailableRewards(availableRewards);
+                updateRewardList();
+                updateRewardSelect();
+                updateStats();
+                showNotification('Hadiah default berhasil dimuat!', 'success');
+            }
+        });
+
+        // Random reward for selected code
+        randomRewardBtn.addEventListener('click', function() {
+            const selectedCode = selectCodeForReward.value;
+            
+            if (!selectedCode) {
+                showNotification('Pilih kode terlebih dahulu!', 'error');
+                return;
+            }
+            
+            const randomReward = getRandomReward();
+            
+            // Cari dan update kode
+            const codeIndex = mysteryCodes.findIndex(c => c.code === selectedCode);
+            if (codeIndex !== -1) {
+                mysteryCodes[codeIndex].reward = randomReward;
+                saveMysteryCodes(mysteryCodes);
+                
+                // Refresh displays
+                loadCodesToTable(codeSearch.value);
+                updateCodeSelectForReward();
+                
+                // Update display
+                selectedCodeCurrentReward.textContent = randomReward;
+                assignReward.value = randomReward;
+                customRewardInput.value = '';
+                
+                showNotification(`Hadiah untuk kode ${selectedCode} diacak menjadi: ${randomReward}`, 'success');
+            }
+        });
+
+        // Random rewards for all available codes
+        randomAllRewardsBtn.addEventListener('click', function() {
+            if (confirm('Acak hadiah untuk semua kode yang belum diklaim? Tindakan ini tidak dapat dibatalkan.')) {
+                let updatedCount = 0;
+                
+                mysteryCodes.forEach(code => {
+                    if (!code.used) {
+                        code.reward = getRandomReward();
+                        updatedCount++;
+                    }
+                });
+                
+                saveMysteryCodes(mysteryCodes);
+                loadCodesToTable(codeSearch.value);
+                updateCodeSelectForReward();
+                
+                showNotification(`${updatedCount} kode berhasil diacak hadiahnya!`, 'success');
+            }
+        });
+
         // Assign reward to code (from table button)
         window.assignRewardToCode = function(code) {
             selectCodeForReward.value = code;
@@ -1508,7 +1678,7 @@
             }, null, 2);
             
             const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-            const exportFileDefaultName = 'mystery_box_premium_data.json';
+            const exportFileDefaultName = 'mystery_box_kopi_data.json';
             
             const linkElement = document.createElement('a');
             linkElement.setAttribute('href', dataUri);
@@ -1570,7 +1740,7 @@
 
         // Reset data
         resetBtn.addEventListener('click', function() {
-            if (!confirm("PERINGATAN: Ini akan mereset SEMUA klaim dan riwayat. Kode akan kembali tersedia. Lanjutkan?")) {
+            if (!confirm("PERINGATAN: Ini akan mereset SEMUA klaim dan riwayat. Kode akan kembali tersedia dengan hadiah yang sama. Lanjutkan?")) {
                 return;
             }
             
@@ -1599,30 +1769,53 @@
             showNotification('Semua kode telah direset ke status tersedia!', 'success');
         });
 
-        // Show result modal
+        // Show result modal with special styling for ZONK
         function showResult(userName, reward, code) {
             const resultTitle = document.getElementById('resultTitle');
             const resultContent = document.getElementById('resultContent');
             
-            resultTitle.textContent = `Selamat ${userName}!`;
-            resultContent.innerHTML = `
-                <div style="text-align: center; padding: 20px;">
-                    <div style="font-size: 5rem; color: var(--warning); margin-bottom: 20px;">
-                        <i class="fas fa-trophy"></i>
+            const isZonk = reward.toUpperCase().includes('ZONK');
+            
+            if (isZonk) {
+                resultTitle.textContent = `Sayang sekali ${userName}!`;
+                resultContent.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 5rem; color: #6C5CE7; margin-bottom: 20px;">
+                            <i class="fas fa-ghost"></i>
+                        </div>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Anda Mendapatkan...</h3>
+                        <div style="background: rgba(108, 92, 231, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 25px; border: 2px solid #6C5CE7;">
+                            <h4 style="font-size: 2rem; color: #6C5CE7; text-transform: uppercase;">${reward}</h4>
+                        </div>
+                        <p>Jangan berkecil hati! Coba lagi lain waktu.</p>
+                        <div style="margin-top: 20px; padding: 15px; background: rgba(108, 92, 231, 0.1); border-radius: 10px;">
+                            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                                <i class="fas fa-info-circle"></i> Kode <strong>${code}</strong> telah digunakan.
+                            </p>
+                        </div>
                     </div>
-                    <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Klaim Berhasil!</h3>
-                    <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 25px;">
-                        <p style="margin-bottom: 10px;"><strong>Kode:</strong> ${code}</p>
-                        <h4 style="font-size: 1.5rem; color: var(--warning);">${reward}</h4>
+                `;
+            } else {
+                resultTitle.textContent = `Selamat ${userName}!`;
+                resultContent.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 5rem; color: var(--warning); margin-bottom: 20px;">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Anda Mendapatkan:</h3>
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 25px;">
+                            <p style="margin-bottom: 10px;"><strong>Kode:</strong> ${code}</p>
+                            <h4 style="font-size: 1.5rem; color: var(--warning);">${reward}</h4>
+                        </div>
+                        <p>Tunjukkan hasil ini untuk menukarkan hadiah Anda. Terima kasih!</p>
+                        <div style="margin-top: 20px; padding: 15px; background: rgba(0, 184, 148, 0.1); border-radius: 10px; border-left: 4px solid var(--success);">
+                            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                                <i class="fas fa-check-circle"></i> Kode <strong>${code}</strong> telah berhasil diklaim.
+                            </p>
+                        </div>
                     </div>
-                    <p>Hadiah akan dikirimkan sesuai dengan ketentuan yang berlaku. Terima kasih telah berpartisipasi!</p>
-                    <div style="margin-top: 20px; padding: 15px; background: rgba(0, 184, 148, 0.1); border-radius: 10px; border-left: 4px solid var(--success);">
-                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
-                            <i class="fas fa-check-circle"></i> Kode telah berhasil diklaim dan tidak dapat digunakan lagi.
-                        </p>
-                    </div>
-                </div>
-            `;
+                `;
+            }
             
             resultModal.classList.add('active');
         }
@@ -1649,4 +1842,3 @@
     </script>
 </body>
 </html>
-
