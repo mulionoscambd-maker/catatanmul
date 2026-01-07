@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mystery Box - Buka Kejutan Spesial!</title>
+    <title>Mystery Box - Buka Kejutanmu!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -12,108 +12,145 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #00b894;
+            --danger: #e74c3c;
+            --warning: #fdcb6e;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+            color: var(--light);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo i {
+            color: var(--warning);
+        }
+
+        .admin-access {
             position: relative;
         }
-        
-        .admin-icon {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+
+        .admin-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--warning);
             border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .btn-admin {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 1000;
+            gap: 8px;
         }
-        
-        .admin-icon:hover {
+
+        .btn-admin:hover {
             background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
+            transform: translateY(-2px);
         }
-        
-        .logout-btn {
-            position: fixed;
-            top: 70px;
-            right: 20px;
-            padding: 8px 15px;
-            background: rgba(255, 71, 87, 0.8);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 1000;
-            font-size: 0.9rem;
-            display: none;
-        }
-        
-        .logout-btn:hover {
-            background: rgba(255, 71, 87, 1);
-            transform: scale(1.05);
-        }
-        
-        .container {
-            max-width: 800px;
-            width: 100%;
+
+        /* Mystery Box Section */
+        .hero {
             text-align: center;
+            padding: 40px 0;
         }
-        
-        .header {
-            margin-bottom: 40px;
-        }
-        
-        .logo {
+
+        .hero h1 {
             font-size: 3rem;
             margin-bottom: 10px;
-            color: #ffd700;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            background: linear-gradient(to right, var(--warning), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
-        
-        .tagline {
+
+        .hero p {
             font-size: 1.2rem;
-            color: #aaa;
-            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
-        
-        /* Mystery Box Container */
-        .box-container {
-            perspective: 1000px;
-            margin: 40px auto;
-            width: 300px;
-            height: 300px;
+
+        .boxes-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0;
         }
-        
+
         .mystery-box {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
+            width: 200px;
+            height: 250px;
+            perspective: 1000px;
             cursor: pointer;
         }
-        
+
+        .box-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .mystery-box:hover .box-inner {
+            transform: rotateY(20deg) translateY(-10px);
+        }
+
         .box-front, .box-back {
             position: absolute;
             width: 100%;
@@ -122,156 +159,115 @@
             border-radius: 15px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .box-front {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .box-back {
+            background: linear-gradient(135deg, var(--warning), #e17055);
+            transform: rotateY(180deg);
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .box-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .box-front h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .box-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
-        
-        .box-front {
-            background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
-            z-index: 2;
-        }
-        
-        .box-back {
-            background: linear-gradient(45deg, #ff416c 0%, #ff4b2b 100%);
-            transform: rotateY(180deg);
-            color: white;
-        }
-        
-        .box-icon {
-            font-size: 5rem;
-            margin-bottom: 20px;
-        }
-        
-        .box-text {
-            font-size: 1.5rem;
             font-weight: bold;
         }
-        
-        .prize-display {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #ffd700;
-            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
-        }
-        
+
         /* Form Section */
         .form-section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
             padding: 30px;
-            margin: 30px auto;
             max-width: 500px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto 40px;
+            box-shadow: var(--box-shadow);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: var(--warning);
+        }
+
         .form-group {
             margin-bottom: 20px;
-            text-align: left;
         }
-        
-        label {
+
+        .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: #ffd700;
-            font-weight: 600;
+            font-weight: 500;
         }
-        
-        input, textarea {
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-submit {
             width: 100%;
             padding: 15px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             border: none;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-            color: #333;
-        }
-        
-        input:focus, textarea:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
-        }
-        
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .btn {
-            background: linear-gradient(45deg, #ffd700, #ff8c00);
-            color: #000;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             margin-top: 10px;
-            width: 100%;
         }
-        
-        .btn:hover {
+
+        .btn-submit:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
         }
-        
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .btn-logout {
-            background: linear-gradient(45deg, #ff4757, #ff3838);
-            color: white;
-            padding: 10px 20px;
-            margin-top: 20px;
-        }
-        
-        .btn-small {
-            padding: 8px 15px;
-            font-size: 0.9rem;
-            width: auto;
-        }
-        
-        .btn-success {
-            background: linear-gradient(45deg, #2ed573, #1dd1a1);
-            color: white;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(45deg, #3742fa, #5352ed);
-            color: white;
-        }
-        
-        .btn-warning {
-            background: linear-gradient(45deg, #ff9f43, #ff9f1a);
-            color: white;
-        }
-        
-        .message {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            display: none;
-        }
-        
-        .message.success {
-            background: rgba(0, 255, 0, 0.2);
-            border: 1px solid #0f0;
-            display: block;
-        }
-        
-        .message.error {
-            background: rgba(255, 0, 0, 0.2);
-            border: 1px solid #f00;
-            display: block;
-        }
-        
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -281,1660 +277,788 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
+            z-index: 1000;
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
-        
+
         .modal.active {
             display: flex;
         }
-        
+
         .modal-content {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border-radius: 15px;
-            padding: 40px;
-            max-width: 800px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 2px solid #ffd700;
-            position: relative;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .modal h2 {
-            color: #ffd700;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .tab {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            flex: 1;
-            min-width: 120px;
-            text-align: center;
-        }
-        
-        .tab.active {
-            background: #ffd700;
-            color: #000;
-            font-weight: bold;
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .code-management {
-            margin-top: 20px;
-        }
-        
-        .code-filter {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .filter-input {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .filter-select {
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            border: none;
-            border-radius: 5px;
-            min-width: 150px;
-        }
-        
-        .code-list-container {
-            max-height: 400px;
-            overflow-y: auto;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .code-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .code-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            transition: all 0.3s;
-        }
-        
-        .code-item.used {
-            background: rgba(255, 71, 87, 0.2);
-        }
-        
-        .code-item.available {
-            background: rgba(46, 213, 115, 0.2);
-        }
-        
-        .code-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .code-value {
-            font-family: monospace;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #ffd700;
-        }
-        
-        .code-status {
-            font-size: 0.8rem;
-            padding: 3px 8px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .code-status.used {
-            background: #ff4757;
-            color: white;
-        }
-        
-        .code-status.available {
-            background: #2ed573;
-            color: white;
-        }
-        
-        .code-prize {
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 5px;
-        }
-        
-        .prize-icon-small {
-            font-size: 1rem;
-        }
-        
-        .code-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-        
-        /* Hadiah Display */
-        .prize-result {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 3000;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .prize-result.active {
-            display: flex;
-            animation: fadeIn 0.5s;
-        }
-        
-        .prize-result-content {
-            text-align: center;
-            max-width: 600px;
-            padding: 40px;
-            animation: scaleIn 0.5s;
-        }
-        
-        .prize-result-icon {
-            font-size: 8rem;
-            margin-bottom: 30px;
-            animation: celebrate 1s ease-in-out infinite;
-        }
-        
-        .prize-result-text {
-            font-size: 3rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 0 20px;
-        }
-        
-        .prize-result-code {
-            font-size: 1.5rem;
-            color: #aaa;
-            margin-bottom: 30px;
-        }
-        
-        .close-prize {
-            background: #ffd700;
-            color: #000;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .close-prize:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .box-container {
-                width: 250px;
-                height: 250px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .form-section {
-                padding: 20px;
-            }
-            
-            .prize-result-text {
-                font-size: 2rem;
-            }
-            
-            .prize-result-icon {
-                font-size: 6rem;
-            }
-            
-            .code-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-            
-            .modal-content {
-                padding: 20px;
-            }
-        }
-        
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes scaleIn {
-            from { 
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to { 
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes celebrate {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        
-        @keyframes openBox {
-            0% { transform: rotateY(0); }
-            100% { transform: rotateY(180deg); }
-        }
-        
-        .box-opening {
-            animation: openBox 1s forwards;
-        }
-        
-        @keyframes confetti {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(1000px) rotate(720deg); opacity: 0; }
-        }
-        
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #ffd700;
-            animation: confetti 3s linear forwards;
-            z-index: 3001;
-        }
-        
-        /* Edit Modal */
-        .edit-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 4000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .edit-modal.active {
-            display: flex;
-        }
-        
-        .edit-modal-content {
-            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
-            border-radius: 15px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 20px;
             padding: 30px;
             max-width: 500px;
             width: 100%;
-            border: 2px solid #ffd700;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: modalAppear 0.3s ease-out;
         }
-        
-        .edit-modal h3 {
-            color: #ffd700;
-            margin-bottom: 20px;
-            text-align: center;
+
+        @keyframes modalAppear {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .edit-form {
+
+        .modal-header {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .edit-form input, .edit-form select, .edit-form textarea {
-            padding: 12px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            border: none;
-            font-size: 1rem;
-            width: 100%;
-        }
-        
-        .edit-form textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-        
-        /* Loading Animation */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 3000;
-            display: none;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
         }
-        
-        .loading-screen.active {
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--warning);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: white;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 500;
+            box-shadow: var(--box-shadow);
+            z-index: 999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification.success {
+            background: var(--success);
+        }
+
+        .notification.error {
+            background: var(--danger);
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .admin-header {
             display: flex;
-        }
-        
-        .loading-spinner {
-            width: 80px;
-            height: 80px;
-            border: 8px solid #333;
-            border-top: 8px solid #ffd700;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 30px;
         }
-        
-        .loading-text {
-            font-size: 1.5rem;
-            color: #ffd700;
-            animation: pulse 1.5s infinite;
+
+        .admin-title {
+            font-size: 2rem;
+            color: var(--warning);
         }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Random Code Generator */
-        .random-generator {
-            margin-top: 20px;
-        }
-        
-        .generator-settings {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .setting-group {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-        }
-        
-        .setting-group h4 {
-            color: #ffd700;
-            margin-bottom: 10px;
-            font-size: 1rem;
-        }
-        
-        .format-options {
+
+        .tabs {
             display: flex;
-            flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
         }
-        
-        .format-option {
-            flex: 1;
-            min-width: 120px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+
+        .tab {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            border-radius: 8px;
+            color: white;
             cursor: pointer;
-            text-align: center;
             transition: all 0.3s;
-            border: 2px solid transparent;
         }
-        
-        .format-option:hover {
-            background: rgba(255, 255, 255, 0.2);
+
+        .tab.active {
+            background: var(--primary);
+            font-weight: 600;
         }
-        
-        .format-option.active {
-            border-color: #ffd700;
-            background: rgba(255, 215, 0, 0.1);
-        }
-        
-        .format-preview {
-            font-family: monospace;
-            font-size: 0.9rem;
-            color: #aaa;
-            margin-top: 5px;
-        }
-        
-        .charset-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        
-        .charset-option {
-            padding: 8px;
+
+        .tab:hover:not(.active) {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s;
-            border: 2px solid transparent;
         }
-        
-        .charset-option:hover {
-            background: rgba(255, 255, 255, 0.2);
+
+        .tab-content {
+            display: none;
         }
-        
-        .charset-option.active {
-            border-color: #ffd700;
-            background: rgba(255, 215, 0, 0.1);
+
+        .tab-content.active {
+            display: block;
         }
-        
-        .code-preview {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
+
+        .codes-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
+            overflow: hidden;
         }
-        
-        .preview-title {
-            color: #ffd700;
-            margin-bottom: 10px;
+
+        .codes-table th, .codes-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .codes-table th {
+            background: rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+        }
+
+        .codes-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .status-used {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        .status-available {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-edit {
+            background: var(--warning);
+            color: var(--dark);
+        }
+
+        .btn-delete {
+            background: var(--danger);
+            color: white;
+            margin-left: 5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
         }
-        
-        .preview-code {
-            font-family: monospace;
-            font-size: 1.5rem;
-            color: #2ed573;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        
-        .preview-note {
-            font-size: 0.8rem;
-            color: #aaa;
-            margin-top: 5px;
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .boxes-container {
+                gap: 15px;
+            }
+            
+            .mystery-box {
+                width: 160px;
+                height: 200px;
+            }
+            
+            .box-icon {
+                font-size: 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Admin Access Dot -->
-    <div class="admin-icon" id="adminIcon" title="Admin Panel">
-        <i class="fas fa-cog"></i>
-    </div>
-    
-    <!-- Logout Button -->
-    <button class="logout-btn" id="logoutBtn" title="Logout Admin">
-        <i class="fas fa-sign-out-alt"></i> Logout
-    </button>
-
-    <!-- Main Content -->
     <div class="container">
-        <div class="header">
+        <!-- Header -->
+        <header>
             <div class="logo">
-                <i class="fas fa-gift"></i>
+                <i class="fas fa-box-open"></i>
+                <span>MysteryBox.id</span>
             </div>
-            <h1>MYSTERY BOX</h1>
-            <p class="tagline">Masukkan kode, buka kejutan spesial!</p>
-        </div>
-
-        <!-- Mystery Box -->
-        <div class="box-container">
-            <div class="mystery-box" id="mysteryBox">
-                <div class="box-front">
-                    <div class="box-icon">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                    <div class="box-text">
-                        MYSTERY BOX
-                    </div>
-                    <div class="box-text" style="font-size: 1rem; margin-top: 10px;">
-                        Masukkan kode lalu klik box
-                    </div>
-                </div>
-                <div class="box-back">
-                    <div class="box-icon">
-                        <i class="fas fa-question"></i>
-                    </div>
-                    <div class="prize-display">
-                        ???
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Form Section -->
-        <div class="form-section">
-            <form id="claimForm">
-                <div class="form-group">
-                    <label for="codeInput"><i class="fas fa-key"></i> Kode Mystery Box</label>
-                    <input type="text" id="codeInput" placeholder="Masukkan kode random di sini..." required>
-                </div>
-                <button type="button" class="btn" id="claimBtn" disabled>
-                    <i class="fas fa-unlock-alt"></i> Buka Mystery Box
+            <div class="admin-access">
+                <div class="admin-dot"></div>
+                <button class="btn-admin" id="adminBtn">
+                    <i class="fas fa-user-shield"></i>
+                    <span>Admin Access</span>
                 </button>
-            </form>
+            </div>
+        </header>
+
+        <!-- Main Content (User Interface) -->
+        <main id="mainContent">
+            <section class="hero">
+                <h1>Buka Kejutanmu!</h1>
+                <p>Dapatkan hadiah misterius dengan membuka salah satu kotak di bawah ini. Masukkan nama dan kode yang telah diberikan untuk membuka kejutan!</p>
+                
+                <div class="boxes-container">
+                    <!-- Mystery Box 1 -->
+                    <div class="mystery-box">
+                        <div class="box-inner">
+                            <div class="box-front">
+                                <div class="box-number">1</div>
+                                <div class="box-icon">
+                                    <i class="fas fa-gift"></i>
+                                </div>
+                                <h3>Kotak Misteri</h3>
+                                <p>Klik untuk melihat detail</p>
+                            </div>
+                            <div class="box-back">
+                                <div class="box-icon">
+                                    <i class="fas fa-question"></i>
+                                </div>
+                                <h3>???</h3>
+                                <p>Hadiah Misterius</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mystery Box 2 -->
+                    <div class="mystery-box">
+                        <div class="box-inner">
+                            <div class="box-front">
+                                <div class="box-number">2</div>
+                                <div class="box-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <h3>Kotak Kejutan</h3>
+                                <p>Klik untuk melihat detail</p>
+                            </div>
+                            <div class="box-back">
+                                <div class="box-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <h3>???</h3>
+                                <p>Kejutan Spesial</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mystery Box 3 -->
+                    <div class="mystery-box">
+                        <div class="box-inner">
+                            <div class="box-front">
+                                <div class="box-number">3</div>
+                                <div class="box-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h3>Kotak Eksklusif</h3>
+                                <p>Klik untuk melihat detail</p>
+                            </div>
+                            <div class="box-back">
+                                <div class="box-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <h3>???</h3>
+                                <p>Hadiah Eksklusif</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Form Input Kode -->
+            <section class="form-section">
+                <h2 class="form-title">Masukkan Kode Mystery Box</h2>
+                <form id="codeForm">
+                    <div class="form-group">
+                        <label for="userName">Nama Anda</label>
+                        <input type="text" id="userName" class="form-control" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="code">Kode Mystery Box</label>
+                        <input type="text" id="code" class="form-control" placeholder="Masukkan kode yang diberikan" required>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-unlock-alt"></i> Buka Mystery Box
+                    </button>
+                </form>
+            </section>
+        </main>
+
+        <!-- Admin Panel (Hidden by default) -->
+        <section class="admin-panel" id="adminPanel">
+            <div class="admin-header">
+                <h2 class="admin-title">Admin Panel</h2>
+                <button class="btn-admin" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
             
-            <div class="message" id="message"></div>
-        </div>
-    </div>
-
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-spinner"></div>
-        <div class="loading-text">Membuka Mystery Box...</div>
-    </div>
-
-    <!-- Prize Result Display -->
-    <div class="prize-result" id="prizeResult">
-        <div class="prize-result-content">
-            <div class="prize-result-icon" id="prizeResultIcon">
-                <i class="fas fa-gift"></i>
+            <div class="tabs">
+                <button class="tab active" data-tab="codes">Kelola Kode</button>
+                <button class="tab" data-tab="create">Buat Kode Baru</button>
+                <button class="tab" data-tab="rewards">Hadiah & Pengaturan</button>
             </div>
-            <div class="prize-result-text" id="prizeResultText">
-                Hadiah Anda
+            
+            <!-- Kelola Kode Tab -->
+            <div class="tab-content active" id="codesTab">
+                <h3>Daftar Kode Mystery Box</h3>
+                <table class="codes-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Kode</th>
+                            <th>Hadiah</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="codesTableBody">
+                        <!-- Data kode akan dimuat dari JavaScript -->
+                    </tbody>
+                </table>
             </div>
-            <div class="prize-result-code" id="prizeResultCode">
-                Kode: X9K4-L8P3
+            
+            <!-- Buat Kode Baru Tab -->
+            <div class="tab-content" id="createTab">
+                <h3>Buat Kode Mystery Box Baru</h3>
+                <form id="createCodeForm">
+                    <div class="form-group">
+                        <label for="newName">Nama Penerima</label>
+                        <input type="text" id="newName" class="form-control" placeholder="Masukkan nama penerima" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newCode">Kode (6-12 karakter)</label>
+                        <input type="text" id="newCode" class="form-control" placeholder="Masukkan kode unik" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reward">Hadiah</label>
+                        <input type="text" id="reward" class="form-control" placeholder="Masukkan hadiah untuk kode ini" required>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-plus-circle"></i> Buat Kode Baru
+                    </button>
+                </form>
             </div>
-            <button class="close-prize" id="closePrizeBtn">
-                <i class="fas fa-times"></i> Tutup
-            </button>
-        </div>
-    </div>
-
-    <!-- Edit Code Modal -->
-    <div class="edit-modal" id="editCodeModal">
-        <div class="edit-modal-content">
-            <button class="close-modal" id="closeEditCodeModal">&times;</button>
-            <h3><i class="fas fa-edit"></i> Edit Hadiah Kode</h3>
-            <div class="edit-form">
-                <div>
-                    <label for="editCodeValue">Kode:</label>
-                    <input type="text" id="editCodeValue" readonly>
+            
+            <!-- Hadiah & Pengaturan Tab -->
+            <div class="tab-content" id="rewardsTab">
+                <h3>Pengaturan Hadiah</h3>
+                <div class="form-group">
+                    <label for="rewardList">Daftar Hadiah yang Tersedia</label>
+                    <textarea id="rewardList" class="form-control" rows="6" placeholder="Masukkan daftar hadiah yang tersedia (pisahkan dengan baris baru)">Voucher Belanja Rp 100.000
+Headphone Wireless
+Smartwatch
+Voucher Game Rp 50.000
+Power Bank 10000mAh
+Tas Laptop
+Mouse Gaming
+Keyboard Mechanical
+Speaker Bluetooth
+Payung Premium</textarea>
                 </div>
-                <div>
-                    <label for="editCodePrizeSelect">Pilih Hadiah:</label>
-                    <select id="editCodePrizeSelect">
-                        <!-- Options will be loaded by JavaScript -->
-                    </select>
-                </div>
-                <button class="btn btn-success" id="saveCodeEditBtn">
-                    <i class="fas fa-save"></i> Simpan Perubahan
+                <button class="btn-submit" id="saveRewards">
+                    <i class="fas fa-save"></i> Simpan Daftar Hadiah
                 </button>
             </div>
-        </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2023 MysteryBox.id - Semua hak dilindungi undang-undang</p>
+            <p>Website ini dibuat untuk keperluan hiburan dan hadiah misteri</p>
+        </footer>
     </div>
 
-    <!-- Admin Login Modal -->
+    <!-- Modal for Login -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
-            <button class="close-modal" id="closeLoginModal">&times;</button>
-            <h2><i class="fas fa-lock"></i> Admin Login</h2>
-            <form id="loginForm" class="login-form">
+            <div class="modal-header">
+                <h3 class="modal-title">Login Admin</h3>
+                <button class="close-modal" id="closeLoginModal">&times;</button>
+            </div>
+            <form id="loginForm">
                 <div class="form-group">
-                    <label for="adminUsername">Username</label>
-                    <input type="text" id="adminUsername" placeholder="Masukkan username" required>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-control" placeholder="Masukkan username" required>
                 </div>
                 <div class="form-group">
-                    <label for="adminPassword">Password</label>
-                    <input type="password" id="adminPassword" placeholder="Masukkan password" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Masukkan password" required>
                 </div>
-                <button type="submit" class="btn">
+                <button type="submit" class="btn-submit">
                     <i class="fas fa-sign-in-alt"></i> Login
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Admin Panel Modal -->
-    <div class="modal" id="adminPanelModal">
+    <!-- Modal for Result -->
+    <div class="modal" id="resultModal">
         <div class="modal-content">
-            <button class="close-modal" id="closeAdminPanelModal">&times;</button>
-            <h2><i class="fas fa-cogs"></i> Admin Panel</h2>
-            
-            <button class="btn btn-logout" id="adminLogoutBtn">
-                <i class="fas fa-sign-out-alt"></i> Logout Admin
-            </button>
-            
-            <div class="tabs">
-                <button class="tab active" data-tab="codes">Kelola Kode</button>
-                <button class="tab" data-tab="prizes">Kelola Hadiah</button>
-                <button class="tab" data-tab="history">Riwayat</button>
+            <div class="modal-header">
+                <h3 class="modal-title" id="resultTitle">Hasil Mystery Box</h3>
+                <button class="close-modal" id="closeResultModal">&times;</button>
             </div>
-            
-            <!-- Codes Management -->
-            <div class="tab-content active" id="codesTab">
-                <h3>Generate Kode Random</h3>
-                <p style="color: #aaa; margin-bottom: 20px;">
-                    <i class="fas fa-random"></i> Buat kode mystery box yang benar-benar acak dan unik
-                </p>
-                
-                <div class="code-filter">
-                    <input type="text" id="codeSearch" placeholder="Cari kode..." class="filter-input">
-                    <select id="statusFilter" class="filter-select">
-                        <option value="">Semua Status</option>
-                        <option value="available">Tersedia</option>
-                        <option value="used">Terpakai</option>
-                    </select>
-                    <button class="btn btn-small" id="resetFilterBtn">
-                        <i class="fas fa-redo"></i> Reset Filter
-                    </button>
-                </div>
-                
-                <div class="code-list-container" id="codeListContainer">
-                    <div class="code-grid" id="codeGrid">
-                        <!-- Codes will be loaded here -->
-                    </div>
-                </div>
-                
-                <div class="random-generator">
-                    <div class="generator-settings">
-                        <div class="setting-group">
-                            <h4><i class="fas fa-sliders-h"></i> Basic Settings</h4>
-                            <div style="margin-bottom: 15px;">
-                                <label for="codeCount">Jumlah Kode:</label>
-                                <input type="number" id="codeCount" value="10" min="1" max="100" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.9); color: #333; border: none; border-radius: 5px; margin-top: 5px;">
-                            </div>
-                            <div>
-                                <label for="codePrize">Hadiah:</label>
-                                <select id="codePrize" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.9); color: #333; border: none; border-radius: 5px; margin-top: 5px;">
-                                    <!-- Options will be loaded by JavaScript -->
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="setting-group">
-                            <h4><i class="fas fa-bolt"></i> Format Kode</h4>
-                            <div class="format-options">
-                                <div class="format-option active" data-format="XXXX-XXXX">
-                                    <div>XXXX-XXXX</div>
-                                    <div class="format-preview">A1B2-C3D4</div>
-                                </div>
-                                <div class="format-option" data-format="XXX-XXX">
-                                    <div>XXX-XXX</div>
-                                    <div class="format-preview">X7G-9H2</div>
-                                </div>
-                                <div class="format-option" data-format="XXXXXX">
-                                    <div>XXXXXX</div>
-                                    <div class="format-preview">K8M3N5</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="generator-settings">
-                        <div class="setting-group">
-                            <h4><i class="fas fa-font"></i> Jenis Karakter</h4>
-                            <div class="charset-options">
-                                <div class="charset-option active" data-charset="alphanumeric">
-                                    Huruf + Angka
-                                </div>
-                                <div class="charset-option" data-charset="uppercase">
-                                    Huruf Besar
-                                </div>
-                                <div class="charset-option" data-charset="mixed">
-                                    Campuran Lengkap
-                                </div>
-                                <div class="charset-option" data-charset="numbers">
-                                    Angka Saja
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="setting-group">
-                            <h4><i class="fas fa-tag"></i> Prefix (Opsional)</h4>
-                            <input type="text" id="codePrefix" placeholder="Contoh: BOX-" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.9); color: #333; border: none; border-radius: 5px;">
-                            <p style="font-size: 0.8rem; color: #aaa; margin-top: 5px;">
-                                Kosongkan jika tidak ingin pakai prefix
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="code-preview">
-                        <div class="preview-title">Preview Kode:</div>
-                        <div class="preview-code" id="codePreview">A1B2-C3D4</div>
-                        <div class="preview-note">Klik "Generate" untuk membuat kode baru</div>
-                    </div>
-                    
-                    <button class="btn" id="generateCodesBtn">
-                        <i class="fas fa-random"></i> Generate Kode Random
-                    </button>
-                </div>
-                
-                <div style="margin-top: 30px; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 10px;">
-                    <h3>Setel Hadiah Massal</h3>
-                    <p style="margin-bottom: 10px; color: #aaa;">Setel hadiah yang sama untuk semua kode:</p>
-                    <select id="massPrizeSelect" style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.9); color: #333; border: none; border-radius: 5px;">
-                        <!-- Prize options will be loaded here -->
-                    </select>
-                    <button class="btn btn-primary" id="massSetPrizeBtn">
-                        <i class="fas fa-bolt"></i> Setel Semua ke Hadiah Ini
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Prizes Management -->
-            <div class="tab-content" id="prizesTab">
-                <h3>Daftar Hadiah</h3>
-                <div class="code-list-container" id="prizeList">
-                    <!-- Prizes will be loaded here -->
-                </div>
-                
-                <div class="add-form" style="padding: 20px; background: rgba(0,0,0,0.2); border-radius: 10px; margin-top: 20px;">
-                    <h3>Tambah Hadiah Baru</h3>
-                    <input type="text" id="newPrizeName" placeholder="Nama Hadiah" required style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.9); color: #333; border: none; border-radius: 5px;">
-                    <input type="text" id="newPrizeIcon" placeholder="Icon FontAwesome (contoh: fas fa-gem)" required style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.9); color: #333; border: none; border-radius: 5px;">
-                    <input type="color" id="newPrizeColor" value="#ffd700" style="width: 100%; height: 40px; padding: 5px; margin-bottom: 10px;">
-                    <button class="btn" id="addPrizeBtn">
-                        <i class="fas fa-plus"></i> Tambah Hadiah
-                    </button>
-                </div>
-            </div>
-            
-            <!-- History -->
-            <div class="tab-content" id="historyTab">
-                <h3>Riwayat Klaim</h3>
-                <div class="code-list-container" id="historyList">
-                    <!-- History will be loaded here -->
-                </div>
-                <button class="btn" id="clearHistoryBtn" style="background: #ff4757; margin-top: 20px;">
-                    <i class="fas fa-trash"></i> Hapus Semua Riwayat
-                </button>
+            <div id="resultContent">
+                <!-- Hasil akan dimuat dari JavaScript -->
             </div>
         </div>
     </div>
 
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
     <script>
-        // Inisialisasi Data
-        let prizes = [
-            { id: 1, name: "ZONK", icon: "fas fa-times-circle", color: "#ff4757" },
-            { id: 2, name: "SALDO E-WALLET Rp 50.000", icon: "fas fa-wallet", color: "#2ed573" },
-            { id: 3, name: "PULSA Rp 25.000", icon: "fas fa-mobile-alt", color: "#3742fa" },
-            { id: 4, name: "VOUCHER BELANJA Rp 100.000", icon: "fas fa-shopping-bag", color: "#ffa502" },
-            { id: 5, name: "ITEM GAME LEGENDARY", icon: "fas fa-gamepad", color: "#9b59b6" }
+        // Data awal kode mystery box
+        let mysteryCodes = [
+            { id: 1, name: "Budi Santoso", code: "MBX2023A", reward: "Voucher Belanja Rp 100.000", used: false },
+            { id: 2, name: "Sari Dewi", code: "MBX2023B", reward: "Headphone Wireless", used: false },
+            { id: 3, name: "Ahmad Fauzi", code: "MBX2023C", reward: "Smartwatch", used: true },
+            { id: 4, name: "Rina Wijaya", code: "MBX2023D", reward: "Voucher Game Rp 50.000", used: false },
+            { id: 5, name: "Doni Pratama", code: "MBX2023E", reward: "Power Bank 10000mAh", used: false }
         ];
-        
-        let codes = [
-            // Kode random yang benar-benar acak
-            { code: "X9K4-L8P3", prizeId: 2, used: false },
-            { code: "G7H2-M5N9", prizeId: 1, used: false },
-            { code: "A3B8-C5D2", prizeId: 3, used: false },
-            { code: "R6S1-T4U7", prizeId: 4, used: false },
-            { code: "V8W3-X2Y5", prizeId: 5, used: false },
-            { code: "Z1Q9-P6R4", prizeId: 1, used: false },
-            { code: "K7J2-H3G8", prizeId: 2, used: false },
-            { code: "F5D8-S2A9", prizeId: 3, used: false },
-            { code: "M4N7-B6V1", prizeId: 1, used: false },
-            { code: "E9T3-L5P8", prizeId: 4, used: false }
+
+        // Daftar hadiah yang tersedia
+        let availableRewards = [
+            "Voucher Belanja Rp 100.000",
+            "Headphone Wireless",
+            "Smartwatch",
+            "Voucher Game Rp 50.000",
+            "Power Bank 10000mAh",
+            "Tas Laptop",
+            "Mouse Gaming",
+            "Keyboard Mechanical",
+            "Speaker Bluetooth",
+            "Payung Premium"
         ];
-        
-        let claimHistory = [];
-        let isAdminLoggedIn = false;
-        let currentEditCode = null;
-        let selectedFormat = "XXXX-XXXX";
-        let selectedCharset = "alphanumeric";
-        
+
         // DOM Elements
-        const adminIcon = document.getElementById('adminIcon');
-        const logoutBtn = document.getElementById('logoutBtn');
+        const mainContent = document.getElementById('mainContent');
+        const adminPanel = document.getElementById('adminPanel');
+        const adminBtn = document.getElementById('adminBtn');
         const loginModal = document.getElementById('loginModal');
-        const adminPanelModal = document.getElementById('adminPanelModal');
-        const editCodeModal = document.getElementById('editCodeModal');
-        const loadingScreen = document.getElementById('loadingScreen');
-        
-        // Close buttons
         const closeLoginModal = document.getElementById('closeLoginModal');
-        const closeAdminPanelModal = document.getElementById('closeAdminPanelModal');
-        const closeEditCodeModal = document.getElementById('closeEditCodeModal');
-        
-        // Forms
         const loginForm = document.getElementById('loginForm');
-        const mysteryBox = document.getElementById('mysteryBox');
-        const claimForm = document.getElementById('claimForm');
-        const codeInput = document.getElementById('codeInput');
-        const claimBtn = document.getElementById('claimBtn');
-        const message = document.getElementById('message');
-        
-        // Prize result
-        const prizeResult = document.getElementById('prizeResult');
-        const prizeResultIcon = document.getElementById('prizeResultIcon');
-        const prizeResultText = document.getElementById('prizeResultText');
-        const prizeResultCode = document.getElementById('prizeResultCode');
-        const closePrizeBtn = document.getElementById('closePrizeBtn');
-        
-        // Edit modal
-        const saveCodeEditBtn = document.getElementById('saveCodeEditBtn');
-        const editCodeValue = document.getElementById('editCodeValue');
-        const editCodePrizeSelect = document.getElementById('editCodePrizeSelect');
-        
-        // Tab Elements
+        const logoutBtn = document.getElementById('logoutBtn');
+        const codeForm = document.getElementById('codeForm');
+        const resultModal = document.getElementById('resultModal');
+        const closeResultModal = document.getElementById('closeResultModal');
+        const notification = document.getElementById('notification');
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
-        
-        // Admin Panel Elements
-        const prizeList = document.getElementById('prizeList');
-        const codeGrid = document.getElementById('codeGrid');
-        const historyList = document.getElementById('historyList');
-        const addPrizeBtn = document.getElementById('addPrizeBtn');
-        const clearHistoryBtn = document.getElementById('clearHistoryBtn');
-        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-        
-        // Code generation elements
-        const formatOptions = document.querySelectorAll('.format-option');
-        const charsetOptions = document.querySelectorAll('.charset-option');
-        const codePreview = document.getElementById('codePreview');
-        const generateCodesBtn = document.getElementById('generateCodesBtn');
-        
-        // Inputs
-        const codeCount = document.getElementById('codeCount');
-        const codePrize = document.getElementById('codePrize');
-        const codePrefix = document.getElementById('codePrefix');
-        
-        // Filters
-        const codeSearch = document.getElementById('codeSearch');
-        const statusFilter = document.getElementById('statusFilter');
-        const resetFilterBtn = document.getElementById('resetFilterBtn');
-        
-        // Mass set
-        const massPrizeSelect = document.getElementById('massPrizeSelect');
-        const massSetPrizeBtn = document.getElementById('massSetPrizeBtn');
-        
-        // Admin Credentials
+        const codesTableBody = document.getElementById('codesTableBody');
+        const createCodeForm = document.getElementById('createCodeForm');
+        const rewardList = document.getElementById('rewardList');
+        const saveRewardsBtn = document.getElementById('saveRewards');
+
+        // Admin credentials
         const ADMIN_USERNAME = "admingg";
         const ADMIN_PASSWORD = "admingg123";
-        
-        // Initialize
+
+        // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            // Load data from localStorage jika ada
-            loadFromLocalStorage();
+            // Load available rewards to textarea
+            rewardList.value = availableRewards.join('\n');
             
-            // Update UI
-            updatePrizeSelects();
-            updateCodeGrid();
-            updatePrizeList();
-            updateCodePreview();
+            // Load codes to table
+            loadCodesToTable();
             
-            // Event Listeners
-            adminIcon.addEventListener('click', openAdminLogin);
-            logoutBtn.addEventListener('click', logoutAdmin);
-            adminLogoutBtn.addEventListener('click', logoutAdmin);
-            
-            // Close modals
-            closeLoginModal.addEventListener('click', () => loginModal.classList.remove('active'));
-            closeAdminPanelModal.addEventListener('click', () => adminPanelModal.classList.remove('active'));
-            closeEditCodeModal.addEventListener('click', () => editCodeModal.classList.remove('active'));
-            
-            closePrizeBtn.addEventListener('click', () => {
-                prizeResult.classList.remove('active');
-                resetMysteryBox();
-            });
-            
-            // Save Edit
-            saveCodeEditBtn.addEventListener('click', saveCodeEdit);
-            
-            // Login Form
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const username = document.getElementById('adminUsername').value;
-                const password = document.getElementById('adminPassword').value;
-                
-                if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-                    isAdminLoggedIn = true;
-                    loginModal.classList.remove('active');
-                    adminPanelModal.classList.add('active');
-                    loadAdminPanel();
-                    updateLoginUI();
-                    loginForm.reset();
-                } else {
-                    alert("Username atau password salah!");
-                }
-            });
-            
-            // Mystery Box Click
-            mysteryBox.addEventListener('click', function() {
-                openMysteryBox();
-            });
-            
-            // Claim Button Click
-            claimBtn.addEventListener('click', function() {
-                openMysteryBox();
-            });
-            
-            // Form validation
-            codeInput.addEventListener('input', function() {
-                claimBtn.disabled = !this.value.trim();
-            });
-            
-            // Enter key untuk membuka box
-            codeInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' && this.value.trim()) {
-                    e.preventDefault();
-                    openMysteryBox();
-                }
-            });
-            
-            // Tab switching
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    
-                    // Update active tab
-                    tabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Show active tab content
-                    tabContents.forEach(content => {
-                        content.classList.remove('active');
-                        if (content.id === tabId + 'Tab') {
-                            content.classList.add('active');
-                        }
-                    });
+            // Add click animation to mystery boxes
+            const mysteryBoxes = document.querySelectorAll('.mystery-box');
+            mysteryBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    const inner = this.querySelector('.box-inner');
+                    inner.style.transform = inner.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
                 });
             });
-            
-            // Format selection
-            formatOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    selectedFormat = this.getAttribute('data-format');
-                    
-                    // Update active option
-                    formatOptions.forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update preview
-                    updateCodePreview();
-                });
-            });
-            
-            // Charset selection
-            charsetOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    selectedCharset = this.getAttribute('data-charset');
-                    
-                    // Update active option
-                    charsetOptions.forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update preview
-                    updateCodePreview();
-                });
-            });
-            
-            // Update preview when prefix changes
-            codePrefix.addEventListener('input', updateCodePreview);
-            
-            // Generate codes
-            generateCodesBtn.addEventListener('click', generateRandomCodes);
-            
-            // Add Prize
-            addPrizeBtn.addEventListener('click', function() {
-                const name = document.getElementById('newPrizeName').value.trim();
-                const icon = document.getElementById('newPrizeIcon').value.trim() || "fas fa-gift";
-                const color = document.getElementById('newPrizeColor').value;
-                
-                if (!name) {
-                    alert("Nama hadiah harus diisi!");
-                    return;
-                }
-                
-                const newId = prizes.length > 0 ? Math.max(...prizes.map(p => p.id)) + 1 : 1;
-                prizes.push({ id: newId, name, icon, color });
-                
-                // Update UI
-                updatePrizeList();
-                updatePrizeSelects();
-                
-                // Reset form
-                document.getElementById('newPrizeName').value = "";
-                document.getElementById('newPrizeIcon').value = "";
-                document.getElementById('newPrizeColor').value = "#ffd700";
-                
-                // Simpan ke localStorage
-                saveToLocalStorage();
-                
-                alert("Hadiah berhasil ditambahkan!");
-            });
-            
-            // Mass Set Prize
-            massSetPrizeBtn.addEventListener('click', function() {
-                const prizeId = parseInt(massPrizeSelect.value);
-                
-                if (!prizeId) {
-                    alert("Pilih hadiah terlebih dahulu!");
-                    return;
-                }
-                
-                if (confirm("Apakah Anda yakin ingin mengatur SEMUA kode ke hadiah ini?")) {
-                    // Update semua kode
-                    codes.forEach(code => {
-                        code.prizeId = prizeId;
-                    });
-                    
-                    // Update UI
-                    updateCodeGrid();
-                    
-                    // Simpan ke localStorage
-                    saveToLocalStorage();
-                    
-                    alert("Semua kode berhasil diatur ke hadiah yang dipilih!");
-                }
-            });
-            
-            // Filter Events
-            codeSearch.addEventListener('input', updateCodeGrid);
-            statusFilter.addEventListener('change', updateCodeGrid);
-            resetFilterBtn.addEventListener('click', function() {
-                codeSearch.value = "";
-                statusFilter.value = "";
-                updateCodeGrid();
-            });
-            
-            // Clear History
-            clearHistoryBtn.addEventListener('click', function() {
-                if (confirm("Apakah Anda yakin ingin menghapus semua riwayat?")) {
-                    claimHistory = [];
-                    updateHistoryList();
-                    saveToLocalStorage();
-                    alert("Riwayat berhasil dihapus!");
-                }
-            });
-            
-            // Close modal ketika klik di luar
-            window.addEventListener('click', function(e) {
-                if (e.target === loginModal) loginModal.classList.remove('active');
-                if (e.target === adminPanelModal) adminPanelModal.classList.remove('active');
-                if (e.target === editCodeModal) editCodeModal.classList.remove('active');
-                if (e.target === loadingScreen) {} // Jangan tutup loading screen
-            });
-            
-            // Animasi box
-            mysteryBox.classList.add('pulse');
         });
-        
-        // Fungsi untuk update preview kode
-        function updateCodePreview() {
-            const prefix = codePrefix.value.trim().toUpperCase();
-            const previewCode = generateSingleRandomCode(selectedFormat, selectedCharset, prefix);
-            codePreview.textContent = previewCode;
-        }
-        
-        // Fungsi untuk generate kode random tunggal
-        function generateSingleRandomCode(format, charsetType, prefix = "") {
-            let charset;
+
+        // Show login modal when admin button is clicked
+        adminBtn.addEventListener('click', function() {
+            loginModal.classList.add('active');
+        });
+
+        // Close login modal
+        closeLoginModal.addEventListener('click', function() {
+            loginModal.classList.remove('active');
+        });
+
+        // Handle login form submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            switch(charsetType) {
-                case 'alphanumeric':
-                    charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                    break;
-                case 'uppercase':
-                    charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                    break;
-                case 'mixed':
-                    charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                    break;
-                case 'numbers':
-                    charset = '0123456789';
-                    break;
-                default:
-                    charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            }
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
             
-            let result = '';
-            
-            if (format.includes('-')) {
-                // Format dengan dash
-                const parts = format.split('-');
-                let codeParts = [];
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                // Login successful
+                showNotification('Login berhasil! Mengalihkan ke panel admin...', 'success');
+                loginModal.classList.remove('active');
                 
-                parts.forEach(partLength => {
-                    let part = '';
-                    for (let i = 0; i < partLength.length; i++) {
-                        part += charset.charAt(Math.floor(Math.random() * charset.length));
-                    }
-                    codeParts.push(part);
-                });
-                
-                result = codeParts.join('-');
-            } else {
-                // Format tanpa dash
-                for (let i = 0; i < format.length; i++) {
-                    result += charset.charAt(Math.floor(Math.random() * charset.length));
-                }
-            }
-            
-            // Tambahkan prefix jika ada
-            if (prefix) {
-                result = prefix + result;
-            }
-            
-            return result;
-        }
-        
-        // Fungsi untuk generate multiple kode random
-        function generateRandomCodes() {
-            const count = parseInt(codeCount.value);
-            const prizeId = parseInt(codePrize.value);
-            const prefix = codePrefix.value.trim().toUpperCase();
-            
-            if (count < 1 || !prizeId) {
-                alert("Mohon isi jumlah dan hadiah dengan benar!");
-                return;
-            }
-            
-            // Generate kode random
-            const existingCodes = codes.map(c => c.code);
-            const newCodes = [];
-            
-            for (let i = 0; i < count; i++) {
-                let newCode;
-                let attempt = 0;
-                
-                do {
-                    newCode = generateSingleRandomCode(selectedFormat, selectedCharset, prefix);
-                    attempt++;
-                    
-                    // Safety check untuk menghindari infinite loop
-                    if (attempt > 1000) {
-                        alert("Terlalu banyak percobaan untuk membuat kode unik. Coba format atau karakter yang berbeda.");
-                        return;
-                    }
-                } while (existingCodes.includes(newCode));
-                
-                newCodes.push(newCode);
-                existingCodes.push(newCode);
-            }
-            
-            // Tambahkan kode ke database
-            newCodes.forEach(code => {
-                codes.push({
-                    code: code,
-                    prizeId: prizeId,
-                    used: false
-                });
-            });
-            
-            // Update UI
-            updateCodeGrid();
-            
-            // Update preview dengan kode baru
-            updateCodePreview();
-            
-            // Simpan ke localStorage
-            saveToLocalStorage();
-            
-            alert(`${count} kode random berhasil dibuat!`);
-        }
-        
-        // Fungsi untuk membuka mystery box
-        function openMysteryBox() {
-            if (!codeInput.value.trim()) {
-                showMessage("Masukkan kode terlebih dahulu!", "error");
-                return;
-            }
-            
-            // Cek kode valid
-            const code = codeInput.value.toUpperCase().trim();
-            const codeData = codes.find(c => c.code === code);
-            
-            if (!codeData) {
-                showMessage("Kode tidak valid!", "error");
-                return;
-            }
-            
-            if (codeData.used) {
-                showMessage("Kode sudah digunakan!", "error");
-                return;
-            }
-            
-            // Tampilkan loading screen
-            loadingScreen.classList.add('active');
-            
-            // Matikan tombol sementara
-            claimBtn.disabled = true;
-            
-            // Tunggu 1.5 detik untuk efek dramatis
-            setTimeout(() => {
-                // Sembunyikan loading
-                loadingScreen.classList.remove('active');
-                
-                // Dapatkan hadiah
-                const prize = prizes.find(p => p.id === codeData.prizeId);
-                
-                // Animasi buka box
-                mysteryBox.style.animation = 'openBox 1s forwards';
-                
-                // Tandai kode sebagai terpakai
-                codeData.used = true;
-                
-                // Tambahkan ke riwayat
-                const historyItem = {
-                    code: code,
-                    prize: prize.name,
-                    date: new Date().toLocaleString()
-                };
-                claimHistory.unshift(historyItem);
-                
-                // Simpan ke localStorage
-                saveToLocalStorage();
-                
-                // Update tampilan kode
-                updateCodeGrid();
-                
-                // Tunggu sebentar untuk animasi box
+                // Switch to admin panel after a short delay
                 setTimeout(() => {
-                    // Tampilkan hadiah
-                    showPrizeResult(code, prize);
-                    
-                    // Tampilkan efek confetti jika bukan ZONK
-                    if (prize.name !== "ZONK") {
-                        createConfetti();
-                    }
+                    mainContent.style.display = 'none';
+                    adminPanel.classList.add('active');
+                    document.getElementById('username').value = '';
+                    document.getElementById('password').value = '';
                 }, 1000);
-                
-            }, 1500);
-        }
-        
-        // Fungsi untuk reset mystery box
-        function resetMysteryBox() {
-            // Reset animasi box
-            mysteryBox.style.animation = '';
-            mysteryBox.style.transform = 'rotateY(0)';
+            } else {
+                // Login failed
+                showNotification('Username atau password salah!', 'error');
+            }
+        });
+
+        // Handle logout
+        logoutBtn.addEventListener('click', function() {
+            adminPanel.classList.remove('active');
+            mainContent.style.display = 'block';
+            showNotification('Logout berhasil!', 'success');
+        });
+
+        // Handle code form submission
+        codeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userName = document.getElementById('userName').value.trim();
+            const code = document.getElementById('code').value.trim().toUpperCase();
+            
+            // Cari kode yang sesuai
+            const foundCode = mysteryCodes.find(item => 
+                item.code === code && item.name.toLowerCase() === userName.toLowerCase()
+            );
+            
+            if (!foundCode) {
+                showNotification('Kode tidak valid atau nama tidak sesuai!', 'error');
+                return;
+            }
+            
+            if (foundCode.used) {
+                showNotification('Kode sudah digunakan sebelumnya!', 'error');
+                return;
+            }
+            
+            // Tandai kode sebagai digunakan
+            foundCode.used = true;
+            
+            // Tampilkan hasil
+            showResult(userName, foundCode.reward);
             
             // Reset form
-            codeInput.value = "";
-            claimBtn.disabled = true;
-            message.classList.remove('success', 'error');
-            message.style.display = 'none';
-        }
-        
-        // Fungsi untuk menampilkan hadiah
-        function showPrizeResult(code, prize) {
-            prizeResultIcon.className = prize.icon;
-            prizeResultIcon.style.color = prize.color;
-            prizeResultText.textContent = prize.name;
-            prizeResultText.style.color = prize.color;
-            prizeResultCode.textContent = `Kode: ${code}`;
+            codeForm.reset();
             
-            prizeResult.classList.add('active');
-            
-            // Aktifkan kembali tombol
-            setTimeout(() => {
-                claimBtn.disabled = false;
-            }, 500);
-        }
-        
-        // Fungsi untuk membuat efek confetti
-        function createConfetti() {
-            const colors = ['#ffd700', '#ff6b6b', '#48dbfb', '#1dd1a1', '#ff9ff3'];
-            
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.width = Math.random() * 10 + 5 + 'px';
-                confetti.style.height = Math.random() * 10 + 5 + 'px';
-                confetti.style.opacity = Math.random() * 0.5 + 0.5;
+            // Update tabel di admin panel
+            loadCodesToTable();
+        });
+
+        // Close result modal
+        closeResultModal.addEventListener('click', function() {
+            resultModal.classList.remove('active');
+        });
+
+        // Tab switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
                 
-                document.body.appendChild(confetti);
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
                 
-                // Hapus confetti setelah animasi selesai
-                setTimeout(() => {
-                    confetti.remove();
-                }, 3000);
-            }
-        }
-        
-        // Fungsi untuk membuka login admin
-        function openAdminLogin() {
-            if (!isAdminLoggedIn) {
-                loginModal.classList.add('active');
-                document.getElementById('adminUsername').focus();
-            } else {
-                adminPanelModal.classList.add('active');
-                loadAdminPanel();
-            }
-        }
-        
-        // Fungsi untuk logout admin
-        function logoutAdmin() {
-            isAdminLoggedIn = false;
-            adminPanelModal.classList.remove('active');
-            updateLoginUI();
-            alert("Anda telah logout dari admin panel.");
-        }
-        
-        // Fungsi untuk update UI login status
-        function updateLoginUI() {
-            if (isAdminLoggedIn) {
-                logoutBtn.style.display = 'block';
-                adminIcon.innerHTML = '<i class="fas fa-user-cog"></i>';
-                adminIcon.title = "Admin Panel (Login)";
-            } else {
-                logoutBtn.style.display = 'none';
-                adminIcon.innerHTML = '<i class="fas fa-cog"></i>';
-                adminIcon.title = "Admin Panel";
-            }
-        }
-        
-        // Fungsi untuk memuat admin panel
-        function loadAdminPanel() {
-            updatePrizeList();
-            updateCodeGrid();
-            updateHistoryList();
-        }
-        
-        // Fungsi untuk update daftar hadiah
-        function updatePrizeList() {
-            prizeList.innerHTML = '';
+                // Show corresponding tab content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}Tab`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Load codes to table
+        function loadCodesToTable() {
+            codesTableBody.innerHTML = '';
             
-            const prizeGrid = document.createElement('div');
-            prizeGrid.className = 'code-grid';
-            
-            prizes.forEach(prize => {
-                const prizeItem = document.createElement('div');
-                prizeItem.className = 'code-item';
-                prizeItem.style.borderLeft = `5px solid ${prize.color}`;
-                prizeItem.innerHTML = `
-                    <div class="code-header">
-                        <div class="code-value">
-                            <i class="${prize.icon} prize-icon-small" style="color: ${prize.color};"></i>
-                            ${prize.name}
-                        </div>
-                    </div>
-                    <div class="code-prize">
-                        <small>ID: ${prize.id}</small>
-                    </div>
-                    <div class="code-actions">
-                        <button class="btn btn-small delete-btn" onclick="deletePrize(${prize.id})">
-                            <i class="fas fa-trash"></i> Hapus
-                        </button>
-                    </div>
+            mysteryCodes.forEach((code, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${code.name}</td>
+                    <td><strong>${code.code}</strong></td>
+                    <td>${code.reward}</td>
+                    <td class="${code.used ? 'status-used' : 'status-available'}">
+                        ${code.used ? 'Sudah Digunakan' : 'Tersedia'}
+                    </td>
+                    <td>
+                        <button class="action-btn btn-edit" onclick="editCode(${code.id})">Edit</button>
+                        <button class="action-btn btn-delete" onclick="deleteCode(${code.id})">Hapus</button>
+                    </td>
                 `;
-                prizeGrid.appendChild(prizeItem);
-            });
-            
-            prizeList.appendChild(prizeGrid);
-        }
-        
-        // Fungsi untuk edit kode
-        function editCode(code) {
-            currentEditCode = code;
-            const codeData = codes.find(c => c.code === code);
-            
-            // Isi form edit
-            editCodeValue.value = code;
-            editCodePrizeSelect.innerHTML = '';
-            
-            prizes.forEach(prize => {
-                const option = document.createElement('option');
-                option.value = prize.id;
-                option.textContent = prize.name;
-                if (codeData.prizeId === prize.id) {
-                    option.selected = true;
-                }
-                editCodePrizeSelect.appendChild(option);
-            });
-            
-            // Tampilkan modal edit
-            editCodeModal.classList.add('active');
-        }
-        
-        // Fungsi untuk menyimpan edit kode
-        function saveCodeEdit() {
-            if (!currentEditCode) return;
-            
-            const newPrizeId = parseInt(editCodePrizeSelect.value);
-            
-            // Update data kode
-            const codeIndex = codes.findIndex(c => c.code === currentEditCode);
-            if (codeIndex !== -1) {
-                codes[codeIndex].prizeId = newPrizeId;
-                
-                // Update UI
-                updateCodeGrid();
-                
-                // Simpan ke localStorage
-                saveToLocalStorage();
-                
-                alert(`Hadiah untuk kode ${currentEditCode} berhasil diubah!`);
-                
-                // Tutup modal
-                editCodeModal.classList.remove('active');
-                currentEditCode = null;
-            }
-        }
-        
-        // Fungsi untuk update grid kode dengan filter
-        function updateCodeGrid() {
-            codeGrid.innerHTML = '';
-            
-            const searchTerm = codeSearch.value.toLowerCase();
-            const statusValue = statusFilter.value;
-            
-            // Filter kode
-            let filteredCodes = codes.filter(code => {
-                const prize = prizes.find(p => p.id === code.prizeId);
-                
-                // Search filter
-                if (searchTerm && !code.code.toLowerCase().includes(searchTerm)) {
-                    return false;
-                }
-                
-                // Status filter
-                if (statusValue === 'available' && code.used) return false;
-                if (statusValue === 'used' && !code.used) return false;
-                
-                return true;
-            });
-            
-            // Tampilkan kode yang difilter
-            filteredCodes.forEach(codeData => {
-                const prize = prizes.find(p => p.id === codeData.prizeId);
-                const codeItem = document.createElement('div');
-                codeItem.className = `code-item ${codeData.used ? 'used' : 'available'}`;
-                codeItem.style.borderLeft = `5px solid ${prize?.color || '#ccc'}`;
-                codeItem.innerHTML = `
-                    <div class="code-header">
-                        <div class="code-value">${codeData.code}</div>
-                        <div class="code-status ${codeData.used ? 'used' : 'available'}">
-                            ${codeData.used ? 'TERPAKAI' : 'TERSEDIA'}
-                        </div>
-                    </div>
-                    <div class="code-prize">
-                        <i class="${prize?.icon || 'fas fa-gift'} prize-icon-small" style="color: ${prize?.color || '#ccc'};"></i>
-                        <span>${prize?.name || 'Tidak ada hadiah'}</span>
-                    </div>
-                    <div class="code-actions">
-                        <button class="btn btn-small" onclick="editCode('${codeData.code}')" ${codeData.used ? 'disabled' : ''}>
-                            <i class="fas fa-edit"></i> Edit
-                        </button>
-                        <button class="btn btn-small delete-btn" onclick="deleteCode('${codeData.code}')">
-                            <i class="fas fa-trash"></i> Hapus
-                        </button>
-                    </div>
-                `;
-                codeGrid.appendChild(codeItem);
+                codesTableBody.appendChild(row);
             });
         }
-        
-        // Fungsi untuk update daftar riwayat
-        function updateHistoryList() {
-            historyList.innerHTML = '';
+
+        // Handle create new code form
+        createCodeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            if (claimHistory.length === 0) {
-                historyList.innerHTML = '<div style="padding: 30px; text-align: center; color: #aaa;">Tidak ada riwayat klaim</div>';
+            const newName = document.getElementById('newName').value.trim();
+            const newCode = document.getElementById('newCode').value.trim().toUpperCase();
+            const reward = document.getElementById('reward').value.trim();
+            
+            // Validasi panjang kode
+            if (newCode.length < 6 || newCode.length > 12) {
+                showNotification('Kode harus antara 6-12 karakter!', 'error');
                 return;
             }
             
-            const historyGrid = document.createElement('div');
-            historyGrid.className = 'code-grid';
+            // Cek apakah kode sudah ada
+            const codeExists = mysteryCodes.some(item => item.code === newCode);
+            if (codeExists) {
+                showNotification('Kode sudah digunakan! Gunakan kode yang berbeda.', 'error');
+                return;
+            }
             
-            claimHistory.forEach(item => {
-                const historyItem = document.createElement('div');
-                historyItem.className = 'code-item';
-                historyItem.innerHTML = `
-                    <div class="code-header">
-                        <div class="code-value">${item.code}</div>
-                        <small style="color: #aaa">${item.date}</small>
-                    </div>
-                    <div class="code-prize">
-                        <i class="fas fa-gift prize-icon-small"></i>
-                        <span>${item.prize}</span>
-                    </div>
-                `;
-                historyGrid.appendChild(historyItem);
+            // Tambahkan kode baru
+            const newId = mysteryCodes.length > 0 ? Math.max(...mysteryCodes.map(item => item.id)) + 1 : 1;
+            mysteryCodes.push({
+                id: newId,
+                name: newName,
+                code: newCode,
+                reward: reward,
+                used: false
             });
             
-            historyList.appendChild(historyGrid);
-        }
-        
-        // Fungsi untuk update semua select hadiah
-        function updatePrizeSelects() {
-            // Update semua select element
-            const selects = [codePrize, massPrizeSelect, editCodePrizeSelect];
+            // Reset form
+            createCodeForm.reset();
             
-            selects.forEach(select => {
-                if (!select) return;
-                select.innerHTML = '<option value="">Pilih Hadiah</option>';
-                
-                prizes.forEach(prize => {
-                    const option = document.createElement('option');
-                    option.value = prize.id;
-                    option.textContent = prize.name;
-                    select.appendChild(option);
-                });
-            });
-        }
-        
-        // Fungsi untuk menampilkan pesan
-        function showMessage(text, type) {
-            message.textContent = text;
-            message.className = 'message ' + type;
-            message.style.display = 'block';
+            // Update tabel
+            loadCodesToTable();
             
-            // Sembunyikan pesan setelah 3 detik
+            // Tampilkan notifikasi
+            showNotification(`Kode ${newCode} berhasil dibuat untuk ${newName}!`, 'success');
+        });
+
+        // Save rewards list
+        saveRewardsBtn.addEventListener('click', function() {
+            const rewardsText = rewardList.value.trim();
+            availableRewards = rewardsText.split('\n').filter(item => item.trim() !== '');
+            showNotification('Daftar hadiah berhasil disimpan!', 'success');
+        });
+
+        // Edit code function
+        window.editCode = function(id) {
+            const code = mysteryCodes.find(item => item.id === id);
+            if (!code) return;
+            
+            const newName = prompt("Masukkan nama baru:", code.name);
+            if (newName === null) return;
+            
+            const newCode = prompt("Masukkan kode baru:", code.code);
+            if (newCode === null) return;
+            
+            const newReward = prompt("Masukkan hadiah baru:", code.reward);
+            if (newReward === null) return;
+            
+            // Update code
+            code.name = newName.trim();
+            code.code = newCode.trim().toUpperCase();
+            code.reward = newReward.trim();
+            
+            // Update tabel
+            loadCodesToTable();
+            
+            showNotification('Kode berhasil diperbarui!', 'success');
+        };
+
+        // Delete code function
+        window.deleteCode = function(id) {
+            if (!confirm("Apakah Anda yakin ingin menghapus kode ini?")) return;
+            
+            // Hapus kode
+            mysteryCodes = mysteryCodes.filter(item => item.id !== id);
+            
+            // Update tabel
+            loadCodesToTable();
+            
+            showNotification('Kode berhasil dihapus!', 'success');
+        };
+
+        // Show result modal
+        function showResult(userName, reward) {
+            const resultTitle = document.getElementById('resultTitle');
+            const resultContent = document.getElementById('resultContent');
+            
+            resultTitle.textContent = `Selamat ${userName}!`;
+            resultContent.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 5rem; color: var(--warning); margin-bottom: 20px;">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Anda Mendapatkan:</h3>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 25px;">
+                        <h4 style="font-size: 1.5rem; color: var(--warning);">${reward}</h4>
+                    </div>
+                    <p>Hadiah akan dikirimkan dalam waktu 1-3 hari kerja. Terima kasih telah berpartisipasi!</p>
+                </div>
+            `;
+            
+            resultModal.classList.add('active');
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            notification.textContent = message;
+            notification.className = `notification ${type} show`;
+            
             setTimeout(() => {
-                message.classList.remove('success', 'error');
-                message.style.display = 'none';
+                notification.classList.remove('show');
             }, 3000);
         }
-        
-        // Fungsi untuk menghapus hadiah
-        function deletePrize(prizeId) {
-            if (confirm("Apakah Anda yakin ingin menghapus hadiah ini?")) {
-                // Cek apakah hadiah sedang digunakan
-                const isUsed = codes.some(c => c.prizeId === prizeId);
-                
-                if (isUsed) {
-                    alert("Hadiah ini sedang digunakan oleh beberapa kode. Ubah hadiah kode tersebut terlebih dahulu.");
-                    return;
-                }
-                
-                prizes = prizes.filter(p => p.id !== prizeId);
-                updatePrizeList();
-                updatePrizeSelects();
-                saveToLocalStorage();
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
             }
-        }
-        
-        // Fungsi untuk menghapus kode
-        function deleteCode(code) {
-            if (confirm("Apakah Anda yakin ingin menghapus kode ini?")) {
-                codes = codes.filter(c => c.code !== code);
-                updateCodeGrid();
-                saveToLocalStorage();
+            if (e.target === resultModal) {
+                resultModal.classList.remove('active');
             }
-        }
-        
-        // Fungsi untuk menyimpan ke localStorage
-        function saveToLocalStorage() {
-            const data = {
-                prizes: prizes,
-                codes: codes,
-                claimHistory: claimHistory
-            };
-            localStorage.setItem('mysteryBoxData', JSON.stringify(data));
-        }
-        
-        // Fungsi untuk memuat dari localStorage
-        function loadFromLocalStorage() {
-            const savedData = localStorage.getItem('mysteryBoxData');
-            if (savedData) {
-                try {
-                    const data = JSON.parse(savedData);
-                    prizes = data.prizes || prizes;
-                    codes = data.codes || codes;
-                    claimHistory = data.claimHistory || claimHistory;
-                } catch (e) {
-                    console.error("Error loading data from localStorage:", e);
-                }
-            }
-        }
+        });
     </script>
 </body>
 </html>
