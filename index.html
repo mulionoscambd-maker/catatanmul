@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mystery Box - Buka Kejutanmu!</title>
+    <title>Mystery Box Premium</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -21,6 +21,7 @@
             --success: #00b894;
             --danger: #e74c3c;
             --warning: #fdcb6e;
+            --info: #0984e3;
             --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
@@ -359,6 +360,10 @@
             background: var(--danger);
         }
 
+        .notification.info {
+            background: var(--info);
+        }
+
         /* Admin Panel */
         .admin-panel {
             display: none;
@@ -386,6 +391,7 @@
             margin-bottom: 30px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 10px;
+            flex-wrap: wrap;
         }
 
         .tab {
@@ -421,6 +427,7 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             overflow: hidden;
+            margin-bottom: 20px;
         }
 
         .codes-table th, .codes-table td {
@@ -468,6 +475,77 @@
             margin-left: 5px;
         }
 
+        .btn-assign {
+            background: var(--info);
+            color: white;
+            margin-left: 5px;
+        }
+
+        .sync-status {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sync-status i {
+            color: var(--warning);
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-title {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .stat-total {
+            color: var(--warning);
+        }
+
+        .stat-used {
+            color: var(--danger);
+        }
+
+        .stat-available {
+            color: var(--success);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -506,6 +584,11 @@
             .tabs {
                 flex-wrap: wrap;
             }
+            
+            .codes-table {
+                display: block;
+                overflow-x: auto;
+            }
         }
     </style>
 </head>
@@ -515,13 +598,13 @@
         <header>
             <div class="logo">
                 <i class="fas fa-box-open"></i>
-                <span>MysteryBox.id</span>
+                <span>MysteryBox Premium</span>
             </div>
             <div class="admin-access">
                 <div class="admin-dot"></div>
                 <button class="btn-admin" id="adminBtn">
                     <i class="fas fa-user-shield"></i>
-                    <span> </span>
+                    <span>Admin Access</span>
                 </button>
             </div>
         </header>
@@ -529,8 +612,8 @@
         <!-- Main Content (User Interface) -->
         <main id="mainContent">
             <section class="hero">
-                <h1>Buka Kejutanmu!</h1>
-                <p>Dapatkan hadiah misterius dengan membuka salah satu kotak di bawah ini. Masukkan nama dan kode yang telah diberikan untuk membuka kejutan!</p>
+                <h1>Klaim Hadiah Mystery Box!</h1>
+                <p>Gunakan kode mystery box Anda untuk membuka kejutan spesial. Masukkan nama dan kode yang diberikan untuk klaim hadiah!</p>
                 
                 <div class="boxes-container">
                     <!-- Mystery Box 1 -->
@@ -541,15 +624,15 @@
                                 <div class="box-icon">
                                     <i class="fas fa-gift"></i>
                                 </div>
-                                <h3>Kotak Misteri</h3>
-                                <p>Klik untuk melihat detail</p>
+                                <h3>Bronze Box</h3>
+                                <p>Hadiah Menarik</p>
                             </div>
                             <div class="box-back">
                                 <div class="box-icon">
-                                    <i class="fas fa-question"></i>
+                                    <i class="fas fa-award"></i>
                                 </div>
-                                <h3>???</h3>
-                                <p>Hadiah Misterius</p>
+                                <h3>Hadiah Bronze</h3>
+                                <p>Kode khusus</p>
                             </div>
                         </div>
                     </div>
@@ -562,15 +645,15 @@
                                 <div class="box-icon">
                                     <i class="fas fa-gem"></i>
                                 </div>
-                                <h3>Kotak Kejutan</h3>
-                                <p>Klik untuk melihat detail</p>
+                                <h3>Silver Box</h3>
+                                <p>Hadiah Spesial</p>
                             </div>
                             <div class="box-back">
                                 <div class="box-icon">
                                     <i class="fas fa-star"></i>
                                 </div>
-                                <h3>???</h3>
-                                <p>Kejutan Spesial</p>
+                                <h3>Hadiah Silver</h3>
+                                <p>Kode premium</p>
                             </div>
                         </div>
                     </div>
@@ -583,15 +666,15 @@
                                 <div class="box-icon">
                                     <i class="fas fa-crown"></i>
                                 </div>
-                                <h3>Kotak Eksklusif</h3>
-                                <p>Klik untuk melihat detail</p>
+                                <h3>Gold Box</h3>
+                                <p>Hadiah Eksklusif</p>
                             </div>
                             <div class="box-back">
                                 <div class="box-icon">
                                     <i class="fas fa-trophy"></i>
                                 </div>
-                                <h3>???</h3>
-                                <p>Hadiah Eksklusif</p>
+                                <h3>Hadiah Gold</h3>
+                                <p>Kode eksklusif</p>
                             </div>
                         </div>
                     </div>
@@ -600,107 +683,231 @@
 
             <!-- Form Input Kode -->
             <section class="form-section">
-                <h2 class="form-title">Masukkan Kode Mystery Box</h2>
+                <h2 class="form-title">Klaim Kode Mystery Box</h2>
                 <form id="codeForm">
                     <div class="form-group">
-                        <label for="userName">Nama Anda</label>
-                        <input type="text" id="userName" class="form-control" placeholder="Masukkan nama lengkap" required>
+                        <label for="userName">Nama Member</label>
+                        <input type="text" id="userName" class="form-control" placeholder="Masukkan nama lengkap member" required>
                     </div>
                     <div class="form-group">
                         <label for="code">Kode Mystery Box</label>
-                        <input type="text" id="code" class="form-control" placeholder="Masukkan kode yang diberikan" required>
+                        <input type="text" id="code" class="form-control" placeholder="Masukkan kode MBX-XXXX-XXX" required>
+                        <small style="color: rgba(255,255,255,0.6); margin-top: 5px; display: block;">Format: MBX-XXXX-XXX (contoh: MBX-A9F3-KQ2)</small>
                     </div>
                     <button type="submit" class="btn-submit">
-                        <i class="fas fa-unlock-alt"></i> Buka Mystery Box
+                        <i class="fas fa-unlock-alt"></i> Klaim Hadiah
                     </button>
                 </form>
+                <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 10px;">
+                    <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                        <i class="fas fa-info-circle"></i> Setiap kode hanya dapat diklaim sekali oleh satu member. Pastikan nama yang dimasukkan sesuai dengan data member.
+                    </p>
+                </div>
             </section>
         </main>
 
         <!-- Admin Panel (Hidden by default) -->
         <section class="admin-panel" id="adminPanel">
             <div class="admin-header">
-                <h2 class="admin-title">Admin Panel</h2>
-                <button class="btn-admin" id="logoutBtn">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </button>
+                <h2 class="admin-title">Admin Panel - Mystery Box Premium</h2>
+                <div>
+                    <button class="btn-admin" id="syncDataBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Refresh Data</span>
+                    </button>
+                    <button class="btn-admin" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="sync-status">
+                <i class="fas fa-database"></i>
+                <div>
+                    <strong>Status Data:</strong> 
+                    <span id="dataStatus">Menyimpan data ke browser ini...</span>
+                    <br>
+                    <small id="dataCount">Memuat data kode...</small>
+                </div>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number stat-total" id="totalCodes">0</div>
+                    <div class="stat-title">Total Kode</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number stat-used" id="usedCodes">0</div>
+                    <div class="stat-title">Kode Terklaim</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number stat-available" id="availableCodes">0</div>
+                    <div class="stat-title">Kode Tersedia</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalRewards" style="color: var(--info);">0</div>
+                    <div class="stat-title">Jenis Hadiah</div>
+                </div>
             </div>
             
             <div class="tabs">
                 <button class="tab active" data-tab="codes">Kelola Kode</button>
-                <button class="tab" data-tab="create">Buat Kode Baru</button>
-                <button class="tab" data-tab="rewards">Hadiah & Pengaturan</button>
+                <button class="tab" data-tab="rewards">Kelola Hadiah</button>
+                <button class="tab" data-tab="history">Riwayat Klaim</button>
+                <button class="tab" data-tab="export">Export/Import</button>
             </div>
             
             <!-- Kelola Kode Tab -->
             <div class="tab-content active" id="codesTab">
-                <h3>Daftar Kode Mystery Box</h3>
-                <table class="codes-table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Kode</th>
-                            <th>Hadiah</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="codesTableBody">
-                        <!-- Data kode akan dimuat dari JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <!-- Buat Kode Baru Tab -->
-            <div class="tab-content" id="createTab">
-                <h3>Buat Kode Mystery Box Baru</h3>
-                <form id="createCodeForm">
-                    <div class="form-group">
-                        <label for="newName">Nama Penerima</label>
-                        <input type="text" id="newName" class="form-control" placeholder="Masukkan nama penerima" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="newCode">Kode (6-12 karakter)</label>
-                        <input type="text" id="newCode" class="form-control" placeholder="Masukkan kode unik" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reward">Hadiah</label>
-                        <input type="text" id="reward" class="form-control" placeholder="Masukkan hadiah untuk kode ini" required>
-                    </div>
-                    <button type="submit" class="btn-submit">
-                        <i class="fas fa-plus-circle"></i> Buat Kode Baru
-                    </button>
-                </form>
-            </div>
-            
-            <!-- Hadiah & Pengaturan Tab -->
-            <div class="tab-content" id="rewardsTab">
-                <h3>Pengaturan Hadiah</h3>
-                <div class="form-group">
-                    <label for="rewardList">Daftar Hadiah yang Tersedia</label>
-                    <textarea id="rewardList" class="form-control" rows="6" placeholder="Masukkan daftar hadiah yang tersedia (pisahkan dengan baris baru)">Voucher Belanja Rp 100.000
-Headphone Wireless
-Smartwatch
-Voucher Game Rp 50.000
-Power Bank 10000mAh
-Tas Laptop
-Mouse Gaming
-Keyboard Mechanical
-Speaker Bluetooth
-Payung Premium</textarea>
+                <div class="search-box">
+                    <input type="text" class="search-input" id="codeSearch" placeholder="Cari kode, nama member, atau hadiah...">
                 </div>
-                <button class="btn-submit" id="saveRewards">
-                    <i class="fas fa-save"></i> Simpan Daftar Hadiah
-                </button>
+                
+                <h3>Daftar Kode Mystery Box (60 Kode Predefined)</h3>
+                <div style="overflow-x: auto;">
+                    <table class="codes-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Nama Member</th>
+                                <th>Hadiah</th>
+                                <th>Status</th>
+                                <th>Tanggal Klaim</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="codesTableBody">
+                            <!-- Data kode akan dimuat dari JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div style="text-align: center; margin-top: 15px; color: rgba(255,255,255,0.7);">
+                    <p>Menampilkan <span id="visibleCodes">0</span> dari <span id="totalCodesDisplay">0</span> kode</p>
+                </div>
+            </div>
+            
+            <!-- Kelola Hadiah Tab -->
+            <div class="tab-content" id="rewardsTab">
+                <h3>Atur Hadiah untuk Kode</h3>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <p><i class="fas fa-info-circle"></i> Pilih kode dan atur hadiah untuk setiap kode secara individual. Anda dapat memberikan hadiah yang berbeda untuk setiap kode.</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="selectCodeForReward">Pilih Kode:</label>
+                    <select id="selectCodeForReward" class="form-control">
+                        <option value="">-- Pilih kode untuk atur hadiah --</option>
+                        <!-- Opsi kode akan diisi dari JavaScript -->
+                    </select>
+                </div>
+                
+                <div id="rewardAssignmentSection" style="display: none;">
+                    <div class="form-group">
+                        <label>Kode Terpilih: <strong id="selectedCodeDisplay"></strong></label>
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 10px; margin-top: 10px;">
+                            <p><strong>Status:</strong> <span id="selectedCodeStatus"></span></p>
+                            <p><strong>Member:</strong> <span id="selectedCodeMember">-</span></p>
+                            <p><strong>Hadiah Saat Ini:</strong> <span id="selectedCodeCurrentReward">-</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="assignReward">Pilih Hadiah:</label>
+                        <select id="assignReward" class="form-control">
+                            <!-- Opsi hadiah akan diisi dari JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customRewardInput">Atau Masukkan Hadiah Kustom:</label>
+                        <input type="text" id="customRewardInput" class="form-control" placeholder="Masukkan hadiah kustom...">
+                    </div>
+                    
+                    <button class="btn-submit" id="saveRewardBtn">
+                        <i class="fas fa-save"></i> Simpan Hadiah untuk Kode Ini
+                    </button>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h3>Daftar Hadiah yang Tersedia</h3>
+                    <div class="form-group">
+                        <label for="rewardList">Tambah/Edit Daftar Hadiah (pisahkan dengan baris baru):</label>
+                        <textarea id="rewardList" class="form-control" rows="6" placeholder="Masukkan daftar hadiah yang tersedia"></textarea>
+                    </div>
+                    <button class="btn-submit" id="saveRewardsListBtn">
+                        <i class="fas fa-save"></i> Simpan Daftar Hadiah
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Riwayat Klaim Tab -->
+            <div class="tab-content" id="historyTab">
+                <h3>Riwayat Klaim Kode</h3>
+                <div style="overflow-x: auto;">
+                    <table class="codes-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Nama Member</th>
+                                <th>Kode</th>
+                                <th>Hadiah</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <!-- Riwayat akan dimuat dari JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div style="text-align: center; margin-top: 15px; color: rgba(255,255,255,0.7);">
+                    <p>Total <span id="totalHistory">0</span> klaim telah dilakukan</p>
+                </div>
+            </div>
+            
+            <!-- Export/Import Data Tab -->
+            <div class="tab-content" id="exportTab">
+                <h3>Export & Import Data</h3>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <p>Fitur ini memungkinkan Anda untuk mentransfer data ke browser atau perangkat lain.</p>
+                    <p><strong>Catatan:</strong> Data disimpan di browser ini. Untuk sinkronisasi dengan browser lain, gunakan fitur export/import.</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>Export Data</label>
+                    <button class="btn-submit" id="exportBtn">
+                        <i class="fas fa-download"></i> Export Data ke File JSON
+                    </button>
+                    <div style="margin-top: 10px;">
+                        <textarea id="exportDataText" class="form-control" rows="4" placeholder="Data akan muncul di sini..." readonly></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Import Data</label>
+                    <textarea id="importDataText" class="form-control" rows="4" placeholder="Tempel data JSON di sini..."></textarea>
+                    <button class="btn-submit" id="importBtn" style="margin-top: 10px;">
+                        <i class="fas fa-upload"></i> Import Data
+                    </button>
+                </div>
+                
+                <div class="form-group">
+                    <label>Reset Data</label>
+                    <button class="btn-submit" id="resetBtn" style="background: var(--danger);">
+                        <i class="fas fa-trash"></i> Reset Semua Data
+                    </button>
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">
+                        <i class="fas fa-exclamation-triangle"></i> Peringatan: Reset akan menghapus semua data klaim, tetapi kode tetap ada dengan status tersedia.
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2023 MysteryBox.id - Semua hak dilindungi undang-undang</p>
-            <p>Website ini dibuat untuk keperluan hiburan dan hadiah misteri</p>
+            <p>&copy; 2023 MysteryBox Premium - Semua hak dilindungi undang-undang</p>
+            <p>Sistem klaim kode mystery box untuk member eksklusif</p>
         </footer>
     </div>
 
@@ -731,7 +938,7 @@ Payung Premium</textarea>
     <div class="modal" id="resultModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="resultTitle">Hasil Mystery Box</h3>
+                <h3 class="modal-title" id="resultTitle">Klaim Berhasil!</h3>
                 <button class="close-modal" id="closeResultModal">&times;</button>
             </div>
             <div id="resultContent">
@@ -744,28 +951,113 @@ Payung Premium</textarea>
     <div class="notification" id="notification"></div>
 
     <script>
-        // Data awal kode mystery box
-        let mysteryCodes = [
-            { id: 1, name: "Budi Santoso", code: "MBX2023A", reward: "Voucher Belanja Rp 100.000", used: false },
-            { id: 2, name: "Sari Dewi", code: "MBX2023B", reward: "Headphone Wireless", used: false },
-            { id: 3, name: "Ahmad Fauzi", code: "MBX2023C", reward: "Smartwatch", used: true },
-            { id: 4, name: "Rina Wijaya", code: "MBX2023D", reward: "Voucher Game Rp 50.000", used: false },
-            { id: 5, name: "Doni Pratama", code: "MBX2023E", reward: "Power Bank 10000mAh", used: false }
+        // Admin credentials
+        const ADMIN_USERNAME = "admingg";
+        const ADMIN_PASSWORD = "admingg123";
+
+        // Predefined kode mystery box (60 kode)
+        const PREDEFINED_CODES = [
+            "MBX-A9F3-KQ2", "MBX-Z7M8-PL4", "MBX-Q2X9-8RA", "MBX-5KD7-MP1", "MBX-LA4Z-9XQ",
+            "MBX-83QF-ZM2", "MBX-XP7A-K93", "MBX-6M2Q-TR9", "MBX-RK5Z-18A", "MBX-QM9X-F27",
+            "MBX-72ZA-QKF", "MBX-XM4P-9A3", "MBX-KFQ7-5XZ", "MBX-93M2-ZLA", "MBX-AX8Q-72F",
+            "MBX-P9Z5-KQ4", "MBX-QT6A-X93", "MBX-ZK2M-F9P", "MBX-7XQ5-AZM", "MBX-MZ9A-K23",
+            "MBX-Q4Z7-9XP", "MBX-XF5A-KQ8", "MBX-9PZ2-AMK", "MBX-Z8A6-QMX", "MBX-KQ9X-5P2",
+            "MBX-M2ZP-QA7", "MBX-AQX8-ZM9", "MBX-F7KZ-Q23", "MBX-X2M9-QPA", "MBX-ZQ5A-8KM",
+            "MBX-9QMX-2AZ", "MBX-KZP7-Q8A", "MBX-MA2X-Z9Q", "MBX-Q7ZK-8XP", "MBX-PX9A-ZQ2",
+            "MBX-AZ8Q-KM7", "MBX-QZ5M-X29", "MBX-7A9P-QZM", "MBX-XZK8-2QA", "MBX-MQ2A-ZP9",
+            "MBX-ZQ7P-8XM", "MBX-2AZ9-QKM", "MBX-K8QZ-MP7", "MBX-X9P2-AQM", "MBX-QMZ8-7AP",
+            "MBX-A9QK-ZX2", "MBX-P7ZM-QA8", "MBX-QX2M-9ZA", "MBX-ZA8Q-MP9", "MBX-KQ2Z-XA7",
+            "MBX-QZ7A-8MP", "MBX-XM9Q-2ZA", "MBX-K7ZP-QA8", "MBX-QA2M-ZX9", "MBX-P9XZ-QKA",
+            "MBX-Z8M7-Q2A", "MBX-AQ9X-KZP", "MBX-Q2Z8-MA7", "MBX-XK9A-QZM", "MBX-ZP7Q-2AM",
+            "MBX-Q8Z2-MPA", "MBX-XA9Q-K7Z", "MBX-MPZ2-Q8A", "MBX-Q7X9-ZKA", "MBX-AZ2Q-MP8",
+            "MBX-K9Q7-XZA", "MBX-QM2Z-9PA", "MBX-ZX7Q-KA8", "MBX-PQ9A-ZM2", "MBX-Q2A7-ZXP"
         ];
 
-        // Daftar hadiah yang tersedia
-        let availableRewards = [
+        // Default rewards
+        const DEFAULT_REWARDS = [
             "Voucher Belanja Rp 100.000",
-            "Headphone Wireless",
-            "Smartwatch",
+            "Headphone Wireless Premium",
+            "Smartwatch Sport Edition",
             "Voucher Game Rp 50.000",
-            "Power Bank 10000mAh",
-            "Tas Laptop",
-            "Mouse Gaming",
-            "Keyboard Mechanical",
-            "Speaker Bluetooth",
-            "Payung Premium"
+            "Power Bank 20000mAh Fast Charging",
+            "Tas Laptop Anti Air",
+            "Mouse Gaming RGB",
+            "Keyboard Mechanical RGB",
+            "Speaker Bluetooth Waterproof",
+            "Smart Home Device",
+            "Kamera Pocket 4K",
+            "Drone Mini dengan Kamera",
+            "Earphone True Wireless",
+            "Smart Band Fitness Tracker",
+            "External SSD 512GB",
+            "Kursi Gaming Ergonomic",
+            "Meja Gaming Adjustable",
+            "Webcam 4K dengan Microphone",
+            "Microphone Streaming Professional",
+            "Lighting Setup untuk Content Creator"
         ];
+
+        // Storage keys
+        const STORAGE_KEYS = {
+            MYSTERY_CODES: 'mystery_box_premium_codes',
+            AVAILABLE_REWARDS: 'mystery_box_premium_rewards',
+            CLAIM_HISTORY: 'mystery_box_premium_history'
+        };
+
+        // Load data from localStorage or initialize
+        function loadMysteryCodes() {
+            const stored = localStorage.getItem(STORAGE_KEYS.MYSTERY_CODES);
+            if (stored) {
+                return JSON.parse(stored);
+            } else {
+                // Initialize with predefined codes
+                const initialCodes = PREDEFINED_CODES.map((code, index) => ({
+                    id: index + 1,
+                    code: code,
+                    name: "",
+                    reward: DEFAULT_REWARDS[Math.floor(Math.random() * DEFAULT_REWARDS.length)],
+                    used: false,
+                    claimedAt: null,
+                    createdAt: new Date().toISOString()
+                }));
+                saveMysteryCodes(initialCodes);
+                return initialCodes;
+            }
+        }
+
+        function loadAvailableRewards() {
+            const stored = localStorage.getItem(STORAGE_KEYS.AVAILABLE_REWARDS);
+            if (stored) {
+                return JSON.parse(stored);
+            } else {
+                saveAvailableRewards(DEFAULT_REWARDS);
+                return DEFAULT_REWARDS;
+            }
+        }
+
+        function loadClaimHistory() {
+            const stored = localStorage.getItem(STORAGE_KEYS.CLAIM_HISTORY);
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        // Save data to localStorage
+        function saveMysteryCodes(codes) {
+            localStorage.setItem(STORAGE_KEYS.MYSTERY_CODES, JSON.stringify(codes));
+            updateDataStatus();
+        }
+
+        function saveAvailableRewards(rewards) {
+            localStorage.setItem(STORAGE_KEYS.AVAILABLE_REWARDS, JSON.stringify(rewards));
+        }
+
+        function saveClaimHistory(history) {
+            localStorage.setItem(STORAGE_KEYS.CLAIM_HISTORY, JSON.stringify(history));
+        }
+
+        // Global variables
+        let mysteryCodes = loadMysteryCodes();
+        let availableRewards = loadAvailableRewards();
+        let claimHistory = loadClaimHistory();
 
         // DOM Elements
         const mainContent = document.getElementById('mainContent');
@@ -782,21 +1074,45 @@ Payung Premium</textarea>
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
         const codesTableBody = document.getElementById('codesTableBody');
-        const createCodeForm = document.getElementById('createCodeForm');
+        const dataStatus = document.getElementById('dataStatus');
+        const dataCount = document.getElementById('dataCount');
+        const totalCodesElement = document.getElementById('totalCodes');
+        const usedCodesElement = document.getElementById('usedCodes');
+        const availableCodesElement = document.getElementById('availableCodes');
+        const totalRewardsElement = document.getElementById('totalRewards');
+        const syncDataBtn = document.getElementById('syncDataBtn');
+        const codeSearch = document.getElementById('codeSearch');
+        const visibleCodesElement = document.getElementById('visibleCodes');
+        const totalCodesDisplayElement = document.getElementById('totalCodesDisplay');
+        const selectCodeForReward = document.getElementById('selectCodeForReward');
+        const rewardAssignmentSection = document.getElementById('rewardAssignmentSection');
+        const selectedCodeDisplay = document.getElementById('selectedCodeDisplay');
+        const selectedCodeStatus = document.getElementById('selectedCodeStatus');
+        const selectedCodeMember = document.getElementById('selectedCodeMember');
+        const selectedCodeCurrentReward = document.getElementById('selectedCodeCurrentReward');
+        const assignReward = document.getElementById('assignReward');
+        const customRewardInput = document.getElementById('customRewardInput');
+        const saveRewardBtn = document.getElementById('saveRewardBtn');
         const rewardList = document.getElementById('rewardList');
-        const saveRewardsBtn = document.getElementById('saveRewards');
-
-        // Admin credentials
-        const ADMIN_USERNAME = "admingg";
-        const ADMIN_PASSWORD = "admingg123";
+        const saveRewardsListBtn = document.getElementById('saveRewardsListBtn');
+        const historyTableBody = document.getElementById('historyTableBody');
+        const totalHistoryElement = document.getElementById('totalHistory');
+        const exportBtn = document.getElementById('exportBtn');
+        const importBtn = document.getElementById('importBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const exportDataText = document.getElementById('exportDataText');
+        const importDataText = document.getElementById('importDataText');
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            // Load available rewards to textarea
-            rewardList.value = availableRewards.join('\n');
-            
-            // Load codes to table
+            // Load data
             loadCodesToTable();
+            updateDataStatus();
+            updateStats();
+            updateRewardList();
+            updateRewardSelect();
+            updateCodeSelectForReward();
+            loadClaimHistoryToTable();
             
             // Add click animation to mystery boxes
             const mysteryBoxes = document.querySelectorAll('.mystery-box');
@@ -806,7 +1122,148 @@ Payung Premium</textarea>
                     inner.style.transform = inner.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
                 });
             });
+            
+            // Setup search functionality
+            codeSearch.addEventListener('input', function() {
+                filterCodesTable(this.value);
+            });
+            
+            // Setup reward assignment
+            selectCodeForReward.addEventListener('change', function() {
+                const codeValue = this.value;
+                if (codeValue) {
+                    const code = mysteryCodes.find(c => c.code === codeValue);
+                    if (code) {
+                        selectedCodeDisplay.textContent = code.code;
+                        selectedCodeStatus.textContent = code.used ? 
+                            `<span class="status-used">Sudah Diklaim</span>` : 
+                            `<span class="status-available">Tersedia</span>`;
+                        selectedCodeMember.textContent = code.name || "-";
+                        selectedCodeCurrentReward.textContent = code.reward || "-";
+                        rewardAssignmentSection.style.display = 'block';
+                    }
+                } else {
+                    rewardAssignmentSection.style.display = 'none';
+                }
+            });
+            
+            // Setup export data
+            updateExportData();
         });
+
+        // Update data status display
+        function updateDataStatus() {
+            const codeCount = mysteryCodes.length;
+            const usedCount = mysteryCodes.filter(code => code.used).length;
+            dataStatus.textContent = `Data tersimpan di browser ini (${codeCount} kode, ${usedCount} diklaim)`;
+            dataCount.textContent = `Data terakhir diperbarui: ${new Date().toLocaleTimeString()}`;
+        }
+
+        // Update statistics
+        function updateStats() {
+            const total = mysteryCodes.length;
+            const used = mysteryCodes.filter(code => code.used).length;
+            const available = total - used;
+            
+            totalCodesElement.textContent = total;
+            usedCodesElement.textContent = used;
+            availableCodesElement.textContent = available;
+            totalRewardsElement.textContent = availableRewards.length;
+        }
+
+        // Load codes to table
+        function loadCodesToTable(filter = '') {
+            codesTableBody.innerHTML = '';
+            
+            let filteredCodes = mysteryCodes;
+            if (filter) {
+                const searchLower = filter.toLowerCase();
+                filteredCodes = mysteryCodes.filter(code => 
+                    code.code.toLowerCase().includes(searchLower) ||
+                    code.name.toLowerCase().includes(searchLower) ||
+                    code.reward.toLowerCase().includes(searchLower)
+                );
+            }
+            
+            filteredCodes.forEach((code, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td><strong>${code.code}</strong></td>
+                    <td>${code.name || "-"}</td>
+                    <td>${code.reward}</td>
+                    <td class="${code.used ? 'status-used' : 'status-available'}">
+                        ${code.used ? 'Sudah Diklaim' : 'Tersedia'}
+                    </td>
+                    <td>${code.claimedAt ? new Date(code.claimedAt).toLocaleDateString('id-ID') : "-"}</td>
+                    <td>
+                        <button class="action-btn btn-assign" onclick="assignRewardToCode('${code.code}')">
+                            <i class="fas fa-gift"></i> Atur Hadiah
+                        </button>
+                    </td>
+                `;
+                codesTableBody.appendChild(row);
+            });
+            
+            visibleCodesElement.textContent = filteredCodes.length;
+            totalCodesDisplayElement.textContent = mysteryCodes.length;
+        }
+
+        // Filter codes table
+        function filterCodesTable(searchTerm) {
+            loadCodesToTable(searchTerm);
+        }
+
+        // Update reward list textarea
+        function updateRewardList() {
+            rewardList.value = availableRewards.join('\n');
+        }
+
+        // Update reward select options
+        function updateRewardSelect() {
+            assignReward.innerHTML = '<option value="">Pilih hadiah...</option>';
+            availableRewards.forEach(reward => {
+                const option = document.createElement('option');
+                option.value = reward;
+                option.textContent = reward;
+                assignReward.appendChild(option);
+            });
+        }
+
+        // Update code select for reward assignment
+        function updateCodeSelectForReward() {
+            selectCodeForReward.innerHTML = '<option value="">-- Pilih kode untuk atur hadiah --</option>';
+            mysteryCodes.forEach(code => {
+                const option = document.createElement('option');
+                option.value = code.code;
+                option.textContent = `${code.code} - ${code.used ? 'Sudah Diklaim' : 'Tersedia'}`;
+                selectCodeForReward.appendChild(option);
+            });
+        }
+
+        // Load claim history to table
+        function loadClaimHistoryToTable() {
+            historyTableBody.innerHTML = '';
+            
+            // Sort history by date (newest first)
+            const sortedHistory = [...claimHistory].sort((a, b) => 
+                new Date(b.claimedAt) - new Date(a.claimedAt)
+            );
+            
+            sortedHistory.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${new Date(item.claimedAt).toLocaleString('id-ID')}</td>
+                    <td>${item.name}</td>
+                    <td><strong>${item.code}</strong></td>
+                    <td>${item.reward}</td>
+                `;
+                historyTableBody.appendChild(row);
+            });
+            
+            totalHistoryElement.textContent = claimHistory.length;
+        }
 
         // Show login modal when admin button is clicked
         adminBtn.addEventListener('click', function() {
@@ -836,6 +1293,10 @@ Payung Premium</textarea>
                     adminPanel.classList.add('active');
                     document.getElementById('username').value = '';
                     document.getElementById('password').value = '';
+                    
+                    // Refresh data
+                    updateDataStatus();
+                    updateStats();
                 }, 1000);
             } else {
                 // Login failed
@@ -850,40 +1311,149 @@ Payung Premium</textarea>
             showNotification('Logout berhasil!', 'success');
         });
 
-        // Handle code form submission
+        // Sync data button
+        syncDataBtn.addEventListener('click', function() {
+            // Reload data from localStorage
+            mysteryCodes = loadMysteryCodes();
+            availableRewards = loadAvailableRewards();
+            claimHistory = loadClaimHistory();
+            
+            // Refresh displays
+            loadCodesToTable();
+            updateDataStatus();
+            updateStats();
+            updateRewardList();
+            updateRewardSelect();
+            updateCodeSelectForReward();
+            loadClaimHistoryToTable();
+            
+            showNotification('Data telah direfresh!', 'success');
+        });
+
+        // Handle code form submission (user claim)
         codeForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const userName = document.getElementById('userName').value.trim();
-            const code = document.getElementById('code').value.trim().toUpperCase();
+            const codeInput = document.getElementById('code').value.trim().toUpperCase();
+            
+            // Validasi format kode
+            if (!codeInput.startsWith('MBX-') || codeInput.length !== 12) {
+                showNotification('Format kode tidak valid! Gunakan format MBX-XXXX-XXX', 'error');
+                return;
+            }
             
             // Cari kode yang sesuai
-            const foundCode = mysteryCodes.find(item => 
-                item.code === code && item.name.toLowerCase() === userName.toLowerCase()
-            );
+            const foundCode = mysteryCodes.find(item => item.code === codeInput);
             
             if (!foundCode) {
-                showNotification('Kode tidak valid atau nama tidak sesuai!', 'error');
+                showNotification('Kode tidak ditemukan dalam sistem!', 'error');
                 return;
             }
             
             if (foundCode.used) {
-                showNotification('Kode sudah digunakan sebelumnya!', 'error');
+                showNotification('Kode sudah diklaim sebelumnya!', 'error');
                 return;
             }
             
-            // Tandai kode sebagai digunakan
+            // Tandai kode sebagai diklaim
             foundCode.used = true;
+            foundCode.name = userName;
+            foundCode.claimedAt = new Date().toISOString();
+            
+            // Tambahkan ke history
+            claimHistory.push({
+                name: userName,
+                code: codeInput,
+                reward: foundCode.reward,
+                claimedAt: foundCode.claimedAt
+            });
+            saveClaimHistory(claimHistory);
+            
+            // Simpan perubahan
+            saveMysteryCodes(mysteryCodes);
             
             // Tampilkan hasil
-            showResult(userName, foundCode.reward);
+            showResult(userName, foundCode.reward, codeInput);
             
             // Reset form
             codeForm.reset();
             
-            // Update tabel di admin panel
-            loadCodesToTable();
+            // Update tampilan
+            loadCodesToTable(codeSearch.value);
+            updateDataStatus();
+            updateStats();
+            updateCodeSelectForReward();
+            loadClaimHistoryToTable();
         });
+
+        // Save reward assignment
+        saveRewardBtn.addEventListener('click', function() {
+            const selectedCode = selectCodeForReward.value;
+            const rewardValue = customRewardInput.value.trim() || assignReward.value;
+            
+            if (!selectedCode) {
+                showNotification('Pilih kode terlebih dahulu!', 'error');
+                return;
+            }
+            
+            if (!rewardValue) {
+                showNotification('Pilih atau masukkan hadiah!', 'error');
+                return;
+            }
+            
+            // Cari dan update kode
+            const codeIndex = mysteryCodes.findIndex(c => c.code === selectedCode);
+            if (codeIndex !== -1) {
+                mysteryCodes[codeIndex].reward = rewardValue;
+                saveMysteryCodes(mysteryCodes);
+                
+                // Refresh displays
+                loadCodesToTable(codeSearch.value);
+                updateCodeSelectForReward();
+                
+                // Update display
+                selectedCodeCurrentReward.textContent = rewardValue;
+                
+                showNotification(`Hadiah untuk kode ${selectedCode} berhasil diubah!`, 'success');
+                
+                // Reset inputs
+                customRewardInput.value = '';
+                assignReward.value = '';
+            }
+        });
+
+        // Save rewards list
+        saveRewardsListBtn.addEventListener('click', function() {
+            const rewardsText = rewardList.value.trim();
+            const rewardsArray = rewardsText.split('\n').filter(item => item.trim() !== '');
+            
+            if (rewardsArray.length === 0) {
+                showNotification('Harap masukkan setidaknya satu hadiah!', 'error');
+                return;
+            }
+            
+            availableRewards = rewardsArray;
+            saveAvailableRewards(availableRewards);
+            updateRewardSelect();
+            updateStats();
+            showNotification('Daftar hadiah berhasil disimpan!', 'success');
+        });
+
+        // Assign reward to code (from table button)
+        window.assignRewardToCode = function(code) {
+            selectCodeForReward.value = code;
+            selectCodeForReward.dispatchEvent(new Event('change'));
+            
+            // Switch to rewards tab
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            document.querySelector('[data-tab="rewards"]').classList.add('active');
+            document.getElementById('rewardsTab').classList.add('active');
+            
+            showNotification(`Membuka pengaturan hadiah untuk kode ${code}`, 'info');
+        };
 
         // Close result modal
         closeResultModal.addEventListener('click', function() {
@@ -906,120 +1476,131 @@ Payung Premium</textarea>
                         content.classList.add('active');
                     }
                 });
+                
+                // Update export data when export tab is opened
+                if (tabId === 'export') {
+                    updateExportData();
+                }
             });
         });
 
-        // Load codes to table
-        function loadCodesToTable() {
-            codesTableBody.innerHTML = '';
-            
-            mysteryCodes.forEach((code, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${code.name}</td>
-                    <td><strong>${code.code}</strong></td>
-                    <td>${code.reward}</td>
-                    <td class="${code.used ? 'status-used' : 'status-available'}">
-                        ${code.used ? 'Sudah Digunakan' : 'Tersedia'}
-                    </td>
-                    <td>
-                        <button class="action-btn btn-edit" onclick="editCode(${code.id})">Edit</button>
-                        <button class="action-btn btn-delete" onclick="deleteCode(${code.id})">Hapus</button>
-                    </td>
-                `;
-                codesTableBody.appendChild(row);
-            });
+        // Update export data
+        function updateExportData() {
+            const exportData = {
+                mysteryCodes: mysteryCodes,
+                availableRewards: availableRewards,
+                claimHistory: claimHistory,
+                exportedAt: new Date().toISOString()
+            };
+            exportDataText.value = JSON.stringify(exportData, null, 2);
         }
 
-        // Handle create new code form
-        createCodeForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Export data
+        exportBtn.addEventListener('click', function() {
+            updateExportData();
             
-            const newName = document.getElementById('newName').value.trim();
-            const newCode = document.getElementById('newCode').value.trim().toUpperCase();
-            const reward = document.getElementById('reward').value.trim();
+            // Create a download link
+            const dataStr = JSON.stringify({
+                mysteryCodes: mysteryCodes,
+                availableRewards: availableRewards,
+                claimHistory: claimHistory,
+                exportedAt: new Date().toISOString()
+            }, null, 2);
             
-            // Validasi panjang kode
-            if (newCode.length < 6 || newCode.length > 12) {
-                showNotification('Kode harus antara 6-12 karakter!', 'error');
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            const exportFileDefaultName = 'mystery_box_premium_data.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showNotification('Data berhasil diexport!', 'success');
+        });
+
+        // Import data
+        importBtn.addEventListener('click', function() {
+            const importText = importDataText.value.trim();
+            
+            if (!importText) {
+                showNotification('Harap masukkan data JSON yang valid!', 'error');
                 return;
             }
             
-            // Cek apakah kode sudah ada
-            const codeExists = mysteryCodes.some(item => item.code === newCode);
-            if (codeExists) {
-                showNotification('Kode sudah digunakan! Gunakan kode yang berbeda.', 'error');
+            try {
+                const importedData = JSON.parse(importText);
+                
+                // Validasi data
+                if (!importedData.mysteryCodes || !Array.isArray(importedData.mysteryCodes)) {
+                    showNotification('Format data tidak valid!', 'error');
+                    return;
+                }
+                
+                // Konfirmasi import
+                if (!confirm(`Anda akan mengimpor data. Data saat ini akan digantikan. Lanjutkan?`)) {
+                    return;
+                }
+                
+                // Update data
+                mysteryCodes = importedData.mysteryCodes;
+                availableRewards = importedData.availableRewards || DEFAULT_REWARDS;
+                claimHistory = importedData.claimHistory || [];
+                
+                // Simpan ke localStorage
+                saveMysteryCodes(mysteryCodes);
+                saveAvailableRewards(availableRewards);
+                saveClaimHistory(claimHistory);
+                
+                // Update tampilan
+                loadCodesToTable();
+                updateDataStatus();
+                updateStats();
+                updateRewardList();
+                updateRewardSelect();
+                updateCodeSelectForReward();
+                loadClaimHistoryToTable();
+                updateExportData();
+                importDataText.value = '';
+                
+                showNotification('Data berhasil diimport!', 'success');
+            } catch (error) {
+                showNotification('Error parsing JSON: ' + error.message, 'error');
+            }
+        });
+
+        // Reset data
+        resetBtn.addEventListener('click', function() {
+            if (!confirm("PERINGATAN: Ini akan mereset SEMUA klaim dan riwayat. Kode akan kembali tersedia. Lanjutkan?")) {
                 return;
             }
             
-            // Tambahkan kode baru
-            const newId = mysteryCodes.length > 0 ? Math.max(...mysteryCodes.map(item => item.id)) + 1 : 1;
-            mysteryCodes.push({
-                id: newId,
-                name: newName,
-                code: newCode,
-                reward: reward,
-                used: false
+            // Reset all codes to available
+            mysteryCodes.forEach(code => {
+                code.used = false;
+                code.name = "";
+                code.claimedAt = null;
             });
             
-            // Reset form
-            createCodeForm.reset();
+            // Clear claim history
+            claimHistory = [];
             
-            // Update tabel
+            // Save changes
+            saveMysteryCodes(mysteryCodes);
+            saveClaimHistory(claimHistory);
+            
+            // Update displays
             loadCodesToTable();
+            updateDataStatus();
+            updateStats();
+            updateCodeSelectForReward();
+            loadClaimHistoryToTable();
+            updateExportData();
             
-            // Tampilkan notifikasi
-            showNotification(`Kode ${newCode} berhasil dibuat untuk ${newName}!`, 'success');
+            showNotification('Semua kode telah direset ke status tersedia!', 'success');
         });
-
-        // Save rewards list
-        saveRewardsBtn.addEventListener('click', function() {
-            const rewardsText = rewardList.value.trim();
-            availableRewards = rewardsText.split('\n').filter(item => item.trim() !== '');
-            showNotification('Daftar hadiah berhasil disimpan!', 'success');
-        });
-
-        // Edit code function
-        window.editCode = function(id) {
-            const code = mysteryCodes.find(item => item.id === id);
-            if (!code) return;
-            
-            const newName = prompt("Masukkan nama baru:", code.name);
-            if (newName === null) return;
-            
-            const newCode = prompt("Masukkan kode baru:", code.code);
-            if (newCode === null) return;
-            
-            const newReward = prompt("Masukkan hadiah baru:", code.reward);
-            if (newReward === null) return;
-            
-            // Update code
-            code.name = newName.trim();
-            code.code = newCode.trim().toUpperCase();
-            code.reward = newReward.trim();
-            
-            // Update tabel
-            loadCodesToTable();
-            
-            showNotification('Kode berhasil diperbarui!', 'success');
-        };
-
-        // Delete code function
-        window.deleteCode = function(id) {
-            if (!confirm("Apakah Anda yakin ingin menghapus kode ini?")) return;
-            
-            // Hapus kode
-            mysteryCodes = mysteryCodes.filter(item => item.id !== id);
-            
-            // Update tabel
-            loadCodesToTable();
-            
-            showNotification('Kode berhasil dihapus!', 'success');
-        };
 
         // Show result modal
-        function showResult(userName, reward) {
+        function showResult(userName, reward, code) {
             const resultTitle = document.getElementById('resultTitle');
             const resultContent = document.getElementById('resultContent');
             
@@ -1027,13 +1608,19 @@ Payung Premium</textarea>
             resultContent.innerHTML = `
                 <div style="text-align: center; padding: 20px;">
                     <div style="font-size: 5rem; color: var(--warning); margin-bottom: 20px;">
-                        <i class="fas fa-gift"></i>
+                        <i class="fas fa-trophy"></i>
                     </div>
-                    <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Anda Mendapatkan:</h3>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Klaim Berhasil!</h3>
                     <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 25px;">
+                        <p style="margin-bottom: 10px;"><strong>Kode:</strong> ${code}</p>
                         <h4 style="font-size: 1.5rem; color: var(--warning);">${reward}</h4>
                     </div>
-                    <p>Hadiah akan dikirimkan dalam waktu 1-3 hari kerja. Terima kasih telah berpartisipasi!</p>
+                    <p>Hadiah akan dikirimkan sesuai dengan ketentuan yang berlaku. Terima kasih telah berpartisipasi!</p>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(0, 184, 148, 0.1); border-radius: 10px; border-left: 4px solid var(--success);">
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                            <i class="fas fa-check-circle"></i> Kode telah berhasil diklaim dan tidak dapat digunakan lagi.
+                        </p>
+                    </div>
                 </div>
             `;
             
@@ -1062,4 +1649,3 @@ Payung Premium</textarea>
     </script>
 </body>
 </html>
-
